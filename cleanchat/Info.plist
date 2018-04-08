@@ -41,5 +41,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please let us use your location.</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>We need your camera.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>We need your library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need your photo library.</string>
 </dict>
 </plist>

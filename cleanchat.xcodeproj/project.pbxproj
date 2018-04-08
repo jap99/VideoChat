@@ -7,14 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FB572AD2071D39100A26985 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AC2071D39100A26985 /* Camera.swift */; };
+		9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */; };
+		9FB572B22071D3E500A26985 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB572B12071D3E500A26985 /* GoogleService-Info.plist */; };
+		9FB572B42071D3EF00A26985 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */; };
+		9FB572B62071D41400A26985 /* RecentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B52071D41400A26985 /* RecentVC.swift */; };
+		9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B72071D42000A26985 /* RegisterVC.swift */; };
+		9FB572BA2071D43000A26985 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B92071D43000A26985 /* WelcomeVC.swift */; };
+		9FB572BE2071D4AE00A26985 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572BC2071D4AD00A26985 /* Constants.swift */; };
+		9FB572BF2071D4AE00A26985 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572BD2071D4AD00A26985 /* Utilities.swift */; };
+		9FB572C32071D51200A26985 /* ChooseUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572C12071D51200A26985 /* ChooseUserCell.swift */; };
+		9FB572C42071D51200A26985 /* RecentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572C22071D51200A26985 /* RecentCell.swift */; };
+		9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572C72071E51D00A26985 /* RNCryptor.swift */; };
+		9FB572CD2071E55800A26985 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9FB572CB2071E55800A26985 /* ProgressHUD.bundle */; };
+		9FB572CE2071E55800A26985 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572CC2071E55800A26985 /* ProgressHUD.m */; };
+		9FB572D02077112600A26985 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB572CF2077112600A26985 /* CoreLocation.framework */; };
+		9FB572D22077114800A26985 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB572D12077114800A26985 /* SystemConfiguration.framework */; };
+		9FB572D42077115500A26985 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB572D32077115500A26985 /* PushKit.framework */; };
+		9FB572D620783FF500A26985 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572D520783FF500A26985 /* FriendCell.swift */; };
+		9FB572D82078421A00A26985 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572D72078421A00A26985 /* Download.swift */; };
 		9FE14FEB1F22178900F3FE09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */; };
 		9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE14FEC1F22178900F3FE09 /* ViewController.swift */; };
 		9FE14FF01F22178900F3FE09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE14FEE1F22178900F3FE09 /* Main.storyboard */; };
 		9FE14FF21F22178900F3FE09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE14FF11F22178900F3FE09 /* Assets.xcassets */; };
 		9FE14FF51F22178900F3FE09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */; };
+		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.release.xcconfig"; sourceTree = "<group>"; };
+		5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cleanchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.debug.xcconfig"; sourceTree = "<group>"; };
+		9FB572AC2071D39100A26985 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
+		9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cleanchat-Bridging-Header.h"; sourceTree = "<group>"; };
+		9FB572B12071D3E500A26985 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		9FB572B52071D41400A26985 /* RecentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentVC.swift; sourceTree = "<group>"; };
+		9FB572B72071D42000A26985 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		9FB572B92071D43000A26985 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		9FB572BC2071D4AD00A26985 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FB572BD2071D4AD00A26985 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		9FB572C12071D51200A26985 /* ChooseUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserCell.swift; sourceTree = "<group>"; };
+		9FB572C22071D51200A26985 /* RecentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCell.swift; sourceTree = "<group>"; };
+		9FB572C62071E51D00A26985 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		9FB572C72071E51D00A26985 /* RNCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
+		9FB572CA2071E55800A26985 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		9FB572CB2071E55800A26985 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		9FB572CC2071E55800A26985 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		9FB572CF2077112600A26985 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9FB572D12077114800A26985 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9FB572D32077115500A26985 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		9FB572D520783FF500A26985 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		9FB572D72078421A00A26985 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		9FE14FE71F22178900F3FE09 /* cleanchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cleanchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE14FEC1F22178900F3FE09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +74,82 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB572D42077115500A26985 /* PushKit.framework in Frameworks */,
+				9FB572D22077114800A26985 /* SystemConfiguration.framework in Frameworks */,
+				9FB572D02077112600A26985 /* CoreLocation.framework in Frameworks */,
+				BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31AE4ED5FC678A4C0F4F6878 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */,
+				1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		98BF832D4B48D7D51166533D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572D32077115500A26985 /* PushKit.framework */,
+				9FB572D12077114800A26985 /* SystemConfiguration.framework */,
+				9FB572CF2077112600A26985 /* CoreLocation.framework */,
+				5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FB572BB2071D4AD00A26985 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572BC2071D4AD00A26985 /* Constants.swift */,
+				9FB572BD2071D4AD00A26985 /* Utilities.swift */,
+				9FB572D72078421A00A26985 /* Download.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9FB572C02071D51200A26985 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572C12071D51200A26985 /* ChooseUserCell.swift */,
+				9FB572C22071D51200A26985 /* RecentCell.swift */,
+				9FB572D520783FF500A26985 /* FriendCell.swift */,
+			);
+			path = View;
+			sourceTree = SOURCE_ROOT;
+		};
+		9FB572C52071E51D00A26985 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572C62071E51D00A26985 /* RNCryptor.h */,
+				9FB572C72071E51D00A26985 /* RNCryptor.swift */,
+			);
+			path = Encryption;
+			sourceTree = SOURCE_ROOT;
+		};
+		9FB572C92071E55800A26985 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572CA2071E55800A26985 /* ProgressHUD.h */,
+				9FB572CB2071E55800A26985 /* ProgressHUD.bundle */,
+				9FB572CC2071E55800A26985 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = SOURCE_ROOT;
+		};
 		9FE14FDE1F22178900F3FE09 = {
 			isa = PBXGroup;
 			children = (
 				9FE14FE91F22178900F3FE09 /* cleanchat */,
 				9FE14FE81F22178900F3FE09 /* Products */,
+				31AE4ED5FC678A4C0F4F6878 /* Pods */,
+				98BF832D4B48D7D51166533D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,8 +164,20 @@
 		9FE14FE91F22178900F3FE09 /* cleanchat */ = {
 			isa = PBXGroup;
 			children = (
+				9FB572C92071E55800A26985 /* ProgressHUD */,
+				9FB572C52071E51D00A26985 /* Encryption */,
+				9FB572BB2071D4AD00A26985 /* Utilities */,
+				9FB572C02071D51200A26985 /* View */,
 				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
 				9FE14FEC1F22178900F3FE09 /* ViewController.swift */,
+				9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */,
+				9FB572AC2071D39100A26985 /* Camera.swift */,
+				9FB572B52071D41400A26985 /* RecentVC.swift */,
+				9FB572B92071D43000A26985 /* WelcomeVC.swift */,
+				9FB572B72071D42000A26985 /* RegisterVC.swift */,
+				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
+				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
+				9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */,
 				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
 				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
 				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
@@ -71,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FE14FF91F22178900F3FE09 /* Build configuration list for PBXNativeTarget "cleanchat" */;
 			buildPhases = (
+				9EAE8FE0194234943D497385 /* [CP] Check Pods Manifest.lock */,
 				9FE14FE31F22178900F3FE09 /* Sources */,
 				9FE14FE41F22178900F3FE09 /* Frameworks */,
 				9FE14FE51F22178900F3FE09 /* Resources */,
+				C3B55A4F5AE31453E6FBA113 /* [CP] Embed Pods Frameworks */,
+				31DAB8329EFEC2F0534B8367 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,6 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE14FF51F22178900F3FE09 /* LaunchScreen.storyboard in Resources */,
+				9FB572B22071D3E500A26985 /* GoogleService-Info.plist in Resources */,
+				9FB572CD2071E55800A26985 /* ProgressHUD.bundle in Resources */,
+				9FB572B42071D3EF00A26985 /* GoogleService-Info (1).plist in Resources */,
 				9FE14FF21F22178900F3FE09 /* Assets.xcassets in Resources */,
 				9FE14FF01F22178900F3FE09 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +258,103 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31DAB8329EFEC2F0534B8367 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh",
+				"${PODS_ROOT}/IDMPhotoBrowser/Classes/IDMPhotoBrowser.bundle",
+				"${PODS_ROOT}/IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/audio_record.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/audio_record@2x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/audio_record@3x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/microphone_access.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/microphone_access@2x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/microphone_access@3x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/scissor.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/scissor@2x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/scissor@3x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_playing.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_playing@2x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_playing@3x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_recording.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_recording@2x.png",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/stop_recording@3x.png",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Assets/JSQMessagesAssets.bundle",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.xib",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellIncoming.xib",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellOutgoing.xib",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.xib",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesToolbarContentView.xib",
+				"${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesTypingIndicatorFooterView.xib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EAE8FE0194234943D497385 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cleanchat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3B55A4F5AE31453E6FBA113 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FE14FE31F22178900F3FE09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB572AD2071D39100A26985 /* Camera.swift in Sources */,
+				9FB572D82078421A00A26985 /* Download.swift in Sources */,
+				9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */,
 				9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */,
+				9FB572D620783FF500A26985 /* FriendCell.swift in Sources */,
+				9FB572C42071D51200A26985 /* RecentCell.swift in Sources */,
+				9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */,
 				9FE14FEB1F22178900F3FE09 /* AppDelegate.swift in Sources */,
+				9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */,
+				9FB572B62071D41400A26985 /* RecentVC.swift in Sources */,
+				9FB572BA2071D43000A26985 /* WelcomeVC.swift in Sources */,
+				9FB572CE2071E55800A26985 /* ProgressHUD.m in Sources */,
+				9FB572BF2071D4AE00A26985 /* Utilities.swift in Sources */,
+				9FB572C32071D51200A26985 /* ChooseUserCell.swift in Sources */,
+				9FB572BE2071D4AE00A26985 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +489,7 @@
 		};
 		9FE14FFA1F22178900F3FE09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VWFZU9229C;
@@ -278,6 +497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +505,7 @@
 		};
 		9FE14FFB1F22178900F3FE09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VWFZU9229C;
@@ -292,6 +513,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -316,6 +538,7 @@
 				9FE14FFB1F22178900F3FE09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import CoreLocation
+import Firebase
+import FirebaseDatabase
+import NotificationCenter
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    
+    // setup for our location
+    var locationManager: CLLocationManager?
+    var coordinates: CLLocationCoordinate2D?
+    
+    let APP_ID = "48E0C0BD-4D5D-7547-FFD1-C6819D10B800"
+    let SECRET_KEY = "AA407415-008C-0F4C-FF10-C8E3966D9600" // aka API KEY
+    let VERSION_NUM = "v1"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
+        backendless!.initApp(APP_ID, apiKey: SECRET_KEY)
+        
         return true
     }
 
