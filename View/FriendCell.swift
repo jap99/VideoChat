@@ -20,7 +20,7 @@ class FriendCell: UITableViewCell {
         
     }
     
-    func bindDate(friend: BackendlessUser) {
+    func bindData(friend: BackendlessUser) {
         
         //circle
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
