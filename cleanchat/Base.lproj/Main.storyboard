@@ -285,7 +285,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tv" destination="8IV-dj-yfT" id="2Xm-aI-uyX"/>
-                        <segue destination="ijX-wf-cj4" kind="show" id="frq-r0-fIL"/>
+                        <segue destination="ijX-wf-cj4" kind="show" identifier="recentToChooseUserSeg" id="frq-r0-fIL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLB-JY-SPI" userLabel="First Responder" sceneMemberID="firstResponder"/>

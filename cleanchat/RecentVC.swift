@@ -57,6 +57,19 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - IBActions
     
     @IBAction func addRecentBarButtonPressed(_ sender: Any) {
+        
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let friendList = UIAlertAction(title: "Friends List", style: .default) { (alert) in
+            
+        }
+        let allUsers = UIAlertAction(title: "All Users", style: .default) { (alert) in
+            self.performSegue(withIdentifier: "recentToChooseUserSeg", sender: self)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in }
+        optionMenu.addAction(friendList)
+        optionMenu.addAction(allUsers)
+        optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
     }
    
     // MARK: - Load Recents

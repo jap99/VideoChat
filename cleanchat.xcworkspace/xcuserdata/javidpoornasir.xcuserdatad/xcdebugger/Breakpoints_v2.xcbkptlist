@@ -15,18 +15,18 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "bindDate(friend:)"
+            landmarkName = "bindData(friend:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.FriendCell.bindDate(friend: __ObjC.BackendlessUser) -&gt; ()"
+                  symbolName = "cleanchat.FriendCell.bindData(friend: __ObjC.BackendlessUser) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/javidpoornasir/Desktop/Practice/cleanchat/View/FriendCell.swift"
-                  timestampString = "544922460.552966"
+                  timestampString = "544964955.91523"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
@@ -37,11 +37,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt;) -&gt; () in cleanchat.FriendCell.bindDate(friend: __ObjC.BackendlessUser) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt;) -&gt; () in cleanchat.FriendCell.bindData(friend: __ObjC.BackendlessUser) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/javidpoornasir/Desktop/Practice/cleanchat/View/FriendCell.swift"
-                  timestampString = "544922460.556753"
+                  timestampString = "544964955.917341"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "bindDate(friend:)"
+            landmarkName = "bindData(friend:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,6 +80,22 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "bindData(friend:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/ChooseUserVC.swift"
+            timestampString = "544965270.515548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "loadUsers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

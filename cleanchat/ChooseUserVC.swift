@@ -20,10 +20,18 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         super.viewDidLoad()
         
         tv.delegate = self; tv.dataSource = self
-
+        searchController.searchResultsUpdater = self // tells users when there's an update
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true // required for searchResultsController
         
+        tv.tableHeaderView = searchController.searchBar
+        
+        loadUsers()
     }
+    
+    
  
+    // MARK: - TABLE VIEW
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! FriendCell
         
@@ -54,6 +62,30 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    // MARK: - LOAD USERS
+    
+    func loadUsers() {
+        
+        let whereClause = "objectId != '\(backendless!.userService.currentUser.objectId!)'"
+        //let dataQuery = BackendlessDataQuery()
+        let dataQuery = DataQueryBuilder()
+     //   dataQuery?.setWhereClause(whereClause)
+        dataQuery!.setWhereClause(whereClause)
+        
+        let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
+        
+        // now that we have dataStore we can do the query
+        dataStore!.find(dataQuery, response: { (users) in
+            
+            self.users = users! as! [BackendlessUser]
+            self.tv.reloadData()
+            
+        }) { fault in
+            
+            ProgressHUD.showError("Couldn't load users: \(fault!.detail)")
+        }
     }
     
     // MARK: - SEARCH FUNCTIONS
