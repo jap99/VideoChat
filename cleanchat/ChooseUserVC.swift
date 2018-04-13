@@ -62,6 +62,18 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // create a recent item each time
+        let user: BackendlessUser
+        
+        // check if user searched for this user or chose it from user's array
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            user = users[indexPath.row]
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        startChat(user1: backendless!.userService.currentUser, user2: user)
     }
     
     // MARK: - LOAD USERS

@@ -89,8 +89,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let currentRecent = recent as! NSDictionary
                     
                     self.recents.append(currentRecent)
-                    // right now we're accessing the recents of only our current user; to work offline though we need to access all recents
                     
+                    // another query to have all the users for the chatroom ID but make sure we don't query recents that don't belong to our user by referring to currentRecent[kCHATROOMID].observe...
+                    //this query below prevents additional recents from being created in firebase when a user is selected and our online and offline databases are in sync
+                    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: currentRecent[kCHATROOMID]).observe(.value, with: { (snapshot) in
+                        
+                    })
                     
                 }
             }

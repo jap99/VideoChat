@@ -24,12 +24,12 @@ class WelcomeVC: UIViewController {
         // check if user is available
         if backendless!.userService.currentUser != nil {
            
-//            DispatchQueue.main.async {
-//                
-//                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecentVC") as! UITabBarController
-//                vc.selectedIndex = 0
-//                self.present(vc, animated: true, completion: nil)
-//            }
+            DispatchQueue.main.async {
+                
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecentVC") as! UITabBarController
+                vc.selectedIndex = 0
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

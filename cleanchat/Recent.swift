@@ -80,7 +80,7 @@ func createRecentItem(userId: String, chatRoomId: String, members: [String], wit
                   kLASTMESSAGE: "",
                   kCOUNTER: 0,
                   kDATE: date,
-                  kTYPE, type
+                  kTYPE: type
     ] as [String: Any]
     
     reference.setValue(recent) { (error, ref) in
