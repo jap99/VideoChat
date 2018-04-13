@@ -41,6 +41,25 @@ class OutgoingMessages {
          messageDictionary = NSMutableDictionary(objects: [message, senderId, senderName, dateFormatter().string(from: date), status, type], forKeys: [kMESSAGE as NSCopying, kAUDIO as NSCopying, kSENDERID as NSCopying, kSENDERNAME as NSCopying, kDATE as NSCopying, kSTATUS as NSCopying, kTYPE as NSCopying])
     }
     
+    func sendMessage(chatRoomID: String, item: NSMutableDictionary) {
+        
+        let reference = ref.child(chatRoomID).childByAutoId()
+        
+        // set id
+        item[kMESSAGEID] = reference.key
+        
+        // save it
+        reference.setValue(item) { (error, ref) in
+            
+            if error != nil {
+                
+                ProgressHUD.showError("Outgoing message error \(error?.localizedDescription)")
+            }
+        }
+        
+        // update recent so it shows correct message info
+        // send push notification
+    }
     
     
     
