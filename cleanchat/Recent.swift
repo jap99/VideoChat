@@ -90,7 +90,13 @@ func createRecentItem(userId: String, chatRoomId: String, members: [String], wit
             ProgressHUD.showError("Couldn't create recent: \(error!.localizedDescription)")
         }
     }
+}
+
+func updateChatStatus(chat: NSDictionary, chatRoomId: String) {
     
+    let values = [kSTATUS: kREAD]
+    
+    firebase.child(kMESSAGE).child(chatRoomId).child((chat[kMESSAGEID] as? String)!).updateChildValues(values)
 }
 
 

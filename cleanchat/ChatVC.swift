@@ -223,7 +223,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             
             let text = kLOCATION
             
-            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: long, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDEVICEID, type: kLOCATION)
+            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: long, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDELIVERED, type: kLOCATION)
         }
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -341,8 +341,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
         
         if (item[kSENDERID] as! String) != backendless!.userService.currentUser.objectId as String {
-            
-            // update status
+             
+            updateChatStatus(chat: item, chatRoomId: chatRoomId)
         }
         
         let message = incomingMessage.createMessage(dictionary: item, chatRoomID: chatRoomId)
