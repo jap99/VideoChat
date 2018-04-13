@@ -91,9 +91,72 @@ func uploadVideo(video: NSData, thumbnail: NSData, result: @escaping (_ videoLin
 }
 
 
+func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _ videoFileName: String) -> Void) {
+    
+    let videoURL = NSURL(string: videoUrl)
+    
+    // access video file name
+    let videoFileName = videoUrl.components(separatedBy: "/").last
+    
+    // check if the file was downloaded before - if yes, save if locally
+    if fileExistsAtPath(path: videoFileName) {
+        
+        result(true, videoFileName)
+        
+    } else {
+        
+        let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
+        downloadQueue.async {
+            let data = NSData(contentsOf: videoUrl! as URL)
+            if data != nil {
+                var docURL = getDocumentsURL()
+                
+                // now we can save video to our documentsURL
+                docURL = docURL.appendingPathComponent(videoFileName, isDirectory: false)
+                // saving atomically so original won't be deleted until we get new one
+                data!.write(to: docURL, atomically: true)
+                
+                DispatchQueue.main.async {
+                    result(true, videoFileName)
+                }
+            } else {
+                ProgressHUD.showError("Video not found")
+            }
+        }
+    }
+    
+}
 
 
+// Help
 
+func fileInDocumentsDirectory(filename: String) -> String {
+    
+    let fileURL = getDocumentsURL().appendingPathComponent(filename)
+    return fileURL.path
+}
+
+func getDocumentsURL() -> URL {
+    
+    let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
+    return documentURL!
+}
+
+func fileExistsAtPath(path: String) -> Bool {
+    
+    var doesExist = false
+    
+    let filePath = fileInDocumentsDirectory(filename: path)
+    let fileManager = FileManager.default
+    
+    // check if file exists in file manager
+    if fileManager.fileExists(atPath: filePath) {
+        doesExist = true
+    } else {
+        doesExist = false
+    }
+    return doesExist
+}
 
 
 
