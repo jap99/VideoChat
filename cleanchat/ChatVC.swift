@@ -174,9 +174,39 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     }
     
     
+    // MARK: Load Messages
     
+    func loadMessages() {
+        
+        let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
+        
+        ref.child(chatRoomId).observe(.childAdded, with: {
+            snapshot in
+            
+            // update UI
+            
+            if snapshot.exists() {
+                
+                let item = (snapshot.value as? NSDictionary)!
+                
+                if let type = item[kType] as? String {
+                    
+                    if legitTypes.contains(type) {
+                        
+                        if self.initialLoadComplete {
+                            
+                            let incoming = self.insertMessage(item: item)
+                        }
+                    }
+                }
+            }
+        })
+    }
     
-    
+    func insertMessage(item: NSDictionary) -> Bool {
+        
+        
+    }
     
     
  

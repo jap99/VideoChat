@@ -10,6 +10,7 @@
 		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
 		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */; };
+		9F8ACCF62080BB5400F34663 /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */; };
 		9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC7B207C3EE50050DCE7 /* Recent.swift */; };
 		9FB572AD2071D39100A26985 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AC2071D39100A26985 /* Camera.swift */; };
 		9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */; };
@@ -45,6 +46,7 @@
 		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
+		9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
 		9F9EDC7B207C3EE50050DCE7 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		9FB572AC2071D39100A26985 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
 				9FE14FF61F22178900F3FE09 /* Info.plist */,
 				9F9EDC7B207C3EE50050DCE7 /* Recent.swift */,
+				9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */,
 				9FB572B62071D41400A26985 /* RecentVC.swift in Sources */,
 				9FB572BA2071D43000A26985 /* WelcomeVC.swift in Sources */,
+				9F8ACCF62080BB5400F34663 /* IncomingMessage.swift in Sources */,
 				9FB572CE2071E55800A26985 /* ProgressHUD.m in Sources */,
 				9FB572BF2071D4AE00A26985 /* Utilities.swift in Sources */,
 				9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */,

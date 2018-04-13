@@ -58,7 +58,10 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // present chatVC
         let recent = recents[indexPath.row]
+        
         // restart recents
+        restartRecentChat(recent: recent)
+        
         let chatVC = ChatVC()
         chatVC.hidesBottomBarWhenPushed = true
         chatVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
