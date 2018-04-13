@@ -59,3 +59,47 @@ func uploadAvatar(image: UIImage, result: @escaping (_ imageLink: String?) -> Vo
     }
     
 }
+
+func uploadVideo(video: NSData, thumbnail: NSData, result: @escaping (_ videoLink: String?, _ thumbnailLink: String?) -> Void) {
+    
+    let dateString = dateFormatter().string(from: Date())
+    
+    let videoFileName = "Video/" + dateString + ".mov"
+    let thumbnailFileName = "Video/" + dateString + ".jpg"
+    
+    ProgressHUD.show("Sending video...")
+    
+    // save thumbnail
+    
+    backendless!.fileService.saveFile(thumbnailFileName, content: thumbnail as Data!, response: { (thumbnail) in
+        
+        print("THUMBNAIL UPLOADED")
+        
+        // save video
+        backendless!.fileService.saveFile(videoFileName, content: video as Data!, response: { (file) in
+            
+            ProgressHUD.dismiss()
+            result(file?.fileURL, thumbnail?.fileURL)
+            
+        }, error: { (fault) in
+            ProgressHUD.showError("Error uploading video - \(fault!.detail)")
+        })
+        
+    }) { (fault) in
+        ProgressHUD.showError("Error uploading thumbnail \(fault!.detail)")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
