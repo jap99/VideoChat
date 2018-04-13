@@ -16,14 +16,14 @@ public class IncomingMessage {
         collectionView = collectionView_
     }
     
-    func createMessage(dictionary: NSDictionary, chatRoomID: String) -> JSQMessage {
+    func createMessage(dictionary: NSDictionary, chatRoomID: String) -> JSQMessage? {
         
         var message: JSQMessage?
         let type = dictionary[kTYPE] as? String
         
         if type == kTEXT {
             // text message
-            createTextMessage(item: dictionary, chatRoomID: chatRoomID)
+            message = createTextMessage(item: dictionary, chatRoomID: chatRoomID)
         }
         
         if type == kLOCATION {
@@ -44,7 +44,7 @@ public class IncomingMessage {
         
         if let mes = message {
             // if we've set the message in a previous func we return it here
-            return message
+            return message!
         }
     
         return nil

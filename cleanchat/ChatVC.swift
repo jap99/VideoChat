@@ -15,7 +15,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let ref = firebase.child(kMESSAGE)
     
-    let loadCount = 0
+    var loadCount = 0
     var max = 0
     var min = 0
     
@@ -53,6 +53,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
+        
+        loadMessages()
     }
 
     // MARK: JSQMessages Data Source functions
@@ -189,7 +191,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                 
                 let item = (snapshot.value as? NSDictionary)!
                 
-                if let type = item[kType] as? String {
+                if let type = item[kTYPE] as? String {
                     
                     if legitTypes.contains(type) {
                         
@@ -237,6 +239,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         for i in min ..< max {
+            
             let item = loaded[i]
             self.insertMessage(item: item)
             loadCount += 1
@@ -265,6 +268,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     func incoming(item: NSDictionary) -> Bool {
         
         if backendless!.userService.currentUser.objectId as String == item[kSENDERID] as! String {
+            // means it's outgoing
             return false
         } else {
             return true

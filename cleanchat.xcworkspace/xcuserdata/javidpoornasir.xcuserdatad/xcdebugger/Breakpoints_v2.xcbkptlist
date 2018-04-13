@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChooseUserVC.swift"
-            timestampString = "545306906.663072"
+            timestampString = "545310131.866521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -74,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/RecentVC.swift"
-            timestampString = "545306906.663157"
+            timestampString = "545310131.8666101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "updateRecentItem(recent:lastMessage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/ChatVC.swift"
+            timestampString = "545310131.867202"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "insertMessage(item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
