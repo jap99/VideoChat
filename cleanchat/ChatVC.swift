@@ -46,7 +46,13 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.senderId = backendless!.userService.currentUser.objectId as String
+        self.senderDisplayName = backendless!.userService.currentUser.name as String
         
+        self.title = titleName
+        
+        collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
+        collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
     }
 
     // MARK: JSQMessages Data Source functions
@@ -111,7 +117,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         return nil
     }
     
-    func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
         
         return 0.0
     }
@@ -120,6 +126,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         // right side of screen
+        
+        // this func is triggerred when message is selected
+        
+        if text != "" {
+            sendMessage(text: text, date: date, picture: nil, location: nil, video: nil, audio: nil)
+        }
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -128,7 +140,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     // MARK: Send Message
     
-    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String? video: NSURL?, audio: String?) {
+    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?, video: NSURL?, audio: String?) {
         
         var outgoingMessage: OutgoingMessage?
         

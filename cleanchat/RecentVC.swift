@@ -54,6 +54,20 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // present chatVC
+        let recent = recents[indexPath.row]
+        // restart recents
+        let chatVC = ChatVC()
+        chatVC.hidesBottomBarWhenPushed = true
+        chatVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
+        chatVC.members = (recent[kMEMBERS] as? [String])!
+        chatVC.chatRoomId = (recent[kCHATROOMID] as? String)!
+        if (recent[kTYPE] as? String)! == kGROUP {
+            chatVC.isGroup = true 
+        }
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     // MARK: - IBActions
