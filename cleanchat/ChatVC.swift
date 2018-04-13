@@ -11,7 +11,7 @@ import AVKit
 import AVFoundation
 
 class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let ref = firebase.child(kMESSAGE)
     
@@ -46,7 +46,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.senderId = backendless!.userService.currentUser.objectId as String
         self.senderDisplayName = backendless!.userService.currentUser.name as String
         
@@ -57,7 +57,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         loadMessages()
     }
-
+    
     // MARK: JSQMessages Data Source functions
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,22 +107,47 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         // we're using top to display the timestamp of each message
         
+        if indexPath.item % 3 == 0 {
+            let message = messages[indexPath.item]
+            
+            return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+        }
         return nil
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
-     
+        
+        if indexPath.item % 3 == 0 {
+            let message = messages[indexPath.item]
+            
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+        
         return 0.0
     }
     
-   override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         // message status shows on bottom label ie. delivered, read
+        
+        // displayed for the last message only
+        let message = objects[indexPath.row]
+        let status = message[kSTATUS] as! String
+        if indexPath.row == (messages.count - 1) {
+            return NSAttributedString(string: status)
+        } else {
+            return NSAttributedString(string: "")
+        }
         return nil
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
         
-        return 0.0
+        if outgoing(item: objects[indexPath.row]) {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        } else {
+            return 0.0
+        }
+        
     }
     
     // MARK: - JSQMessages Delegate functions
@@ -143,11 +168,11 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let camera = Camera(delegate_: self)
-     
+        
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { (alert) in
             camera.presentMultiCamera(target: self, canEdit: true)
         }
-       
+        
         let sharePhoto = UIAlertAction(title: "PhotoLibrary", style: .default) { (alert) in
             camera.presentPhotoLibrary(target: self, canEdit: true)
         }
@@ -356,7 +381,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
         
         if (item[kSENDERID] as! String) != backendless!.userService.currentUser.objectId as String {
-             
+            
             updateChatStatus(chat: item, chatRoomId: chatRoomId)
         }
         
@@ -375,6 +400,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             return false
         } else {
             return true
+        }
+    }
+    
+    func outgoing(item: NSDictionary) -> Bool {
+        if currentUser.objectId as String == item[kSENDERID] as! String {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -409,5 +442,5 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     
     
- 
+    
 }
