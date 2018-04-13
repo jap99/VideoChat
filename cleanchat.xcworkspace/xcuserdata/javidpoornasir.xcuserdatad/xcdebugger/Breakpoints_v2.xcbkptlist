@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/RecentVC.swift"
-            timestampString = "545350920.080796"
+            timestampString = "545351330.628443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "545350920.080863"
+            timestampString = "545351330.62854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "insertMessage(item:)"
             landmarkType = "7">
          </BreakpointContent>

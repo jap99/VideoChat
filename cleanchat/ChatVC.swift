@@ -277,6 +277,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             snapshot in
             
             // update Message
+            self.updateMessage(item: snapshot.value as! NSDictionary)
         })
         
         ref.child(chatRoomId).observeSingleEvent(of: .value, with: {
@@ -288,23 +289,18 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         })
     }
     
-    func loadMore(maxNumber: Int, minNumber: Int) {
+    func updateMessage(item: NSDictionary) {
         
-        max = minNumber - 1
-        min = max - kNUMBEROFMESSAGES
-        
-        if min < 0 {
-            min = 0
+        for index in 0 ..< objects.count {
+            
+            let temp = objects[index]
+            
+            // check if it's the one we want to update
+            if item[kMESSAGEID] as! String == temp[kMESSAGEID] as! String {
+                objects[index] = item
+                self.collectionView!.reloadData()
+            }
         }
-        
-        for i in (min ... max).reversed() {
-            let item = loaded[i]
-            self.insertNewMessage(item: item)
-            loadCount += 1
-        }
-        
-        // check if we should show load earlier button or not
-        self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
     }
     
     func insertMessages() {
@@ -323,6 +319,25 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             loadCount += 1
         }
         
+        self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
+    }
+    
+    func loadMore(maxNumber: Int, minNumber: Int) {
+        
+        max = minNumber - 1
+        min = max - kNUMBEROFMESSAGES
+        
+        if min < 0 {
+            min = 0
+        }
+        
+        for i in (min ... max).reversed() {
+            let item = loaded[i]
+            self.insertNewMessage(item: item)
+            loadCount += 1
+        }
+        
+        // check if we should show load earlier button or not
         self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
     }
     
