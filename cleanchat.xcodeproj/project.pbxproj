@@ -130,7 +130,6 @@
 				9FB572C12071D51200A26985 /* ChooseUserCell.swift */,
 				9FB572C22071D51200A26985 /* RecentCell.swift */,
 				9FB572D520783FF500A26985 /* FriendCell.swift */,
-				9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -180,6 +179,7 @@
 				9FB572BB2071D4AD00A26985 /* Utilities */,
 				9FB572C02071D51200A26985 /* View */,
 				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
+				9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */,
 				9FE14FEC1F22178900F3FE09 /* ViewController.swift */,
 				9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */,
 				9FB572AC2071D39100A26985 /* Camera.swift */,

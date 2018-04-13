@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OutgoingMessages {
+class OutgoingMessage {
     
     let ref = firebase.child(kMESSAGE)
     

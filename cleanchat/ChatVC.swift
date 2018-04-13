@@ -37,6 +37,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     var showAvatars = true
     var firstLoad: Bool?
     
+    var outgoingMessage: OutgoingMessage?
+    
     // put two jsq message bubbles
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -127,9 +129,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     // MARK: Send Message
     
     func sendMessage(text: String?, date: Date, picture: UIImage?, location: String? video: NSURL?, audio: String?) {
+        
+        var outgoingMessage: OutgoingMessage?
+        
         if let text = text {
             // text message
-            
+            outgoingMessage = OutgoingMessage(message: text, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kTEXT)
         }
         
         if let pic = picture {
@@ -148,6 +153,11 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             
         }
         
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        self.finishSendingMessage()
+        
+        // send the message
+        outgoingMessage?.sendMessage(chatRoomID: chatRoomId, item: outgoingMessage!.messageDictionary)
         
     }
     
