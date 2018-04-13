@@ -196,11 +196,53 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                         if self.initialLoadComplete {
                             
                             let incoming = self.insertMessage(item: item)
+                            
+                            if incoming {
+                                
+                                JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
+                            }
+                            
+                            self.finishSendingMessage(animated: true)
+                        } else {
+                            
+                            self.loaded.append(item)
                         }
                     }
                 }
             }
         })
+        
+        ref.child(chatRoomId).observe(.childChanged, with: {
+            snapshot in
+            
+            // update Message
+        })
+        
+        ref.child(chatRoomId).observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            self.insertMessages()
+            self.finishReceivingMessage(animated: false)
+            self.initialLoadComplete = true 
+        })
+    }
+    
+    func insertMessages() {
+        
+        max = loaded.count - loadCount
+        min = max - kNUMBEROFMESSAGES
+        
+        if min < 0 {
+            min = 0
+        }
+        
+        for i in min ..< max {
+            let item = loaded[i]
+            self.insertMessage(item: item)
+            loadCount += 1
+        }
+        
+        self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
     }
     
     func insertMessage(item: NSDictionary) -> Bool {
@@ -225,7 +267,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         if backendless!.userService.currentUser.objectId as String == item[kSENDERID] as! String {
             return false
         } else {
-            return true 
+            return true
         }
     }
  
