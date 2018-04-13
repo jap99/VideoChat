@@ -9,7 +9,7 @@
 import UIKit
 
 class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tv: UITableView!
     
     var recents: [NSDictionary] = []
@@ -21,7 +21,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         loadRecents()
         tv.delegate = self; tv.dataSource = self
     }
- 
+    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,6 +37,8 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
         let recent = recents[indexPath.row]
+        
+        cell.bindData(recent: recent)
         
         return cell
     }
@@ -71,7 +73,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
     }
-   
+    
     // MARK: - Load Recents
     
     func loadRecents() {
@@ -98,6 +100,8 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                 }
             }
+            
+            self.tv.reloadData()
         }
     }
     
@@ -106,7 +110,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // one reason we'll need to call this is if a user has deleted his recent then we'll need to create a new one and update it for both users
         
         // private chat vs. group chat
-        if (recent[kTYPE] as String)! == kPRIVATE {
+        if recent[kTYPE] as! String == kPRIVATE {
             
             for userId in recent[kMEMBERS] as! [String] {
                 
@@ -117,7 +121,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        if (recent[kTYPE] as String)! == kGROUP {
+        if recent[kTYPE] as! String == kGROUP {
             
             // create group recent here
         }
@@ -132,14 +136,15 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             if snapshot.exists() {
                 
-                for recent in ((snapshot.value as! NSDictionary).allValues as Array)
-                
-                // update recent item
-                updateRecentItem(recent: recent as! NSDictionary, lastMessage: lastMessage)
+                for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                    
+                    // update recent item
+                    self.updateRecentItem(recent: recent as! NSDictionary, lastMessage: lastMessage)
+                }
             }
         }
     }
-
+    
     func updateRecentItem(recent: NSDictionary, lastMessage: String) {
         
         // update the date
@@ -148,19 +153,19 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // increment counter since we just sent a message
         var counter = recent[kCOUNTER] as! Int
         
-        if recent[kUSERID] as? String != backendless!.userService.currentUser.objectId as? {
+        if (recent[kUSERID] as! String) != backendless!.userService.currentUser.objectId as? String {
             counter += 1
         }
         
         let values = [kLASTMESSAGE: lastMessage,
                       kCOUNTER: counter,
                       kDATE: date
-        ] as [String: AnyObject]
+            ] as [String: AnyObject]
         
         firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values as [NSObject: AnyObject]) { (error, ref) -> Void in
             
             if error != nil {
-                ProgressHUD.showError("Couldn't update recent: \(error.localizedDescription)")
+                ProgressHUD.showError("Couldn't update recent: \(error?.localizedDescription)")
             }
             
         }

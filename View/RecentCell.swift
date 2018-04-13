@@ -47,13 +47,13 @@ class RecentCell: UITableViewCell {
             
             let withUserId = (recent[kWITHUSERUSERID] as! String)
             let whereClause = "objectId = '\(withUserId)'"
-            let dataQuery = BackendlessDataQuery()
-            dataQuery.whereClause = whereClause
+            let dataQuery = DataQueryBuilder()
+            dataQuery?.setWhereClause(whereClause)
             
             let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
             dataStore!.find(dataQuery, response: { (users) in
                 
-                let withUser = users?.data.first as! BackendlessUser
+                let withUser = users?.first as! BackendlessUser
                 
                 if let avatarUrl = withUser.getProperty("Avatar") {
                     
@@ -65,7 +65,7 @@ class RecentCell: UITableViewCell {
             }, error: { (fault) in
                 ProgressHUD.showError("Couldn't Download avatar: \(fault!.detail)")
                 
-            )}
+            })
         }
         // specify name label, counter and last message
         nameLabel.text = recent[kWITHUSERUSERNAME] as? String
@@ -77,7 +77,7 @@ class RecentCell: UITableViewCell {
         }
         
         let date = dateFormatter().date(from: recent[kDATE] as! String)
-        dateLabel = timeElapsed(date: date!)
+        dateLabel.text = timeElapsed(date: date!)
     }
     
     func timeElapsed(date: Date) -> String {
