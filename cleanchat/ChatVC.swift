@@ -235,12 +235,39 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let video = video {
             
+            let videoData = NSData(contentsOf: video.path!)
+            
+            // create thumbnail
+            let picture = videoThumbnail(video: video)
+            
+            // make square image
+            let squared = squareImage(image: picture, size: 320)
+            
+            // create data from our image
+            let dataThumbnail = UIImageJPEGRepresentation(squared, 0.3)
+            
+            //upload to backendless
+            uploadVideo(video: videoData!, thumbnail: dataThumbnail! as NSData) { (videoLink, thumbnailLink) in
+                
+                let text = kVIDEO
+                
+                // create ougoingMessage
+                outgoingMessage = OutgoingMessage(message: text, video: videoLink!, thumbnail: thumbnailLink!, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDELIVERED, type: kVIDEO)
+                
+                JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                self.finishSendingMessage()
+                
+                outgoingMessage?.sendMessage(chatRoomID: chatRoomId, item: outgoingMessage!.messageDictionary)
+            })
+            return
         }
         
+        // send audio file
         if let audioPath = audio {
             
         }
         
+        // send location
         if let location = location {
             
             let lat = NSNumber(value: appDelegate.coordinates!.latitude)

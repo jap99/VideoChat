@@ -99,25 +99,25 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
     let videoFileName = videoUrl.components(separatedBy: "/").last
     
     // check if the file was downloaded before - if yes, save if locally
-    if fileExistsAtPath(path: videoFileName) {
+    if fileExistsAtPath(path: videoFileName!) {
         
-        result(true, videoFileName)
+        result(true, videoFileName!)
         
     } else {
         
         let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
         downloadQueue.async {
-            let data = NSData(contentsOf: videoUrl! as URL)
+            let data = NSData(contentsOf: ((videoUrl as String) as URL))
             if data != nil {
                 var docURL = getDocumentsURL()
                 
                 // now we can save video to our documentsURL
-                docURL = docURL.appendingPathComponent(videoFileName, isDirectory: false)
+                docURL = docURL.appendingPathComponent(videoFileName!, isDirectory: false)
                 // saving atomically so original won't be deleted until we get new one
                 data!.write(to: docURL, atomically: true)
                 
                 DispatchQueue.main.async {
-                    result(true, videoFileName)
+                    result(true, videoFileName!)
                 }
             } else {
                 ProgressHUD.showError("Video not found")
@@ -127,8 +127,35 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
     
 }
 
+func videoThumbnail(video: NSURL) -> UIImage {
+    
+    let asset = AVURLAsset(url: video as URL, options: nil)
+    
+    let imageGenerator = AVAssetImageGenerator(asset: asset)
+    
+    // take first second from video and return it as an image
+    imageGenerator.appliesPreferredTrackTransform = true
+    
+    let time = CMTimeMake(0.5, 1000)
+    var actualTime = kCMTimeZero
+    
+    var image: CGImage?
+    
+    do {
+        // get our image
+        image = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
+        
+    } catch let error as NSError {
+        print("PRINTING THUMBNAIL ERROR \(error.localizedDescription)")
+    }
+    
+    let thumbnail = UIImage(cgImage: image!)
+    
+    return thumbnail
+}
 
-// Help
+
+// Helper
 
 func fileInDocumentsDirectory(filename: String) -> String {
     
