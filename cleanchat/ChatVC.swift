@@ -141,16 +141,18 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let camera = Camera(delegate_: self)
+     
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { (alert) in
-            
+            camera.presentMultiCamera(target: self, canEdit: true)
         }
        
         let sharePhoto = UIAlertAction(title: "PhotoLibrary", style: .default) { (alert) in
-            
+            camera.presentPhotoLibrary(target: self, canEdit: true)
         }
         
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (alert) in
-            
+            camera.presentVideoLibrary(target: self, canEdit: true)
         }
         
         let audioMessage = UIAlertAction(title: "Audio Message", style: .default) { (alert) in
@@ -196,6 +198,10 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let pic = picture {
             
+            let imageData = UIImageJPEGRepresentation(pic, 0.5)
+            let text = kPICTURE
+            
+            outgoingMessage = OutgoingMessage(message: text, pictureData: imageData! as NSData, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kPICTURE)
         }
         
         if let video = video {
@@ -346,5 +352,26 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             return true
         }
     }
+    
+    // MARK: UIImagePickerController delegate functions
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // return media url of temp. media file
+        let video = info[UIImagePickerControllerMediaURL] as? NSURL
+        
+        let picture = info[UIImagePickerControllerEditedImage] as? UIImage
+        
+        // the video & pic are nil so we'll pass both in incase either exists
+        sendMessage(text: nil, date: Date(), picture: picture, location: nil, video: video, audio: nil)
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
  
 }
