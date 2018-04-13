@@ -37,7 +37,6 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     var showAvatars = true
     var firstLoad: Bool?
     
-    
     // put two jsq message bubbles
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -48,5 +47,60 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
     }
 
+    // MARK: JSQMessages Data Source functions
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        let data = messages[indexPath.row]
+        
+        // incoming or outgoing?
+        if data.senderId == backendless!.userService.currentUser.objectId as String {
+            // outgoing
+            cell.textView.textColor = .white
+        } else {
+            cell.textView?.textColor = .black
+        }
+        
+        return cell
+        
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        // setup our message data - access message
+        
+        let data = messages[indexPath.row]
+        
+        return data
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        // count our number of messages
+        return messages.count
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        
+        let data = messages[indexPath.row]
+        
+        if data.senderId == backendless!.userService.currentUser.objectId as String {
+            // we're the sender aka outgoing
+            return outgoingBubble
+        } else {
+            return incomingBubble
+        }
+    }
+    
+    func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        
+    }
+    
+    
+    
+    
+    
+    
  
 }
