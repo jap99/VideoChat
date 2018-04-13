@@ -235,7 +235,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let video = video {
             
-            let videoData = NSData(contentsOf: video.path!)
+            let videoData = NSData(contentsOfFile: video.path!)
             
             // create thumbnail
             let picture = videoThumbnail(video: video)
@@ -252,13 +252,13 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                 let text = kVIDEO
                 
                 // create ougoingMessage
-                outgoingMessage = OutgoingMessage(message: text, video: videoLink!, thumbnail: thumbnailLink!, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDELIVERED, type: kVIDEO)
+                outgoingMessage = OutgoingMessage(message: text, video: videoLink!, thumbnail: thumbnailLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kVIDEO)
                 
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
                 
-                outgoingMessage?.sendMessage(chatRoomID: chatRoomId, item: outgoingMessage!.messageDictionary)
-            })
+                outgoingMessage?.sendMessage(chatRoomID: self.chatRoomId, item: outgoingMessage!.messageDictionary)
+            }
             return
         }
         

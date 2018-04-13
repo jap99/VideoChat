@@ -22,7 +22,7 @@ func squareImage(image: UIImage, size: CGFloat) -> UIImage {
         let xPos = (image.size.width - image.size.height) / 2
         cropped = cropImage(image: image, x: xPos, y: 0, width: image.size.width, height: image.size.height)
     }
-    let resize = resizeImage(image: cropped, width: size, height: size, scale: 1)
+    let resized = resizeImage(image: cropped, width: size, height: size, scale: 1)
     return resized
 }
 
@@ -31,7 +31,7 @@ func cropImage(image: UIImage, x: CGFloat, y: CGFloat, width: CGFloat, height: C
     let rect = CGRect(x: x, y: x, width: width, height: height)
     
     let imageRef = image.cgImage!.cropping(to: rect)
-    let cropped = UIImage(cgImage: imageRef)
+    let cropped = UIImage(cgImage: imageRef!)
     
     return cropped
 }
@@ -52,4 +52,6 @@ func resizeImage(image: UIImage, width: CGFloat, height: CGFloat, scale: CGFloat
     let resized = UIGraphicsGetImageFromCurrentImageContext()
     
     UIGraphicsEndImageContext()
+    
+    return resized!
 }

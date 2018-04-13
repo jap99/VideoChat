@@ -107,7 +107,7 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
         
         let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
         downloadQueue.async {
-            let data = NSData(contentsOf: ((videoUrl as String) as URL))
+            let data = NSData(contentsOfFile: videoUrl)
             if data != nil {
                 var docURL = getDocumentsURL()
                 
@@ -136,7 +136,7 @@ func videoThumbnail(video: NSURL) -> UIImage {
     // take first second from video and return it as an image
     imageGenerator.appliesPreferredTrackTransform = true
     
-    let time = CMTimeMake(0.5, 1000)
+    let time = CMTimeMake(Int64(0.5), 1000)
     var actualTime = kCMTimeZero
     
     var image: CGImage?

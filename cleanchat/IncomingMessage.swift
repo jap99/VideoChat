@@ -38,6 +38,8 @@ public class IncomingMessage {
         
         if type == kVIDEO {
             
+            // call our func when we're getting a video message
+            message = createVideoMessage(item: dictionary)
         }
     
         if type == kAUDIO {
@@ -52,6 +54,32 @@ public class IncomingMessage {
         return nil
     }
     
+    func createVideoMessage(item: NSDictionary) -> JSQMessage {
+        let name = item[kSENDERNAME] as? String
+        let userId = item[kSENDERID] as? String
+        
+        let date = dateFormatter().date(from: (item[kDATE] as? String)!)
+        let videoURL = NSURL(fileURLWithPath: item[kVIDEO] as! String)
+        
+        let mediaItem = VideoMessage(withFileURL: videoURL, maskOutgoing: returnOutgoingStatusFromUser(senderId: userId!))
+        
+        downloadVideo(videoUrl: item[kVIDEO] as! String) { (isReadyToPlay, fileName) in
+            
+            let url = NSURL(fileURLWithPath: fileInDocumentsDirectory(filename: fileName))
+            
+            // download thumbnail
+            let thumbnailURL = NSURL(string: item[kTHUMBNAIL] as! String)
+            let data = NSData(contentsOf: thumbnailURL! as URL)
+            
+            mediaItem.status = kSUCCESS
+            mediaItem.fileURL = url
+            mediaItem.image = UIImage(data: data as! Data)
+            
+            self.collectionView.reloadData()
+        }
+        
+        return JSQMessage(senderId: userId!, senderDisplayName: name!, date: date, media: mediaItem)
+    }
     
     func createTextMessage(item: NSDictionary, chatRoomID: String) -> JSQMessage {
         
