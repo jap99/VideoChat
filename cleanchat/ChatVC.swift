@@ -114,6 +114,45 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         return 0.0
     }
     
+    // MARK: - JSQMessages Delegate functions
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        // right side of screen
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        // pic, audio, location, etc. shows option to user
+    }
+    
+    // MARK: Send Message
+    
+    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String? video: NSURL?, audio: String?) {
+        if let text = text {
+            // text message
+            
+        }
+        
+        if let pic = picture {
+            
+        }
+        
+        if let video = video {
+            
+        }
+        
+        if let audioPath = audio {
+            
+        }
+        
+        if let location = location {
+            
+        }
+        
+        
+    }
+    
+    
+    
     
     
     
