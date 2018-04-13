@@ -140,6 +140,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         // pic, audio, location, etc. shows option to user
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
+        // called when user taps load earlier button
+        
+        // load more messages and refresh collection view
+        loadMore(maxNumber: max, minNumber: min)
+        self.collectionView!.reloadData()
+    }
+    
     // MARK: Send Message
     
     func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?, video: NSURL?, audio: String?) {
@@ -229,6 +237,25 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         })
     }
     
+    func loadMore(maxNumber: Int, minNumber: Int) {
+        
+        max = minNumber - 1
+        min = max - kNUMBEROFMESSAGES
+        
+        if min < 0 {
+            min = 0
+        }
+        
+        for i in (min ... max).reversed() {
+            let item = loaded[i]
+            self.insertNewMessage(item: item)
+            loadCount += 1
+        }
+        
+        // check if we should show load earlier button or not
+        self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
+    }
+    
     func insertMessages() {
         
         max = loaded.count - loadCount
@@ -246,6 +273,16 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         self.showLoadEarlierMessagesHeader = (loadCount != loaded.count)
+    }
+    
+    func insertNewMessage(item: NSDictionary) -> Bool {
+        
+        let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
+        let message = incomingMessage.createMessage(dictionary: item, chatRoomID: chatRoomId)
+        objects.insert(item, at: 0)
+        messages.insert(message!, at: 0)
+        
+        return incoming(item: item)
     }
     
     func insertMessage(item: NSDictionary) -> Bool {
