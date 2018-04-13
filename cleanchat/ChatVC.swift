@@ -28,6 +28,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     var members: [String] = [] // chat members - only holds they IDs
     var withUsers: [BackendlessUser] = []
+    var currentUser: BackendlessUser = backendless!.userService.currentUser
     var titleName: String?
     
     var chatRoomId: String!
@@ -68,9 +69,9 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         // incoming or outgoing?
         if data.senderId == backendless!.userService.currentUser.objectId as String {
             // outgoing
-            cell.textView.textColor = .white
+            cell.textView?.textColor = UIColor.white
         } else {
-            cell.textView?.textColor = .black
+            cell.textView?.textColor = UIColor.black
         }
         
         return cell
@@ -161,6 +162,9 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         let shareLocation = UIAlertAction(title: "Share Location", style: .default) { (alert) in
             
+            if self.haveAccessToUserLocation() {
+                self.sendMessage(text: nil, date: Date(), picture: nil, location: kLOCATION, video: nil, audio: nil)
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
@@ -214,6 +218,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let location = location {
             
+            let lat = NSNumber(value: appDelegate.coordinates!.latitude)
+            let long = NSNumber(value: appDelegate.coordinates!.longitude)
+            
+            let text = kLOCATION
+            
+            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: long, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDEVICEID, type: kLOCATION)
         }
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -368,7 +378,18 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         picker.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Location Access
     
+    func haveAccessToUserLocation() -> Bool {
+        
+        if let _ = appDelegate.locationManager {
+            return true
+        } else {
+            
+            ProgressHUD.showError("Please give access to location in Settings.")
+            return false
+        }
+    }
     
     
     

@@ -28,6 +28,7 @@ public class IncomingMessage {
         
         if type == kLOCATION {
             
+            message = createLocationMessage(item: dictionary)
         }
         
         if type == kPICTURE {
@@ -86,6 +87,32 @@ public class IncomingMessage {
             
         }
         return JSQMessage(senderId: userId, senderDisplayName: name, date: date, media: mediaItem)
+    }
+    
+    func createLocationMessage(item: NSDictionary) -> JSQMessage {
+        
+        // call this function as soon as we receive a location message
+        
+        let name = item[kSENDERNAME] as? String
+        let userId = item[kSENDERID] as? String
+        
+        let date = dateFormatter().date(from: (item[kDATE] as? String)!)
+        
+        let lat = item[kLATITUDE] as? Double
+        let lon = item[kLONGITUDE] as? Double
+        
+        let mediaItem = JSQLocationMediaItem(location: nil)
+        
+        // set location once we get item
+        mediaItem?.appliesMediaViewMaskAsOutgoing = returnOutgoingStatusFromUser(senderId: userId!)
+        
+        let location = CLLocation(latitude: lat!, longitude: lon!)
+        
+        mediaItem?.setLocation(location, withCompletionHandler: {
+            self.collectionView.reloadData()
+        })
+        
+        return JSQMessage(senderId: userId, displayName: name, media: mediaItem)
     }
     
     
