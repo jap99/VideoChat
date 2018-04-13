@@ -138,6 +138,41 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         // pic, audio, location, etc. shows option to user
+        
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { (alert) in
+            
+        }
+       
+        let sharePhoto = UIAlertAction(title: "PhotoLibrary", style: .default) { (alert) in
+            
+        }
+        
+        let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (alert) in
+            
+        }
+        
+        let audioMessage = UIAlertAction(title: "Audio Message", style: .default) { (alert) in
+            
+        }
+        
+        let shareLocation = UIAlertAction(title: "Share Location", style: .default) { (alert) in
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+            
+        }
+        
+        optionMenu.addAction(takePhotoOrVideo)
+        optionMenu.addAction(sharePhoto)
+        optionMenu.addAction(shareVideo)
+        optionMenu.addAction(audioMessage)
+        optionMenu.addAction(shareLocation)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
