@@ -205,9 +205,28 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     func insertMessage(item: NSDictionary) -> Bool {
         
+        let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
         
+        if (item[kSENDERID] as! String) != backendless!.userService.currentUser.objectId as String {
+            
+            // update status
+        }
+        
+        let message = incomingMessage.createMessage(dictionary: item, chatRoomID: chatRoomId)
+        
+        objects.append(item)
+        messages.append(message!)
+        
+        return incoming(item: item)
     }
     
-    
+    func incoming(item: NSDictionary) -> Bool {
+        
+        if backendless!.userService.currentUser.objectId as String == item[kSENDERID] as! String {
+            return false
+        } else {
+            return true 
+        }
+    }
  
 }
