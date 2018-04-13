@@ -77,9 +77,27 @@ class RecentCell: UITableViewCell {
         }
         
         let date = dateFormatter().date(from: recent[kDATE] as! String)
-        dateLabel = ""
+        dateLabel = timeElapsed(date: date!)
     }
     
+    func timeElapsed(date: Date) -> String {
+        
+        let seconds = NSDate().timeIntervalSince(date)
+        let elapsed: String?
+        
+        // depends on how many seconds have passed
+        if seconds < 60 {
+            elapsed = "Just Now"
+        } else {
+            // return date of the message
+            let currentDateFormatter = dateFormatter()
+            currentDateFormatter.dateFormat = "dd/MM"
+            
+            elapsed = "\(currentDateFormatter.string(from: date))"
+        }
+        
+        return elapsed!
+    }
     
     
     
