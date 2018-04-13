@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
+		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC7B207C3EE50050DCE7 /* Recent.swift */; };
 		9FB572AD2071D39100A26985 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AC2071D39100A26985 /* Camera.swift */; };
 		9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */; };
@@ -39,6 +41,8 @@
 		1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.release.xcconfig"; sourceTree = "<group>"; };
 		5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cleanchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.debug.xcconfig"; sourceTree = "<group>"; };
+		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F9EDC7B207C3EE50050DCE7 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		9FB572AC2071D39100A26985 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */,
 				9FB572D42077115500A26985 /* PushKit.framework in Frameworks */,
 				9FB572D22077114800A26985 /* SystemConfiguration.framework in Frameworks */,
 				9FB572D02077112600A26985 /* CoreLocation.framework in Frameworks */,
@@ -98,6 +103,7 @@
 		98BF832D4B48D7D51166533D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F8ACCF120809DA200F34663 /* AVFoundation.framework */,
 				9FB572D32077115500A26985 /* PushKit.framework */,
 				9FB572D12077114800A26985 /* SystemConfiguration.framework */,
 				9FB572CF2077112600A26985 /* CoreLocation.framework */,
@@ -175,6 +181,7 @@
 				9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */,
 				9FB572AC2071D39100A26985 /* Camera.swift */,
 				9FB572B52071D41400A26985 /* RecentVC.swift */,
+				9F8ACCEF20809D3400F34663 /* ChatVC.swift */,
 				9FB572B92071D43000A26985 /* WelcomeVC.swift */,
 				9FB572B72071D42000A26985 /* RegisterVC.swift */,
 				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
@@ -350,6 +357,7 @@
 				9FB572D620783FF500A26985 /* FriendCell.swift in Sources */,
 				9FB572C42071D51200A26985 /* RecentCell.swift in Sources */,
 				9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */,
+				9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */,
 				9FE14FEB1F22178900F3FE09 /* AppDelegate.swift in Sources */,
 				9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */,
 				9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */,
