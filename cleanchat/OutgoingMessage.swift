@@ -28,7 +28,12 @@ class OutgoingMessage {
     
     // picture
     init(message: String, pictureData: NSData, senderId: String, senderName: String, date: Date, status: String, type: String) {
-         messageDictionary = NSMutableDictionary(objects: [message, pictureData, senderId, senderName, dateFormatter().string(from: date), status, type], forKeys: [kMESSAGE as NSCopying, kPICTURE as NSCopying, kSENDERID as NSCopying, kSENDERNAME as NSCopying, kDATE as NSCopying, kSTATUS as NSCopying, kTYPE as NSCopying])
+        
+        // convert NSData to a string we can save to firebase
+        let pic = pictureData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        
+        messageDictionary = NSMutableDictionary(objects: [message, pic, senderId, senderName, dateFormatter().string(from: date), status, type], forKeys: [kMESSAGE as NSCopying, kPICTURE as NSCopying, kSENDERID as NSCopying, kSENDERNAME as NSCopying, kDATE as NSCopying, kSTATUS as NSCopying, kTYPE as NSCopying])
+        
     }
     
     // video
