@@ -101,5 +101,73 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func restartRecentChat(recent: NSDictionary) {
+        
+        // one reason we'll need to call this is if a user has deleted his recent then we'll need to create a new one and update it for both users
+        
+        // private chat vs. group chat
+        if (recent[kTYPE] as String)! == kPRIVATE {
+            
+            for userId in recent[kMEMBERS] as! [String] {
+                
+                if userId != backendless!.userService.currentUser.objectId as! String {
+                    
+                    createRecent(userId: userId, chatRoomId: (recent[kCHATROOMID] as? String)!, members: recent[kMEMBERS] as! [String], withUserUserId: backendless!.userService.currentUser.objectId! as String, withUserUsername: backendless!.userService.currentUser.name! as! String, type: kPRIVATE)
+                }
+            }
+        }
+        
+        if (recent[kTYPE] as String)! == kGROUP {
+            
+            // create group recent here
+        }
+    }
+    
+    func updateRecents(chatRoomId: String, lastMessage: String) {
+        
+        // update recents with our new message everytime we send a new message
+        
+        // accessing all the recents that have the same chatroomId
+        firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomId).observeSingleEvent(of: .value) { (snapshot) in
+            
+            if snapshot.exists() {
+                
+                for recent in ((snapshot.value as! NSDictionary).allValues as Array)
+                
+                // update recent item
+                updateRecentItem(recent: recent as! NSDictionary, lastMessage: lastMessage)
+            }
+        }
+    }
 
+    func updateRecentItem(recent: NSDictionary, lastMessage: String) {
+        
+        // update the date
+        let date = dateFormatter().string(from: Date())
+        
+        // increment counter since we just sent a message
+        var counter = recent[kCOUNTER] as! Int
+        
+        if recent[kUSERID] as? String != backendless!.userService.currentUser.objectId as? {
+            counter += 1
+        }
+        
+        let values = [kLASTMESSAGE: lastMessage,
+                      kCOUNTER: counter,
+                      kDATE: date
+        ] as [String: AnyObject]
+        
+        firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values as [NSObject: AnyObject]) { (error, ref) -> Void in
+            
+            if error != nil {
+                ProgressHUD.showError("Couldn't update recent: \(error.localizedDescription)")
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
 }
