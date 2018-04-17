@@ -159,7 +159,7 @@ func videoThumbnail(video: NSURL) -> UIImage {
 
 func uploadAudio(audioPath: String, result: @escaping (_ audioLink: String?) -> Void) { // once we upload we get the link so we can save it in firebase
     
-    let dateString = dateFormatter().string(from: Data())
+    let dateString = dateFormatter().string(from: Date())
     
     let audio = NSData(contentsOfFile: audioPath)
     let audioFileName = "Audio/" + dateString + ".m4a"

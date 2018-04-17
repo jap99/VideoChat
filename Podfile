@@ -20,7 +20,7 @@ pod 'Backendless'
 
 pod 'IQAudioRecorderController'
 
-pod 'SinchRTC'
+#pod 'SinchRTC'
 #pod 'OneSignal'
 
 end

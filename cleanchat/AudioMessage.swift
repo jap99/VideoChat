@@ -46,7 +46,7 @@ class AudioMessage: JSQMediaItem {
                 let icon = UIImage.jsq_defaultPlay().jsq_imageMasked(with: colorContent)
                 
                 let iconView = UIImageView(image: icon)
-                let yPos = (size().height - icon!.size.height) / 2
+                let yPos = (size.height - icon!.size.height) / 2
                 let xPos = outgoing ? yPos : yPos + 6
                 
                 iconView.frame = CGRect(x: xPos, y: yPos, width: icon!.size.width, height: icon!.size.height)
@@ -57,7 +57,7 @@ class AudioMessage: JSQMediaItem {
                 label.textColor = colorContent
                 label.text = "Audio"
                 
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size().width, height: size().height))
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
                 
                 imageView.backgroundColor = colorBg
                 imageView.clipsToBounds = true
