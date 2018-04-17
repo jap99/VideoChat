@@ -14,11 +14,6 @@ class FriendCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
-    }
     
     func bindData(friend: BackendlessUser) {
         
@@ -36,7 +31,6 @@ class FriendCell: UITableViewCell {
         
         let withUserId = friend.objectId!
         let whereClause = "objectId = '\(withUserId)'"
-    //    let dataQuery = BackendlessDataQuery()
         let dataQuery = DataQueryBuilder()
         dataQuery?.setWhereClause(whereClause)
         
@@ -46,7 +40,6 @@ class FriendCell: UITableViewCell {
             print(users)
             let withUser = users!.first as! BackendlessUser
             print(withUser)
-                //users!.data.first as! BackendlessUser
             
             if let avatarURL = withUser.getProperty("Avatar") {
                 

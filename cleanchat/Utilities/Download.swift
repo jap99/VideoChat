@@ -97,7 +97,7 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
     
     // access video file name
     let videoFileName = videoUrl.components(separatedBy: "/").last
-    
+    print("PRINTING VIDEO FILE NAME: \(videoFileName)")
     // check if the file was downloaded before - if yes, save if locally
     if fileExistsAtPath(path: videoFileName!) {
         
@@ -107,7 +107,8 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
         
         let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
         downloadQueue.async {
-            let data = NSData(contentsOfFile: videoUrl)
+         //   let data = NSData(contentsOfFile: videoUrl)
+              let data = NSData(contentsOf: videoURL as! URL)
             if data != nil {
                 var docURL = getDocumentsURL()
                 
@@ -154,6 +155,63 @@ func videoThumbnail(video: NSURL) -> UIImage {
     return thumbnail
 }
 
+// Audio
+
+func uploadAudio(audioPath: String, result: @escaping (_ audioLink: String?) -> Void) { // once we upload we get the link so we can save it in firebase
+    
+    let dateString = dateFormatter().string(from: Data())
+    
+    let audio = NSData(contentsOfFile: audioPath)
+    let audioFileName = "Audio/" + dateString + ".m4a"
+    
+    ProgressHUD.show("Sending Audio...")
+    
+    // save audio
+    backendless!.fileService.saveFile(audioFileName, content: audio as Data!, response: { (file) in
+        
+        ProgressHUD.dismiss()
+        result(file!.fileURL)
+        
+    }) { (fault) in
+        
+        ProgressHUD.showError("Error uploading Audio: \(fault!.detail)")
+    }
+}
+
+func downloadAudio(audioUrl: String, result: @escaping (_ audioFileName: String) -> Void) {
+    
+    let audioURL = NSURL(string: audioUrl)
+    let audioFileName = audioUrl.components(separatedBy: "/").last
+    
+    // check if it already exists so we don't have to download it again
+    
+    if fileExistsAtPath(path: audioFileName!) {
+        result(audioFileName!)
+    } else {
+        // start downloading
+        
+        let dq = DispatchQueue(label: "audioDownload")
+        
+        dq.async {
+            
+            let data = NSData(contentsOf: audioURL! as URL)
+            
+            if data != nil {
+                
+                // saving it to our local directory so we don't have to download it again
+                var docURL = getDocumentsURL()
+                docURL = docURL.appendingPathComponent(audioFileName!, isDirectory: false)
+                data!.write(to: docURL, atomically: true)
+                
+                DispatchQueue.main.async {
+                    result(audioFileName!)
+                }
+            } else {
+                print("No audio at link")
+            }
+        }
+    }
+}
 
 // Helper
 

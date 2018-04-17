@@ -365,7 +365,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         for i in min ..< max {
-            
+            print("PRINTING I : \(i)")
             let item = loaded[i]
             self.insertMessage(item: item)
             loadCount += 1

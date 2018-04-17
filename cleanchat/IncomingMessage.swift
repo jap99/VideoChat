@@ -73,7 +73,8 @@ public class IncomingMessage {
             
             mediaItem.status = kSUCCESS
             mediaItem.fileURL = url
-            mediaItem.image = UIImage(data: data as! Data)
+            //mediaItem.image = UIImage(data: data as! Data)
+            mediaItem.image = UIImage(data: data! as Data)
             
             self.collectionView.reloadData()
         }
