@@ -262,9 +262,23 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             return
         }
         
-        // send audio file
+        // here's what happens when we send an audio file
         if let audioPath = audio {
             
+            uploadAudio(audioPath: audioPath) { (audioLink) in
+                //save the audio link we get back form our callback function in firebase
+                let text = kAUDIO
+                
+                // create the message
+                outgoingMessage = OutgoingMessage(message: text, audio: audioLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kAUDIO)
+                
+                JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                self.finishSendingMessage()
+                
+                outgoingMessage!.sendMessage(chatRoomID: self.chatRoomId, item: outgoingMessage!.messageDictionary)
+                
+            }
+            return
         }
         
         // send location

@@ -36,6 +36,7 @@ public let kFULLNAME = "fullname"
 public let kAVATAR = "avatar"
 public let kCURRENTUSER = "currentUser"
 
+
 //typing
 
 public let kTYPINGPATH = "Typing"
