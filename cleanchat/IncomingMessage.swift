@@ -44,6 +44,7 @@ public class IncomingMessage {
     
         if type == kAUDIO {
             
+            message = createAudioMessage(item: dictionary)
         }
         
         if let mes = message {
@@ -52,6 +53,31 @@ public class IncomingMessage {
         }
     
         return nil
+    }
+    
+    func createAudioMessage(item: NSDictionary) -> JSQMessage {
+        let name = item[kSENDERNAME] as? String
+        let userId = item[kSENDERID] as? String
+        
+        let date = dateFormatter().date(from: (item[kDATE] as? String)!)
+        
+        // get audio url
+        let audioURL = NSURL(fileURLWithPath: item[kAUDIO] as! String)
+        
+        let mediaItem = AudioMessage(withFileURL: audioURL, maskOutgoing: returnOutgoingStatusFromUser(senderId: userId!))
+        
+        // now that we have our audio message instantiated we can start downloading our audio
+        downloadAudio(audioUrl: item[kAUDIO] as! String) { (fileName) in
+            
+            // access our local directory because as soon as we download it we want to save it there
+            let url = NSURL(fileURLWithPath: fileInDocumentsDirectory(filename: fileName))
+            
+            mediaItem.status = kSUCCESS
+            mediaItem.fileURL = url
+            
+            self.collectionView.reloadData()
+        }
+        return JSQMessage(senderId: userId!, senderDisplayName: name!, date: date!, media: mediaItem)
     }
     
     func createVideoMessage(item: NSDictionary) -> JSQMessage {
