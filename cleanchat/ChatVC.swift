@@ -329,11 +329,33 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         if object[kTYPE] as! String == kVIDEO {
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! VideoMessage
             
+            let player = AVPlayer(url: mediaItem.fileURL! as URL)
+            let moviePlayer = AVPlayerViewController()
+            moviePlayer.player = player
+            
+            self.present(moviePlayer, animated: true, completion: {
+                
+                // play movie as soon as movie player's presented
+                moviePlayer.player!.play()
+            })
         }
         
         if object[kTYPE] as! String == kAUDIO {
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! AudioMessage
             
+            let player = AVPlayer(url: mediaItem.fileURL! as URL)
+            let moviePlayer = AVPlayerViewController()
+            moviePlayer.player = player
+            
+            self.present(moviePlayer, animated: true, completion: {
+                
+                // play movie as soon as movie player's presented
+                moviePlayer.player!.play()
+            })
         }
     }
     
