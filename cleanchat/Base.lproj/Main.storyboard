@@ -372,7 +372,7 @@
         <!--MapVC-->
         <scene sceneID="iIH-ch-dc2">
             <objects>
-                <viewController id="iFt-dG-425" customClass="MapVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC-ID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iFt-dG-425" customClass="MapVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dmH-RR-VLP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

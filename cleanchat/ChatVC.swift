@@ -325,7 +325,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         if object[kTYPE] as! String == kLOCATION {
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! JSQLocationMediaItem
             
+            // instantia our mapVC
+            let mapVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapVC-ID") as! MapVC
+            
+            mapVC.location = mediaItem.location
+            self.present(mapVC, animated: true, completion: nil)
         }
         
         if object[kTYPE] as! String == kVIDEO {
@@ -344,6 +351,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         if object[kTYPE] as! String == kAUDIO {
+           
             let message = messages[indexPath.row]
             let mediaItem = message.media as! AudioMessage
             
