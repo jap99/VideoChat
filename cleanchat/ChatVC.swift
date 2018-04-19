@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, IQAudioRecorderViewControllerDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let ref = firebase.child(kMESSAGE)
@@ -167,22 +167,22 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let camera = Camera(delegate_: self)
-        
+        let cameraVC = Camera(delegate_: self)
+        let audioVC = Audio(delegate_: self)
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { (alert) in
-            camera.presentMultiCamera(target: self, canEdit: true)
+            cameraVC.presentMultiCamera(target: self, canEdit: true)
         }
         
         let sharePhoto = UIAlertAction(title: "PhotoLibrary", style: .default) { (alert) in
-            camera.presentPhotoLibrary(target: self, canEdit: true)
+            cameraVC.presentPhotoLibrary(target: self, canEdit: true)
         }
         
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (alert) in
-            camera.presentVideoLibrary(target: self, canEdit: true)
+            cameraVC.presentVideoLibrary(target: self, canEdit: true)
         }
         
         let audioMessage = UIAlertAction(title: "Audio Message", style: .default) { (alert) in
-            
+            audioVC.presentAudioRecorder(target: self)
         }
         
         let shareLocation = UIAlertAction(title: "Share Location", style: .default) { (alert) in
@@ -480,8 +480,22 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
     }
     
+    // MARK: IQAudioRecorder Delegate
     
+  
+    func audioRecorderController(_ controller: IQAudioRecorderViewController, didFinishWithAudioAtPath filePath: String) {
+        
+        controller.dismiss(animated: true, completion: nil)
+        // send a message with our audiofile name
+        self.sendMessage(text: nil, date: Date(), picture: nil, location: nil, video: nil, audio: filePath)
+    }
     
+    func audioRecorderControllerDidCancel(_ controller: IQAudioRecorderViewController) {
+        let vc = controller
+        
+        vc.dismiss(animated: true, completion: nil)
+        print("cancelled audio")
+    }
     
     
 }
