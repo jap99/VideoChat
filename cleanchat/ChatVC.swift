@@ -300,6 +300,43 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
     }
     
+    // MARK: Responds to collection view tap events
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        // called when we tap on a message
+        
+        // to understand what kind of message we're tapping
+        let object = objects[indexPath.row]
+        
+        // check what kind of message we tapped on
+        if object[kTYPE] as! String == kPICTURE {
+            let message = messages[indexPath.row] // got our jsq message
+            let mediaItem = message.media as! JSQPhotoMediaItem
+            
+            // get the photo out of the media item
+            // pass in the photos we want IDMPhoto to display
+            let photos = IDMPhoto.photos(withImages: [mediaItem.image])
+            
+            let browser = IDMPhotoBrowser(photos: photos)
+            
+            // display our idm photo browser
+            self.present(browser!, animated: true, completion: nil)
+            
+            
+        }
+        
+        if object[kTYPE] as! String == kLOCATION {
+            
+        }
+        
+        if object[kTYPE] as! String == kVIDEO {
+            
+        }
+        
+        if object[kTYPE] as! String == kAUDIO {
+            
+        }
+    }
+    
     
     // MARK: Load Messages
     
