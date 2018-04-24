@@ -73,7 +73,7 @@ class SettingsTableVC: UITableViewController {
         
         if indexPath.section == 1 && indexPath.row == 3 {
             // second section, fourth row = show avatar cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "showAvatarCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "showAvatarCell", for: indexPath) as! ShowAvatarCell
             
             return cell
         }
@@ -86,51 +86,76 @@ class SettingsTableVC: UITableViewController {
         }
         
         return UITableViewCell()
+    }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = tableView.backgroundColor // so our table view headers don't have different background colors
+        return view
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 0 {
+            // only our avatar cell is here
+            return 50
+        } else {
+            return 20
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 0 {
+            // in avatar section
+            return 70
+        } else {
+            return 44 // standard table view cell height
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            // in avatar cell
+            
+            // show profile VC
+            
+        }
+        
+        if indexPath.section == 1 && indexPath.row == 0 {
+            // show privacy cell
+            
+            
+        }
+        
+        if indexPath.section == 1 && indexPath.row == 1 {
+            // show terms of service cell
+            
+            
+        }
+        
+        if indexPath.section == 1 && indexPath.row == 2 {
+            // show bg cell
+            
+            
+        }
+        
+        if indexPath.section == 2 && indexPath.row == 0 {
+            // show logout 
+            
+            
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
