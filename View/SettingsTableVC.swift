@@ -88,7 +88,7 @@ class SettingsTableVC: UITableViewController {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = tableView.backgroundColor // so our table view headers don't have different background colors
         return view
@@ -104,7 +104,7 @@ class SettingsTableVC: UITableViewController {
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
             // in avatar section
@@ -144,15 +144,42 @@ class SettingsTableVC: UITableViewController {
         }
         
         if indexPath.section == 2 && indexPath.row == 0 {
-            // show logout 
-            
-            
+            // show logout
+            showLogoutView()
         }
     }
     
+    func showLogoutView() {
+        
+        // warning before we logout
+        
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let logOut = UIAlertAction(title: "Log Out", style: .destructive) { (alert) in
+            
+            // log out user
+            self.logOut()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in  })
+        
+        optionMenu.addAction(logOut)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
     
-    
-    
+    func logOut() {
+        backendless!.userService.logout()
+        
+        // logout from facebook
+        
+        // resign from push notifications
+        
+        // show loginVC
+        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
+        
+        self.present(login, animated: true, completion: nil)
+    }
     
     
     

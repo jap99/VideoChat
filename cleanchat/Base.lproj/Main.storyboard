@@ -452,7 +452,7 @@
         <!--Settings-->
         <scene sceneID="JWx-hy-E1d">
             <objects>
-                <tableViewController id="vvG-Xh-DjV" sceneMemberID="viewController">
+                <tableViewController id="vvG-Xh-DjV" customClass="SettingsTableVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Pr-ln-h8M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,23 +466,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="3Mh-dT-xGZ">
-                                            <rect key="frame" x="0.0" y="10" width="50" height="50"/>
+                                            <rect key="frame" x="20" y="10" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="ab1-ik-YyU"/>
                                                 <constraint firstAttribute="width" constant="50" id="gJs-cV-HwY"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpi-Xc-b1C">
-                                            <rect key="frame" x="67" y="24" width="45" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpi-Xc-b1C">
+                                            <rect key="frame" x="80" y="24" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Fpi-Xc-b1C" firstAttribute="centerY" secondItem="3Mh-dT-xGZ" secondAttribute="centerY" id="9hl-2c-00a"/>
                                         <constraint firstItem="3Mh-dT-xGZ" firstAttribute="centerY" secondItem="7Kf-sc-1gz" secondAttribute="centerY" id="J1s-qH-Y1A"/>
-                                        <constraint firstItem="3Mh-dT-xGZ" firstAttribute="leading" secondItem="7Kf-sc-1gz" secondAttribute="leading" id="xDu-6J-yj8"/>
+                                        <constraint firstItem="Fpi-Xc-b1C" firstAttribute="leading" secondItem="3Mh-dT-xGZ" secondAttribute="trailing" constant="10" id="m7I-YY-dIw"/>
+                                        <constraint firstItem="3Mh-dT-xGZ" firstAttribute="leading" secondItem="7Kf-sc-1gz" secondAttribute="leading" constant="20" id="xDu-6J-yj8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -613,7 +614,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gvp-Zh-11k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k8f-LM-G5N" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WelcomeView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k8f-LM-G5N" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="078-H9-22L">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>

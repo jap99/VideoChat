@@ -13,7 +13,7 @@ class ShowAvatarCell: UITableViewCell {
 
     @IBOutlet weak var showAvatarSwitch: UISwitch!
     
-    let userDefaults = userDefaults.standard
+    let userDefaults = UserDefaults.standard
     var avatarSwitchStatus = true
     var firstLoad: Bool?
     
