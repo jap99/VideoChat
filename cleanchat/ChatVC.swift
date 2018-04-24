@@ -44,6 +44,21 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // clear recent counter
+        loadUserDefaults()
+        setBackgroundColor()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    
+        // clear our recent counter
+        
+        // remove our observers because we no longer need to see any changes
+        ref.removeAllObservers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -725,7 +740,37 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     
     
+    // MARK: UserDefaults
     
+    func loadUserDefaults() {
+        
+        // check if it's the first time we're running our app
+        firstLoad = userDefaults.bool(forKey: kFIRSTRUN)
+        
+        // check if we have a value in our userDefaults
+        if !firstLoad! { // if not nil
+            
+            userDefaults.set(true, forKey: kFIRSTRUN)
+            userDefaults.set(showAvatars, forKey: kAVATARSTATE)
+            
+            // set background color - white by default
+            userDefaults.set(1.0, forKey: kRED)
+            userDefaults.set(1.0, forKey: kGREEN)
+            userDefaults.set(1.0, forKey: kBLUE)
+            
+            // save
+            userDefaults.synchronize()
+        }
+        
+        // if it's not our first run it'll just get our avatarState
+        showAvatars = userDefaults.bool(forKey: kAVATARSTATE)
+    }
+    
+    func setBackgroundColor() {
+        
+        // get bg from userdefaults and set it to chat bg color
+        self.collectionView.backgroundColor = UIColor(red: CGFloat(userDefaults.float(forKey: kRED)), green: CGFloat(userDefaults.float(forKey: kGREEN)), blue: CGFloat(userDefaults.float(forKey: kBLUE)), alpha: 1.0)
+    }
     
     
     
