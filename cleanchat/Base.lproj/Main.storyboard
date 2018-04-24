@@ -458,7 +458,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AvatarCell" rowHeight="70" id="jUE-eq-ptn" userLabel="Avatar Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AvatarCell" rowHeight="70" id="jUE-eq-ptn" userLabel="Avatar Cell" customClass="FriendCell" customModule="cleanchat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jUE-eq-ptn" id="7Kf-sc-1gz">
@@ -485,6 +485,10 @@
                                         <constraint firstItem="3Mh-dT-xGZ" firstAttribute="leading" secondItem="7Kf-sc-1gz" secondAttribute="leading" id="xDu-6J-yj8"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="3Mh-dT-xGZ" id="0wV-Wg-twf"/>
+                                    <outlet property="nameLabel" destination="Fpi-Xc-b1C" id="eKN-2k-kdc"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="privacyCell" textLabel="0Cp-H7-c6g" style="IBUITableViewCellStyleDefault" id="kIz-iC-B2Y" userLabel="Privacy Cell">
                                 <rect key="frame" x="0.0" y="98" width="320" height="44"/>
@@ -537,7 +541,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showAvatarCell" id="JkV-OZ-mBo" userLabel="Show Avatar cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showAvatarCell" id="JkV-OZ-mBo" userLabel="Show Avatar cell" customClass="ShowAvatarCell" customModule="cleanchat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="230" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JkV-OZ-mBo" id="WA4-0T-2sd">
@@ -568,6 +572,9 @@
                                         <constraint firstItem="Gqa-h0-il3" firstAttribute="top" secondItem="WA4-0T-2sd" secondAttribute="topMargin" id="UQE-Nd-jDc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="showAvatarSwitch" destination="4ih-Bf-XFQ" id="q7r-4l-MVr"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" id="84p-1S-CtE" userLabel="Logout cell">
                                 <rect key="frame" x="0.0" y="274" width="320" height="44"/>

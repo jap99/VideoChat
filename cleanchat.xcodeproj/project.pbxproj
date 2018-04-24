@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F0617CB208880A300422183 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0617CA208880A300422183 /* MapVC.swift */; };
 		9F3B9F9E208F295300F12CE3 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */; };
+		9F3B9FA0208F2BE100F12CE3 /* ShowAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */; };
 		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
 		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */; };
@@ -52,6 +53,7 @@
 		76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.debug.xcconfig"; sourceTree = "<group>"; };
 		9F0617CA208880A300422183 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
+		9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAvatarCell.swift; sourceTree = "<group>"; };
 		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				9FB572C22071D51200A26985 /* RecentCell.swift */,
 				9FB572D520783FF500A26985 /* FriendCell.swift */,
 				9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */,
+				9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -383,6 +386,7 @@
 				9F8ACCF62080BB5400F34663 /* IncomingMessage.swift in Sources */,
 				9FB572CE2071E55800A26985 /* ProgressHUD.m in Sources */,
 				9FB572BF2071D4AE00A26985 /* Utilities.swift in Sources */,
+				9F3B9FA0208F2BE100F12CE3 /* ShowAvatarCell.swift in Sources */,
 				9FBF00812086B73100C85FE6 /* AudioMessage.swift in Sources */,
 				9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */,
 				9F3B9F9E208F295300F12CE3 /* SettingsTableVC.swift in Sources */,
