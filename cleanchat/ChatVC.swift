@@ -607,6 +607,31 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
     }
     
+    func createAvatars(avatars: NSMutableDictionary?) {
+        
+        // first need to have our default avatar
+        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder", diameter: 70)
+        
+        if let avat = avatars {
+            
+            for userId in members {
+                
+                // get all their avatars
+                if let avatarImage = avat[userId] {
+                    
+                    let jsqAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: avatarImage as! Data), diameter: 70)
+                    
+                    self.avatarDictionary!.setValue(jsqAvatar, forKey: userId)
+                } else { // in case we don't have an avatar
+                    
+                    self.avatarDictionary!.setValue(defaultAvatar, forKey: userId)
+                    
+                }
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
     
     func avatarImageFromBackendlessUser(user: BackendlessUser) {
         
