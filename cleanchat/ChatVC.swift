@@ -152,6 +152,27 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        
+        let message = messages[indexPath.row]
+        
+        // create an avatar
+        var avatar: JSQMessageAvatarImageDataSource
+        
+        // check if user has avatar saved in dictionary for each user
+        if let testAvatar = avatarDictionary!.object(forKey: message.senderId) {
+            avatar = testAvatar as! JSQMessageAvatarImageDataSource
+        } else {
+            avatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        }
+        
+        return avatar
+        
+      
+    }
+    
+    
+    
     // MARK: - JSQMessages Delegate functions
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
@@ -614,7 +635,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     func createAvatars(avatars: NSMutableDictionary?) {
         
         // first need to have our default avatar
-        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder", diameter: 70)
+        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
         
         if let avat = avatars {
             
@@ -629,7 +650,6 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                 } else { // in case we don't have an avatar
                     
                     self.avatarDictionary!.setValue(defaultAvatar, forKey: userId)
-                    
                 }
             }
             self.collectionView.reloadData()
@@ -642,7 +662,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         // return avatar image's link
         if let imageLink = user.getProperty("Avatar") {
             
-            getAvatarFromURL(url: imageLink as! String) { (image) in // downloads the image if we have a link, then saves in our avatarImagesDictionary
+            getAvatarFromURL(url: imageLink as! String, result: { (image) in // downloads the image if we have a link, then saves in our avatarImagesDictionary
                 
                 let imageData = UIImageJPEGRepresentation(image!, 0.5)
                 
@@ -653,7 +673,6 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                     self.avatarImagesDictionary!.setObject(imageData!, forKey: user.objectId!)
                     
                 } else {
-                    
                     // create new dictionary and put the objects inside
                     self.avatarImagesDictionary = [user.objectId! : imageData!]
                 }
@@ -675,14 +694,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             if userId != currentUser.objectId as String {
                 
                 let whereClause = "objectId = '\(userId)'"
-                let dataQuery = BackendlessDataQuery()
-                dataQuery.whereClause = whereClause
+                let dataQuery = DataQueryBuilder()
+                dataQuery?.setWhereClause(whereClause)
                 
                 let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
                 dataStore!.find(dataQuery, response: { (users) in
                     
                     // when we get our user back
-                    let withUser = users?.data.first as! BackendlessUser
+                    let withUser = users?.first as! BackendlessUser
                     
                     // add user to received members
                     receivedMembers.append(withUser)
