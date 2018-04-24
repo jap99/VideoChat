@@ -588,6 +588,51 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     }
     
+    func getAvatars() {
+        
+        // check if we want to show avatars
+        if showAvatars {
+            
+            collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 30, height: 30)
+            collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 30, height: 30)
+            
+            avatarImageFromBackendlessUser(user: currentUser) // gets our current user's avatar
+            for user in withUsers { //  now get em for all other users
+                avatarImageFromBackendlessUser(user: user)
+            }
+            
+            // create Avatars
+        }
+        
+        
+    }
+    
+    
+    func avatarImageFromBackendlessUser(user: BackendlessUser) {
+        
+        // return avatar image from Bakcendless User
+        if let imageLink = user.getProperty("Avatar") {
+            
+            getAvatarFromURL(url: imageLink as! String) { (image) in
+                
+                let imageData = UIImageJPEGRepresentation(image!, 0.5)
+                
+                if self.avatarImagesDictionary != nil {
+                     // add objects to dict
+                    
+                    self.avatarImagesDictionary!.removeObject(forKey: user.objectId!)
+                    
+                    // now set the updated one
+                    self.avatarImagesDictionary!.setObject(imageData!, forKey: user.objectId!)
+                } else {
+                    self.avatarImagesDictionary = [user.objectId! : imageData!]
+                }
+                
+                // create avatars
+            })
+        }
+    }
+    
     
     func getWithUserFromRecent(members: [String], result: @escaping (_ withUsers: [BackendlessUser]) -> Void) {
         
