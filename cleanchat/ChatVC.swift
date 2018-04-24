@@ -47,6 +47,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        avatarDictionary = [:]
         self.senderId = backendless!.userService.currentUser.objectId as String
         self.senderDisplayName = backendless!.userService.currentUser.name as String
         
@@ -55,6 +56,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
         
+        updateUI()
         loadMessages()
     }
     
@@ -563,6 +565,73 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         vc.dismiss(animated: true, completion: nil)
         print("cancelled audio")
     }
+    
+    
+    // MARK: Helper functions
+    
+    func updateUI() {
+        
+        // display avatars and display call button if
+        if members.count < 3 {
+            
+            // display call button
+        } // otherwise don't because we don't have a conference chat
+  
+        getWithUserFromRecent(members: members) { (withUsers) in
+            
+            // withUsers is an array of BackendlessUsers
+            
+            self.withUsers = withUsers
+            
+            // get Avatars
+        }
+    
+    }
+    
+    
+    func getWithUserFromRecent(members: [String], result: @escaping (_ withUsers: [BackendlessUser]) -> Void) {
+        
+        var receivedMembers: [BackendlessUser] = []
+        
+        for userId in members {
+            // get user avatar
+            
+            if userId != currentUser.objectId as String {
+                
+                let whereClause = "objectId = '\(userId)'"
+                let dataQuery = BackendlessDataQuery()
+                dataQuery.whereClause = whereClause
+                
+                let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
+                dataStore!.find(dataQuery, response: { (users) in
+                    
+                    // when we get our user back
+                    let withUser = users?.data.first as! BackendlessUser
+                    
+                    // add user to received members
+                    receivedMembers.append(withUser)
+                    
+                    // check if we received all members from our chat
+                    if receivedMembers.count == (members.count - 1) {
+                        
+                        // receivedMembers doesn't include current user; members does
+                        result(receivedMembers)
+                    }
+                    
+                }, error: { (fault) in
+                    
+                    ProgressHUD.showError("Couldn't get chat users: \(fault!.detail)")
+                })
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
 }
