@@ -579,11 +579,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
   
         getWithUserFromRecent(members: members) { (withUsers) in
             
-            // withUsers is an array of BackendlessUsers
+            // get all users and set it to our withUsers array
             
             self.withUsers = withUsers
             
-            // get Avatars
+            // get Avatars - checks if we want to show our avatars
+            self.getAvatars()
         }
     
     }
@@ -597,11 +598,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 30, height: 30)
             
             avatarImageFromBackendlessUser(user: currentUser) // gets our current user's avatar
+            
             for user in withUsers { //  now get em for all other users
+                
                 avatarImageFromBackendlessUser(user: user)
             }
             
-            // create Avatars
+            // once we finish with our avatarImagesDictionary we create Avatars
+            self.createAvatars(avatars: self.avatarImagesDictionary)
         }
         
         
@@ -635,25 +639,27 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     func avatarImageFromBackendlessUser(user: BackendlessUser) {
         
-        // return avatar image from Bakcendless User
+        // return avatar image's link
         if let imageLink = user.getProperty("Avatar") {
             
-            getAvatarFromURL(url: imageLink as! String) { (image) in
+            getAvatarFromURL(url: imageLink as! String) { (image) in // downloads the image if we have a link, then saves in our avatarImagesDictionary
                 
                 let imageData = UIImageJPEGRepresentation(image!, 0.5)
                 
                 if self.avatarImagesDictionary != nil {
-                     // add objects to dict
                     
+                    // remove object then set the updated one
                     self.avatarImagesDictionary!.removeObject(forKey: user.objectId!)
-                    
-                    // now set the updated one
                     self.avatarImagesDictionary!.setObject(imageData!, forKey: user.objectId!)
+                    
                 } else {
+                    
+                    // create new dictionary and put the objects inside
                     self.avatarImagesDictionary = [user.objectId! : imageData!]
                 }
                 
                 // create avatars
+                self.createAvatars(avatars: self.avatarImagesDictionary)
             })
         }
     }
