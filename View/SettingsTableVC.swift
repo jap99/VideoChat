@@ -139,7 +139,7 @@ class SettingsTableVC: UITableViewController {
         
         if indexPath.section == 1 && indexPath.row == 2 {
             // show bg cell
-            
+            performSegue(withIdentifier: "settingsToBackground-Segue", sender: self)
             
         }
         
