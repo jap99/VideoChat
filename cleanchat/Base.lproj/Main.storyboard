@@ -436,7 +436,7 @@
         <!--Friends-->
         <scene sceneID="YVO-cB-aRM">
             <objects>
-                <viewController id="s59-oF-9Ps" sceneMemberID="viewController">
+                <viewController id="s59-oF-9Ps" customClass="FriendsVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A6x-lB-68f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,8 +495,15 @@
                         <viewLayoutGuide key="safeArea" id="yDL-gG-0eK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="VMw-Xc-OYC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ULA-TA-PZ3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ULA-TA-PZ3">
+                            <connections>
+                                <action selector="addFriendsBarButton_Pressed:" destination="s59-oF-9Ps" id="enf-qt-7cn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tv" destination="An1-11-GdQ" id="wN3-yI-cll"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pe-0f-ACK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
