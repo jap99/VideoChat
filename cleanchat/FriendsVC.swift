@@ -8,16 +8,17 @@
 
 import UIKit
 
-class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, AddFriendDelegate {
 
     @IBOutlet weak var tv: UITableView!
     
     var friendObjects: [Friend] = [] // our friend objects
     
     var friends:  [BackendlessUser] = [] // our backendless users
+    var friendId = [String]()
     
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredFriends = [BackendlessUser]
+    var filteredFriends = [BackendlessUser]()
     
     let dataStore = backendless!.data.of(Friend.ofClass()) // accesses our Friend table that will be in Backendless
     let currentUser = backendless!.userService.currentUser
@@ -25,6 +26,12 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadFriends()
+        
+        searchController.searchResultsUpdater = self // our current view is one that will get our current search updates
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tv.tableHeaderView = searchController.searchBar // our tv's header is where our search bar will show
         
     }
  
@@ -117,11 +124,12 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
             if friends_ != nil {
                 
-                let friends = friends_?.data as! [Friend]
+                let friends = friends_ as! [Friend]
                 
                 for friend in friends {
                     
                     self.friends.append(friend.userTwo!)
+                    self.friendId.append(friend.userTwo!.objectId as String) // get user's id
                     
                 }
                 self.tv.reloadData() // to display the friends we've added to our array
@@ -134,7 +142,8 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
         }) { (fault) in
             
-            ProgressHUD.showError("Couldn't load friends. Error: \(fault!.detail)")
+            print("Couldn't load friends. Error: \(fault!.detail)")
+            //ProgressHUD.showError("Couldn't load friends. Error: \(fault!.detail)")
         }
     }
     
@@ -145,6 +154,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         friendObjects.removeAll()
         friends.removeAll()
+        friendId.removeAll()
         tv.reloadData()
     }
     
@@ -166,5 +176,30 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     
+    // MARK: AddFriend delegate function
     
+    func saveFriend(selectedFriend: BackendlessUser) {
+        
+        // we're getting one b.e. user
+        
+        // first check we're not already friends
+        if friendId.contains(selectedFriend.objectId as String) { // means we're already friends
+            return
+        }
+        
+        let friend = Friend()
+        friend.userOneId = currentUser?.objectId as String // set current user's id
+        friend.userTwo = selectedFriend
+        
+        // now we can save our friend
+        dataStore!.save(friend, response: { (result) in
+            
+            // as soon as save is success, loadFriends so it shows on tv
+            self.loadFriends()
+            
+        }) { (fault) in
+            
+            ProgressHUD.showError("Error saving friend - \(fault!.detail)")
+        }
+    }
 }

@@ -503,11 +503,85 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tv" destination="An1-11-GdQ" id="wN3-yI-cll"/>
+                        <segue destination="vKV-sV-wV6" kind="show" id="CdC-Gv-fIT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pe-0f-ACK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2109.375" y="538.73239436619724"/>
+        </scene>
+        <!--Add Friend-->
+        <scene sceneID="Kv5-d6-rAl">
+            <objects>
+                <viewController id="vKV-sV-wV6" customClass="AddFriendVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C8l-ML-QoD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikU-cs-Qjk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="unN-2y-k42" customClass="FriendCell" customModule="cleanchat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="unN-2y-k42" id="jHf-hF-Nmk">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ykv-Of-O0h">
+                                                    <rect key="frame" x="16" y="10" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="1Te-tn-fzq"/>
+                                                        <constraint firstAttribute="width" constant="50" id="9fp-BN-MmJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnf-hj-cri">
+                                                    <rect key="frame" x="82" y="25" width="178" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ykv-Of-O0h" firstAttribute="leading" secondItem="jHf-hF-Nmk" secondAttribute="leading" constant="16" id="9Hq-tx-42z"/>
+                                                <constraint firstItem="Mnf-hj-cri" firstAttribute="centerY" secondItem="jHf-hF-Nmk" secondAttribute="centerY" id="Dcx-Pn-676"/>
+                                                <constraint firstItem="ykv-Of-O0h" firstAttribute="centerY" secondItem="jHf-hF-Nmk" secondAttribute="centerY" id="PYt-TL-lW1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mnf-hj-cri" secondAttribute="trailing" constant="19" id="d8w-iW-mUk"/>
+                                                <constraint firstItem="Mnf-hj-cri" firstAttribute="leading" secondItem="ykv-Of-O0h" secondAttribute="trailing" constant="16" id="pOl-7W-0oW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="ykv-Of-O0h" id="YPy-Sp-Cme"/>
+                                            <outlet property="nameLabel" destination="Mnf-hj-cri" id="oUX-hd-NZF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vKV-sV-wV6" id="dbv-tN-JCa"/>
+                                    <outlet property="delegate" destination="vKV-sV-wV6" id="B05-64-h4T"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ikU-cs-Qjk" firstAttribute="trailing" secondItem="dt3-0c-Aid" secondAttribute="trailing" id="Bmg-QP-gCW"/>
+                            <constraint firstItem="ikU-cs-Qjk" firstAttribute="leading" secondItem="dt3-0c-Aid" secondAttribute="leading" id="LWZ-rC-GOj"/>
+                            <constraint firstAttribute="bottom" secondItem="ikU-cs-Qjk" secondAttribute="bottom" id="PXl-PR-57d"/>
+                            <constraint firstItem="ikU-cs-Qjk" firstAttribute="top" secondItem="C8l-ML-QoD" secondAttribute="top" id="cif-N9-E3w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dt3-0c-Aid"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Friend" id="U0j-4K-XM6"/>
+                    <connections>
+                        <outlet property="tv" destination="ikU-cs-Qjk" id="FFe-om-bzv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2C-ri-FVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2895" y="518.66197183098598"/>
         </scene>
         <!--Settings-->
         <scene sceneID="JWx-hy-E1d">

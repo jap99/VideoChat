@@ -13,6 +13,7 @@
 		9F3B9FA2208F36F200F12CE3 /* BackgroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9FA1208F36F200F12CE3 /* BackgroundVC.swift */; };
 		9F3B9FA4208FFBF600F12CE3 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9FA3208FFBF600F12CE3 /* FriendsVC.swift */; };
 		9F3B9FA6208FFD0900F12CE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9FA5208FFD0900F12CE3 /* Friend.swift */; };
+		9F3B9FA8209006AE00F12CE3 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9FA7209006AE00F12CE3 /* AddFriendVC.swift */; };
 		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
 		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */; };
@@ -60,6 +61,7 @@
 		9F3B9FA1208F36F200F12CE3 /* BackgroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVC.swift; sourceTree = "<group>"; };
 		9F3B9FA3208FFBF600F12CE3 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		9F3B9FA5208FFD0900F12CE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		9F3B9FA7209006AE00F12CE3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
 		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				9F3B9FA1208F36F200F12CE3 /* BackgroundVC.swift */,
 				9F3B9FA3208FFBF600F12CE3 /* FriendsVC.swift */,
 				9F3B9FA5208FFD0900F12CE3 /* Friend.swift */,
+				9F3B9FA7209006AE00F12CE3 /* AddFriendVC.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */,
 				9F8ACCFA2081731D00F34663 /* VideoMessage.swift in Sources */,
 				9FB572D620783FF500A26985 /* FriendCell.swift in Sources */,
+				9F3B9FA8209006AE00F12CE3 /* AddFriendVC.swift in Sources */,
 				9FB572C42071D51200A26985 /* RecentCell.swift in Sources */,
 				9F3B9FA2208F36F200F12CE3 /* BackgroundVC.swift in Sources */,
 				9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */,

@@ -80,15 +80,13 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func loadUsers() {
         
-        let whereClause = "objectId != '\(backendless!.userService.currentUser.objectId!)'"
-        //let dataQuery = BackendlessDataQuery()
+        let whereClause = "objectId != '\(backendless!.userService.currentUser.objectId!)'" // gets all Id's that aren't equal to our current user id because we don't want to load him also
         let dataQuery = DataQueryBuilder()
-     //   dataQuery?.setWhereClause(whereClause)
         dataQuery!.setWhereClause(whereClause)
         
         let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
         
-        // now that we have dataStore we can do the query
+        // now that we have dataStore we can do the query to get back our users
         dataStore!.find(dataQuery, response: { (users) in
             
             self.users = users! as! [BackendlessUser]
