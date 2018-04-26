@@ -97,6 +97,14 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
         
         // create a chat
+        let chatVC = ChatVC()
+        chatVC.titleName = friend.name as String
+        chatVC.members = [backendless!.userService.currentUser.objectId as String,
+        friend.objectId as String]
+        chatVC.chatRoomId = startChat(user1: backendless!.userService.currentUser, user2: friend)
+        
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     func loadFriends() {
