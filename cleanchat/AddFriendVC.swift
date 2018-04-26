@@ -18,10 +18,10 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
     @IBOutlet weak var tv: UITableView!
     
-    var users = [BackendlessUser]()
+    var users: [BackendlessUser] = []
     
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredUsers = [BackendlessUser]() // getting all the users of our app here
+    var filteredUsers: [BackendlessUser] = [] // getting all the users of our app here
     
     var delegate: AddFriendDelegate!
     
@@ -46,9 +46,9 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             return filteredUsers.count // because while user's searching we're putting all the results in filteredUsers
         } else {
+            
             return users.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,14 +85,14 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             user = users[indexPath.row]
         }
         
+        // add user to friend's list
+        
         // tell our delegate the view that will be our delegate to know we've chosen a user
         delegate.saveFriend(selectedFriend: user)
         
         // get back to friendsVC
         tv.deselectRow(at: indexPath, animated: true)
-        self.navigationController!.popViewController(animated: true)
-        
-        // add user to friend's list
+        self.navigationController!.popViewController(animated: true) 
     }
     
     
@@ -109,7 +109,8 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         // now that we have dataStore we can do the query to get our users
         dataStore!.find(dataQuery, response: { (users) in
-            
+            print("PRINTING USERS - \(users)")
+            //self.users = users!.data as! [BackendlessUser]
             self.users = users! as! [BackendlessUser]
             self.tv.reloadData()
             

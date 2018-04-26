@@ -8,10 +8,12 @@
 
 import Foundation
 
+@objcMembers
 class Friend: NSObject {
     
     var objectId: String?
     var userOneId: String? // current userId
-    var userTwo: BackendlessUser?
+    //var userTwo: BackendlessUser?
+    var userTwo: String?
     
 }

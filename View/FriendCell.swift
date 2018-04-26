@@ -32,14 +32,14 @@ class FriendCell: UITableViewCell {
         let withUserId = friend.objectId!
         let whereClause = "objectId = '\(withUserId)'"
         let dataQuery = DataQueryBuilder()
-        dataQuery?.setWhereClause(whereClause)
+        dataQuery!.setWhereClause(whereClause)
         
         let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
         
         dataStore!.find(dataQuery, response: { (users) in
-            print(users)
+           // print(users)
             let withUser = users!.first as! BackendlessUser
-            print(withUser)
+            //print(withUser)
             
             if let avatarURL = withUser.getProperty("Avatar") {
                 
