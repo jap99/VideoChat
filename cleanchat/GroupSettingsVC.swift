@@ -11,6 +11,8 @@ import UIKit
 class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tv: UITableView!
+    var groupNameTextField: UITextField!
+    
     var group: NSDictionary? = nil // value is set in our segue - accesses the group
     var users: [BackendlessUser] = []
     
@@ -117,7 +119,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let renameAction = UIAlertAction(title: "Rename Group", style: .default) { (action) in
-            
+            self.renameGroup()
         }
         
         let addMembers = UIAlertAction(title: "Add Members", style: .default) { (action) in
@@ -129,6 +131,32 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         optionMenu.addAction(renameAction)
         optionMenu.addAction(addMembers)
         optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    
+    func renameGroup() {
+        
+        let ac = UIAlertController(title: "Rename Group", message: "Enter a new name for this group", preferredStyle: .alert)
+        
+        // add text field to alert
+        ac.addTextField { (nameTextField) in
+            
+            nameTextField.placeholder = "Name"
+            self.groupNameTextField = nameTextField
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in }
+        
+        let save = UIAlertAction(title: "Save", style: .default) { (action) in
+            
+            if self.groupNameTextField.text != "" {
+                
+                // update firebase group name
+            }
+        }
+        
+        ac.addAction(save); ac.addAction(cancel); self.present(ac, animated: true, completion: nil)
     }
     
     
