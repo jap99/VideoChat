@@ -60,6 +60,9 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         // called when user clicks the delete button
+        
+        // check they didn't click by mistake
+        groupDeleteWarning(indexPath: indexPath)
     }
     
     
@@ -91,6 +94,8 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
+    
     // MARK: IBActions
     
     @IBAction func addBarButtonItemPressed(_ sender: AnyObject) {
@@ -99,6 +104,30 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    // MARK: Helper functions
+    
+    func groupDeleteWarning(indexPath: IndexPath) {
+        
+        let ac = UIAlertController(title: "Warning!", message: "This will delete all group messages.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in   }
+        
+        let deleteAction = UIAlertAction(title: "Delete?", style: .destructive) { (action) in
+            // get the group we want to delete
+            let group = self.groups[indexPath.row]
+            // remove current group from array
+            self.groups.remove(at: indexPath.row)
+            
+            Group.deleteGroup(groupId: (group[kGROUPID] as? String)!)
+            
+            self.tv.reloadData()
+        }
+        
+        ac.addAction(cancelAction); ac.addAction(deleteAction)
+        self.present(ac, animated: true, completion: nil)
+        
+    }
     
     
 
