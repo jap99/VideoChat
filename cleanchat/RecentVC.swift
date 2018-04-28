@@ -55,6 +55,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if (recent[kTYPE] as? String)! == kGROUP {
             
+            recentDeleteWarning(indexPath: indexPath)
             
         } else {
             

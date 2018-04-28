@@ -153,12 +153,56 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if self.groupNameTextField.text != "" {
                 
                 // update firebase group name
+                self.updateFirebaseGroupName(newName: self.groupNameTextField.text!)
             }
         }
         
         ac.addAction(save); ac.addAction(cancel); self.present(ac, animated: true, completion: nil)
     }
     
+    
+    func updateFirebaseGroupName(newName: String) {
+        
+        // update local new first so it's automatically updated
+        let newGroup = group!.mutableCopy() as! NSMutableDictionary
+        newGroup.setValue(newName, forKey: kNAME)
+        group = newGroup
+        
+        tv.reloadData()
+        
+        // update group in firebase
+        let groupId = group![kGROUPID] as? String
+        let values = [kNAME: newName]
+        
+        firebase.child(kGROUP).child(groupId!).updateChildValues(values)
+        
+        // update name in all the recents also now
+        firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: groupId!).observeSingleEvent(of: .value) { (snapshot) in
+            
+            if snapshot.exists() {
+                
+                for recent in (snapshot.value! as! NSDictionary).allValues {
+                    
+                    // update group name in recents
+                    self.updateRecentGroupName(newName: newName, recent: recent as! NSDictionary)
+                }
+            }
+        }
+    }
+    
+    
+    func updateRecentGroupName(newName: String, recent: NSDictionary) {
+        
+        let values = [kWITHUSERUSERNAME: newName]
+        
+        firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values) { (error, ref) in
+            
+            if error != nil {
+                
+                ProgressHUD.showError("Couldn't update group name: \(error!.localizedDescription)")
+            }
+        }
+    }
     
     
     // Helper function
