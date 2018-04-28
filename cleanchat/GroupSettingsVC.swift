@@ -17,7 +17,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        getUsersFromBackendless(userIds: (group![kMEMBERS] as? [String])!)
         
     }
 
@@ -88,11 +88,55 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBAction func editBarButtonItemPressed(_ sender: AnyObject) {
         
+        // options: rename group, add more members
+        
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let renameAction = UIAlertAction(title: "Rename Group", style: .default) { (action) in
+            
+        }
+        
+        let addMembers = UIAlertAction(title: "Add Members", style: .default) { (action) in
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in  }
+        
+        optionMenu.addAction(renameAction)
+        optionMenu.addAction(addMembers)
+        optionMenu.addAction(cancelAction)
     }
     
     
     
+    // Helper function
     
+    func getUsersFromBackendless(userIds: [String]) {
+        
+        users.removeAll()
+        
+        for userId in userIds {
+            
+            // get user
+            let whereClause = "objectId = '\(userId)'"
+            
+            let dataQuery = DataQueryBuilder()
+            
+            dataQuery?.setWhereClause(whereClause)
+            
+            let ds = backendless!.persistenceService.of(BackendlessUser.ofClass())
+            ds!.find(dataQuery, response: { (users) in
+                
+                let user = users?.first as! BackendlessUser
+                self.users.append(user)
+                self.tv.reloadData()
+                
+            }, error: { (fault) in
+                
+                ProgressHUD.showError("Couldn't load members: \(fault!.detail)")
+            })
+        }
+    }
     
    
     
