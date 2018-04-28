@@ -51,6 +51,7 @@
 		9FE14FF51F22178900F3FE09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */; };
 		9FF51A0B209414650041661F /* AddGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0A209414650041661F /* AddGroupVC.swift */; };
 		9FF51A0D209423450041661F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0C209423450041661F /* Group.swift */; };
+		9FF51A0F20942CF00041661F /* GroupSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */; };
 		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		9FE14FF61F22178900F3FE09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF51A0A209414650041661F /* AddGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupVC.swift; sourceTree = "<group>"; };
 		9FF51A0C209423450041661F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				9F3BA00920940D6D00F12CE3 /* GroupVC.swift */,
 				9FF51A0A209414650041661F /* AddGroupVC.swift */,
 				9FF51A0C209423450041661F /* Group.swift */,
+				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */,
 				9F8ACCF82081701F00F34663 /* VideoThumbnail.swift in Sources */,
 				9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */,
+				9FF51A0F20942CF00041661F /* GroupSettingsVC.swift in Sources */,
 				9F3B9FA4208FFBF600F12CE3 /* FriendsVC.swift in Sources */,
 				9F0617CB208880A300422183 /* MapVC.swift in Sources */,
 				9FB572B62071D41400A26985 /* RecentVC.swift in Sources */,
