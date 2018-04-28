@@ -278,6 +278,42 @@ func deleteMultipleRecentItems(chatRoomID: String) { // will be called in our gr
 }
 
 
+func deleteRecentWithNotification(recent: NSDictionary) {
+    
+    // get members from recent and update them
+    
+    // find out which index has our current user
+    let index = (recent[kMEMBERS] as? [String])!.index(of: backendless!.userService.currentUser.objectId as! String)
+    
+    var newMembers = (recent[kMEMBERS] as? [String])!
+    newMembers.remove(at: index!)
+    
+    // check how many people are in the group; no point in having a one member group so will delete it
+    if (recent[kMEMBERS] as? [String])!.count > 2 {
+        
+        firebase.child(kGROUP).queryOrdered(byChild: kGROUPID).queryEqual(toValue: recent[kCHATROOMID] as? String).observeSingleEvent(of: .value) { (snapshot) in
+            
+            if snapshot.exists() {
+                
+                for group in ((snapshot.value as! NSDictionary).allValues as Array) {
+                    
+                    // 1. delete recent
+                    deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
+                    
+                    // 2. remove current user from group members
+                    
+                    // 3. Remove current user from recents
+                }
+            }
+        }
+    } else {
+        
+        // delete the group
+        Group.deleteGroup(groupId: (recent[kCHATROOMID] as? String)!)
+    }
+}
+
+
 
 
 
