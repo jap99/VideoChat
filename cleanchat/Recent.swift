@@ -143,10 +143,109 @@ func createGroupRecent(chatRoomId: String, members: [String], groupName: String,
 }
 
 
+func restartRecentChat(recent: NSDictionary) {
+    
+    if (recent[kTYPE] as? String)! == kPRIVATE {
+        
+        for userId in recent[kMEMBERS] as! [String] {
+            
+            if userId != backendless!.userService.currentUser.objectId as! String {
+                
+                createRecent(userId: userId,
+                             chatRoomId: (recent[kCHATROOMID] as? String)!,
+                             members: recent[kMEMBERS] as! [String],
+                             withUserUserId: backendless!.userService.currentUser.objectId! as String,
+                             withUserUsername: backendless!.userService.currentUser.name! as String,
+                             type: kPRIVATE)
+            }
+        }
+    }
+    
+    if (recent[kTYPE] as? String)! == kGROUP {
+        
+        // create group recent here
+        
+        // in case a user has delete his recent we'll create another one
+        
+        createGroupRecent(chatRoomId: (recent[kCHATROOMID] as? String)!,
+                          members: (recent[kMEMBERS] as? [String])!,
+                          groupName: (recent[kWITHUSERUSERNAME] as? String)!,
+                          ownerID: (recent[kUSERID] as? String)!,
+                          type: kGROUP)
+    }
+}
+
+func clearRecentCounter(chatRoomID: String) {
+    
+    // get all recents belonging to current chatroom
+    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomID).observeSingleEvent(of: .value) { (snapshot) in
+        
+        if snapshot.exists() {
+            
+            for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                
+                let currentRecent = recent as! NSDictionary
+                
+                // get the one that belongs to current user
+                if currentRecent[kUSERID] as? String == backendless!.userService.currentUser.objectId as String {
+                    
+                    // clear counter
+                    clearRecentCounterItem(recent: currentRecent)
+                }
+            }
+        }
+    }
+}
+
+func clearRecentCounterItem(recent: NSDictionary) {
+    
+    firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues([kCOUNTER: 0]) { (error, ref) -> Void in
+        
+        if error != nil {
+            ProgressHUD.showError("Couldn't clear recent counter: \(error!.localizedDescription)")
+        }
+    }
+}
+
+func updateRecentItem(recent: NSDictionary, lastMessage: String) {
+    
+    let date = dateFormatter().string(from: Date())
+    
+    var counter = recent[kCOUNTER] as! Int
+    
+    if recent[kUSERID] as? String != backendless!.userService.currentUser.objectId as? String {
+        
+        counter = counter + 1
+    }
+    
+    let values = [kLASTMESSAGE: lastMessage,
+                  kCOUNTER: counter,
+                  kDATE: date] as [String: Any]
+    
+    firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values as [NSObject: AnyObject]) {
+        (error, ref) -> Void in
+        
+        if error != nil {
+            
+            ProgressHUD.showError("Couldn't update recent: \(error!.localizedDescription)")
+        }
+    }
+}
 
 
-
-
+func updateRecents(chatRoomId: String, lastMessage: String) {
+    
+    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomId).observeSingleEvent(of: .value) { (snapshot) in
+        
+        if snapshot.exists() {
+            
+            for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                
+                updateRecentItem(recent: recent as! NSDictionary, lastMessage: lastMessage)
+            }
+        }
+    }
+}
 
 
 

@@ -46,14 +46,14 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // clear recent counter
+        clearRecentCounter(chatRoomID: chatRoomId)
         loadUserDefaults()
         setBackgroundColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
     
-        // clear our recent counter
+        clearRecentCounter(chatRoomID: chatRoomId)
         
         // remove our observers because we no longer need to see any changes
         ref.removeAllObservers()
