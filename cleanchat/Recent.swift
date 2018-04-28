@@ -283,7 +283,7 @@ func deleteRecentWithNotification(recent: NSDictionary) {
     // get members from recent and update them
     
     // find out which index has our current user
-    let index = (recent[kMEMBERS] as? [String])!.index(of: backendless!.userService.currentUser.objectId as! String)
+    let index = (recent[kMEMBERS] as? [String])!.index(of: backendless!.userService.currentUser.objectId! as String)
     
     var newMembers = (recent[kMEMBERS] as? [String])!
     newMembers.remove(at: index!)
@@ -304,6 +304,7 @@ func deleteRecentWithNotification(recent: NSDictionary) {
                     removeCurrentUserFromGroup(group: group as! NSDictionary)
                     
                     // 3. Remove current user from recents
+                    updateMembersInRecent(members: newMembers, group: group as! NSDictionary)
                 }
             }
         }
@@ -346,4 +347,34 @@ func removeCurrentUserFromGroup(group: NSDictionary) {
     }
 }
 
+
+func updateMembersInRecent(members: [String], group: NSDictionary) {
+    
+    // gets all the recents for specific chatroom
+    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: (group[kGROUPID] as? String)!).observeSingleEvent(of: .value) { (snapshot) in
+        
+        if snapshot.exists() {
+            
+            // go through each recent that belongs to same chatroom
+            for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                
+                // update recent group members
+                updateRecentGroupMembers(members: members, recent: recent as! NSDictionary)
+            }
+        }
+    }
+}
+
+func updateRecentGroupMembers(members: [String], recent: [NSDictionary]) {
+    
+    // creating value of new members and saving it 
+    let values = [kMEMBERS: members]
+    
+    firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values) { (error, ref) in
+        
+        if error != nil {
+            ProgressHUD.showError("Couldn't update recent members: \(error.localizedDescription)")
+        }
+    }
+}
 
