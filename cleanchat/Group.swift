@@ -44,6 +44,7 @@ class Group {
                 ProgressHUD.showError("COULDN'T DELETE GROUP: \(error!.localizedDescription)")
             } else {
                 // delete recents
+                deleteMultipleRecentItems(chatRoomID: groupId)
                
                 // delete all messages
             }

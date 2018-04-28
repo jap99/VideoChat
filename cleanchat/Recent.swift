@@ -248,8 +248,34 @@ func updateRecents(chatRoomId: String, lastMessage: String) {
 }
 
 
+func deleteRecentItem(recentID: String) {
+    
+    firebase.child(kRECENT).child(recentID).removeValue { (error, ref) in
+        
+        if error != nil {
+            
+            ProgressHUD.showError("Couldn't delete recent item: \(error!.localizedDescription)")
+        }
+    }
+}
 
 
+func deleteMultipleRecentItems(chatRoomID: String) { // will be called in our group
+    
+    // get all the recents that belong to our chatRoomId
+    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomID).observeSingleEvent(of: .value) { (snapshot) in
+        
+        if snapshot.exists() {
+            
+            for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                
+                let currentRecent = recent as! NSDictionary
+                
+                deleteRecentItem(recentID: currentRecent[kRECENTID] as? String)!)
+            }
+        }
+    }
+}
 
 
 

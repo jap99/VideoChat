@@ -50,6 +50,18 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let recent = recents[indexPath.row]
+        
+        if (recent[kTYPE] as? String)! == kGROUP {
+            
+            
+        } else {
+            
+            recents.remove(at: indexPath.row)
+            deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
+            tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
