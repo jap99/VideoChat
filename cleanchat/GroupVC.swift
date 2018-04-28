@@ -48,6 +48,9 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tv.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "groupToGroupSettings-Segue", sender: self)
         
     }
     
@@ -93,6 +96,25 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    
+    // MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "groupToAddGroup-Segue" {
+            
+            let vc = segue.destination as! AddGroupVC
+            vc.hidesBottomBarWhenPushed = true
+        } else if segue.identifier == "groupToGroupSettings-Segue" {
+            
+            let indexPath = sender as! NSIndexPath
+            
+            let vc = segue.destination
+            
+            // give settings vc the group that user selected so it can display this group
+            vc.group = self.groups[indexPath.row]
+        }
+    }
     
     
     
