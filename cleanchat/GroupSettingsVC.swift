@@ -84,6 +84,30 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // take user to chat with the group
+        
+        tv.deselectRow(at: indexPath, animated: true)
+        
+        // check which row we're selecting to see which user to chat with
+        
+        if indexPath.row == 0 {
+            
+            // start group chat
+            startGroupChat(group: self.group!)
+            
+            let chatVC = ChatVC()
+            chatVC.chatRoomId = self.group![kGROUPID] as? String
+            chatVC.members = (self.group![kMEMBERS] as? [String])!
+            chatVC.titleName = (self.group![kNAME] as? String)!
+            chatVC.isGroup = true
+            
+            chatVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(chatVC, animated: true)
+        }
+    }
+    
     // MARK: IBActions
     
     @IBAction func editBarButtonItemPressed(_ sender: AnyObject) {

@@ -100,4 +100,59 @@ func updateChatStatus(chat: NSDictionary, chatRoomId: String) {
 }
 
 
+// group chats
+
+func startGroupChat(group: NSDictionary) {
+    
+    // create a recent item for our group
+    createGroupRecent(chatRoomId: (group[kGROUPID] as? String)!, members: (group[kMEMBERS] as? [String])!, groupName: (group[kNAME] as? String)!, ownerID: backendless!.userService.currentUser.objectId as String, type: kGROUP)
+}
+
+func createGroupRecent(chatRoomId: String, members: [String], groupName: String, ownerID: String, type: String) {
+    
+    // query recents that belong to our chatroomId
+    firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomId).observeSingleEvent(of: .value) { (snapshot) in
+        
+        var memberIDs = members
+        
+        if snapshot.exists() {
+            
+            for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
+                
+                let currentRecent = recent as! NSDictionary
+                
+                // check if we already have a recent for this member; if the member does already have a recent then go into condition
+                
+                if members.contains((currentRecent[kUSERID] as? String)!) {
+                    
+                    // get index of current item in order to delete it
+                    let index = memberIDs.index(of: (currentRecent[kUSERID] as? String)!)
+                    
+                    memberIDs.remove(at: index!)
+                }
+            }
+        }
+        
+        for userID in memberIDs {
+            
+            // check who doesn't have a recent and create a recent for them
+            createRecentItem(userId: userID, chatRoomId: chatRoomId, members: members, withUserUserId: "", withUserUsername: groupName, type: type)
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
