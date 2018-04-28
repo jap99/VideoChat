@@ -27,12 +27,12 @@ class Group {
         let date = dateFormatter().string(from: Date())
         
         group[kGROUPID] = reference.key
-        group[kDate] = date
+        group[kDATE] = date
         
         reference.setValue(group) { (error, ref) in
             
             if error != nil {
-                ProgressHUD.showError("ERROR SAVING GROUP: \(error?.localizedDescription)")
+                ProgressHUD.showError("ERROR SAVING GROUP: \(String(describing: error?.localizedDescription))")
             }
         }
     }
@@ -44,8 +44,8 @@ class Group {
                 ProgressHUD.showError("COULDN'T DELETE GROUP: \(error!.localizedDescription)")
             } else {
                 // delete recents
-                
-                // delete all messages 
+               
+                // delete all messages
             }
         }
     }

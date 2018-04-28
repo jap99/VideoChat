@@ -187,8 +187,14 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // each group has an owener
         let ownerId = backendless!.userService.currentUser.objectId as String
         
-        // create group 
+        // create group
+         let group = Group(name: name, ownerId: ownerId, members: groupMembers)
         
+        // access our function to save it
+        Group.saveGroup(group: group.groupDictionary)
+        
+        // get back to all our groups
+        self.navigationController?.popViewController(animated: true)
     }
     
     
