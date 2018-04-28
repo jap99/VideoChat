@@ -359,21 +359,35 @@ func updateMembersInRecent(members: [String], group: NSDictionary) {
             for recent in ((snapshot.value as! NSDictionary).allValues as Array) {
                 
                 // update recent group members
-                updateRecentGroupMembers(members: members, recent: recent as! NSDictionary)
+                
+                updateRecentGroupMembers(members: members, recent: recent as! [String: AnyObject])
             }
         }
     }
 }
 
-func updateRecentGroupMembers(members: [String], recent: [NSDictionary]) {
+func updateRecentGroupMembers(members: [String], recent: [String: AnyObject]) {
     
     // creating value of new members and saving it 
     let values = [kMEMBERS: members]
+    //if let recentID =
     
     firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values) { (error, ref) in
         
         if error != nil {
-            ProgressHUD.showError("Couldn't update recent members: \(error.localizedDescription)")
+            ProgressHUD.showError("Couldn't update recent members: \(error!.localizedDescription)")
+        }
+    }
+}
+
+func deleteChatroom(chatRoomID: String) {
+    
+    // our chatroom is under kMESSAGE
+    firebase.child(kMESSAGE).child(chatRoomID).removeValue { (error, ref) in
+        
+        if error != nil {
+            
+            ProgressHUD.showError("Couldn't delete chatroom: \(error!.localizedDescription)")
         }
     }
 }

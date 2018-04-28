@@ -182,7 +182,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // increment counter since we just sent a message
         var counter = recent[kCOUNTER] as! Int
         
-        if (recent[kUSERID] as! String) != backendless!.userService.currentUser.objectId as? String {
+        if (recent[kUSERID] as! String) != backendless!.userService.currentUser.objectId as String? {
             counter += 1
         }
         
@@ -223,6 +223,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let noAction = UIAlertAction(title: "No", style: .destructive) { (action) in
             
             // delete recent with notification
+            deleteRecentWithNotification(recent: recent)
             
             self.tv.reloadData()
         }

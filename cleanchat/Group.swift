@@ -47,6 +47,7 @@ class Group {
                 deleteMultipleRecentItems(chatRoomID: groupId)
                
                 // delete all messages
+                deleteChatroom(chatRoomID: groupId)
             }
         }
     }
