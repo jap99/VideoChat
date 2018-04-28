@@ -143,9 +143,9 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             for userId in recent[kMEMBERS] as! [String] {
                 
-                if userId != backendless!.userService.currentUser.objectId as! String {
+                if userId != backendless!.userService.currentUser.objectId! as String {
                     
-                    createRecent(userId: userId, chatRoomId: (recent[kCHATROOMID] as? String)!, members: recent[kMEMBERS] as! [String], withUserUserId: backendless!.userService.currentUser.objectId! as String, withUserUsername: backendless!.userService.currentUser.name! as! String, type: kPRIVATE)
+                    createRecent(userId: userId, chatRoomId: (recent[kCHATROOMID] as? String)!, members: recent[kMEMBERS] as! [String], withUserUserId: backendless!.userService.currentUser.objectId! as String, withUserUsername: backendless!.userService.currentUser.name! as String, type: kPRIVATE)
                 }
             }
         }
@@ -194,13 +194,42 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues(values as [NSObject: AnyObject]) { (error, ref) -> Void in
             
             if error != nil {
-                ProgressHUD.showError("Couldn't update recent: \(error?.localizedDescription)")
+                ProgressHUD.showError("Couldn't update recent: \(String(describing: error!.localizedDescription))")
             }
             
         }
     }
     
     
+    
+    // MARK: Helper functions
+    
+    func recentDeleteWarning(indexPath: IndexPath) {
+        
+        let ac = UIAlertController(title: "Attention", message: "Would you like to receive notifications from this group?", preferredStyle: .alert)
+        
+        // get our recent
+        let recent = recents[indexPath.row]
+        
+        // remove recent from recents array
+        recents.remove(at: indexPath.row)
+        
+        let yesAction = UIAlertAction(title: "Yes?", style: .default) { (action) in
+            
+            deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
+            self.tv.reloadData()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .destructive) { (action) in
+            
+            // delete recent with notification
+            
+            self.tv.reloadData()
+        }
+        
+        ac.addAction(yesAction);    ac.addAction(noAction)
+        self.present(ac, animated: true, completion: nil)
+    }
     
     
     

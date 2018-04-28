@@ -271,7 +271,7 @@ func deleteMultipleRecentItems(chatRoomID: String) { // will be called in our gr
                 
                 let currentRecent = recent as! NSDictionary
                 
-                deleteRecentItem(recentID: currentRecent[kRECENTID] as? String)!)
+                deleteRecentItem(recentID: (currentRecent[kRECENTID] as? String)!)
             }
         }
     }
