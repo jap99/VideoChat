@@ -52,6 +52,7 @@
 		9FF51A0B209414650041661F /* AddGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0A209414650041661F /* AddGroupVC.swift */; };
 		9FF51A0D209423450041661F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0C209423450041661F /* Group.swift */; };
 		9FF51A0F20942CF00041661F /* GroupSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */; };
+		9FF51A11209459DD0041661F /* EditGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A10209459DD0041661F /* EditGroupVC.swift */; };
 		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		9FF51A0A209414650041661F /* AddGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupVC.swift; sourceTree = "<group>"; };
 		9FF51A0C209423450041661F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsVC.swift; sourceTree = "<group>"; };
+		9FF51A10209459DD0041661F /* EditGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				9FF51A0A209414650041661F /* AddGroupVC.swift */,
 				9FF51A0C209423450041661F /* Group.swift */,
 				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
+				9FF51A10209459DD0041661F /* EditGroupVC.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			files = (
 				9FF51A0D209423450041661F /* Group.swift in Sources */,
 				9FB572AD2071D39100A26985 /* Camera.swift in Sources */,
+				9FF51A11209459DD0041661F /* EditGroupVC.swift in Sources */,
 				9FB572D82078421A00A26985 /* Download.swift in Sources */,
 				9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */,
 				9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */,

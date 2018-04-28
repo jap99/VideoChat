@@ -722,10 +722,10 @@
             </objects>
             <point key="canvasLocation" x="437" y="34"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit GroupVC-->
         <scene sceneID="rYx-OR-y6E">
             <objects>
-                <viewController id="34a-s4-Cez" sceneMemberID="viewController">
+                <viewController id="34a-s4-Cez" customClass="EditGroupVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bUg-rv-q6g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,6 +791,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="34a-s4-Cez" eventType="touchUpInside" id="BRZ-w9-EFq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QF-W1-SaU">
                                 <rect key="frame" x="235" y="20" width="65" height="30"/>
@@ -800,6 +803,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="34a-s4-Cez" eventType="touchUpInside" id="f2H-ce-EVl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -813,6 +819,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lpK-mL-MWp"/>
                     </view>
+                    <connections>
+                        <outlet property="tv" destination="eFJ-XZ-dtJ" id="2oz-bc-Cid"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQp-bo-22k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, EditGroupDelegate {
 
     @IBOutlet weak var tv: UITableView!
     var groupNameTextField: UITextField!
@@ -124,6 +124,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let addMembers = UIAlertAction(title: "Add Members", style: .default) { (action) in
             
+            self.performSegue(withIdentifier: "groupSettingsToAddMember-Segue", sender: nil)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in  }
@@ -234,6 +235,26 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    
+    // MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "groupSettingsToAddMember-Segue" {
+            
+            let vc = segue.destination as! EditGroupVC
+            vc.group = self.group
+            vc.delegate = self
+        }
+    }
+    
+    // MARK: Edit group delegate
+    
+    func finishedEditingGroup(updatedGroup: NSDictionary) {
+        
+        self.group = updatedGroup
+        getUsersFromBackendless(userIds: (group![kMEMBERS] as? [String])!)
+    }
    
     
 
