@@ -301,6 +301,7 @@ func deleteRecentWithNotification(recent: NSDictionary) {
                     deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
                     
                     // 2. remove current user from group members
+                    removeCurrentUserFromGroup(group: group as! NSDictionary)
                     
                     // 3. Remove current user from recents
                 }
@@ -314,6 +315,35 @@ func deleteRecentWithNotification(recent: NSDictionary) {
 }
 
 
-
+func removeCurrentUserFromGroup(group: NSDictionary) {
+    
+    // get hold of users
+    
+    var newMembers = (group[kMEMBERS] as? [String])!
+    
+    let index = newMembers.index(of: backendless!.userService.currentUser.objectId as String)
+    newMembers.remove(at: index!) // removed current user
+    
+    var updatedValues: NSDictionary!
+    
+    // if user is the owner
+    if (group[kOWNERID] as? String)! == backendless!.userService.currentUser.objectId as String {
+        
+        
+        updatedValues = [kOWNERID: "", kMEMBERS: newMembers]
+    } else {
+        
+        updatedValues = [kMEMBERS: newMembers] // just remove current user from members list
+    }
+    
+    // save changes to firebase
+    firebase.child(kGROUP).child((group[kGROUPID] as? String)!).updateChildValues(updatedValues as! [AnyHashable: Any]) { (error, ref) in
+        
+        if error != nil {
+            
+            ProgressHUD.showError("Couldn't update group members: \(error!.localizedDescription)")
+        }
+    }
+}
 
 
