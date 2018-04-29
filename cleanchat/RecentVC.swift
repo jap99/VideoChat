@@ -93,6 +93,9 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let friendList = UIAlertAction(title: "Friends List", style: .default) { (alert) in
             
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
+            vc.selectedIndex = 2
+            self.present(vc, animated: true, completion: nil)
         }
         let allUsers = UIAlertAction(title: "All Users", style: .default) { (alert) in
             self.performSegue(withIdentifier: "recentToChooseUserSeg", sender: self)

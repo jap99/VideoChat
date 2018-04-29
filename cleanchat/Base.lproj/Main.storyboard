@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG1-e7-X94">
-                                <rect key="frame" x="109" y="283" width="102" height="39"/>
+                                <rect key="frame" x="109" y="276" width="102" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="102" id="Bl5-eL-sda"/>
                                     <constraint firstAttribute="height" constant="39" id="aVI-rk-tli"/>
@@ -54,7 +54,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7y-SE-nHg">
-                                <rect key="frame" x="108" y="495" width="102" height="39"/>
+                                <rect key="frame" x="108" y="504" width="102" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="p3b-bN-aBO"/>
                                 </constraints>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't Have an Account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-5D-LOa">
-                                <rect key="frame" x="20" y="455" width="280" height="21"/>
+                                <rect key="frame" x="20" y="473" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="B5k-4f-yX2"/>
                                 </constraints>
@@ -72,25 +72,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv7-zB-HxS">
+                                <rect key="frame" x="68" y="348" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfZ-v8-UnP">
+                                <rect key="frame" x="130" y="377" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Jyc-x0-l6Z"/>
+                                    <constraint firstAttribute="height" constant="60" id="SxX-Ct-Mjh"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="facebook"/>
+                                <connections>
+                                    <action selector="fbLoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TPf-1z-4dj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WfZ-v8-UnP" firstAttribute="top" secondItem="tv7-zB-HxS" secondAttribute="bottom" constant="8" id="3zn-RD-x1y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mne-UI-lKN" secondAttribute="trailing" constant="20" id="AyT-t0-Lng"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F7y-SE-nHg" secondAttribute="bottom" constant="34" id="C2z-dm-INM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F7y-SE-nHg" secondAttribute="bottom" constant="25" id="C2z-dm-INM"/>
                             <constraint firstItem="Mne-UI-lKN" firstAttribute="top" secondItem="ZHc-ml-VKa" secondAttribute="bottom" constant="28" id="Dk4-Wl-Ujz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zMU-oM-d3P" secondAttribute="trailing" constant="20" id="GAc-hT-t3i"/>
                             <constraint firstItem="EG1-e7-X94" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lff-fo-fzc"/>
                             <constraint firstItem="ZHc-ml-VKa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="OZF-yl-1Bf"/>
                             <constraint firstItem="zMU-oM-d3P" firstAttribute="top" secondItem="Mne-UI-lKN" secondAttribute="bottom" constant="8" id="P4b-85-iPh"/>
-                            <constraint firstItem="EG1-e7-X94" firstAttribute="top" secondItem="zMU-oM-d3P" secondAttribute="bottom" constant="37" id="Q9x-vi-bYL"/>
-                            <constraint firstItem="F7y-SE-nHg" firstAttribute="top" secondItem="mkn-5D-LOa" secondAttribute="bottom" constant="19" id="RBi-F1-O7C"/>
+                            <constraint firstItem="EG1-e7-X94" firstAttribute="top" secondItem="zMU-oM-d3P" secondAttribute="bottom" constant="30" id="Q9x-vi-bYL"/>
+                            <constraint firstItem="F7y-SE-nHg" firstAttribute="top" secondItem="mkn-5D-LOa" secondAttribute="bottom" constant="10" id="RBi-F1-O7C"/>
+                            <constraint firstItem="WfZ-v8-UnP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Smh-gF-KeP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F7y-SE-nHg" secondAttribute="trailing" constant="110" id="WA5-hN-pr3"/>
+                            <constraint firstItem="tv7-zB-HxS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bX6-1V-Xy9"/>
                             <constraint firstItem="F7y-SE-nHg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="dzU-WG-sbk"/>
                             <constraint firstItem="zMU-oM-d3P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lut-Ug-rt4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mkn-5D-LOa" secondAttribute="trailing" constant="20" id="nvM-da-1xe"/>
                             <constraint firstItem="mkn-5D-LOa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oAb-Eg-Td2"/>
                             <constraint firstItem="Mne-UI-lKN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="r8j-6o-kIW"/>
                             <constraint firstItem="ZHc-ml-VKa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="tso-W9-czL"/>
+                            <constraint firstItem="tv7-zB-HxS" firstAttribute="top" secondItem="EG1-e7-X94" secondAttribute="bottom" constant="33" id="wUp-7o-hMV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZHc-ml-VKa" secondAttribute="trailing" constant="20" id="xhw-Lr-apf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -440,7 +461,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="rgD-Fc-ets">
             <objects>
-                <tabBarController storyboardIdentifier="RecentVC" id="Coq-5o-THD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC-ID" id="Coq-5o-THD" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sQQ-fQ-kiP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1353,6 +1374,7 @@
         <image name="Group" width="25" height="25"/>
         <image name="More" width="25" height="25"/>
         <image name="avatarPlaceholder" width="250" height="250"/>
+        <image name="facebook" width="128" height="128"/>
         <image name="settings" width="22" height="22"/>
     </resources>
 </document>

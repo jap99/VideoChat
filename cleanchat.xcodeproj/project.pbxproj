@@ -53,6 +53,10 @@
 		9FF51A0D209423450041661F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0C209423450041661F /* Group.swift */; };
 		9FF51A0F20942CF00041661F /* GroupSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */; };
 		9FF51A11209459DD0041661F /* EditGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A10209459DD0041661F /* EditGroupVC.swift */; };
+		9FF51A1520955F290041661F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF51A1220955F290041661F /* FBSDKLoginKit.framework */; };
+		9FF51A1620955F290041661F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF51A1320955F290041661F /* Bolts.framework */; };
+		9FF51A1720955F290041661F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF51A1420955F290041661F /* FBSDKCoreKit.framework */; };
+		9FF51A1A20956D680041661F /* RegisterForPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A1920956D680041661F /* RegisterForPush.swift */; };
 		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +115,11 @@
 		9FF51A0C209423450041661F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsVC.swift; sourceTree = "<group>"; };
 		9FF51A10209459DD0041661F /* EditGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupVC.swift; sourceTree = "<group>"; };
+		9FF51A1220955F290041661F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		9FF51A1320955F290041661F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		9FF51A1420955F290041661F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		9FF51A1820955F320041661F /* cleanchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cleanchat.entitlements; sourceTree = "<group>"; };
+		9FF51A1920956D680041661F /* RegisterForPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForPush.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF51A1520955F290041661F /* FBSDKLoginKit.framework in Frameworks */,
+				9FF51A1620955F290041661F /* Bolts.framework in Frameworks */,
+				9FF51A1720955F290041661F /* FBSDKCoreKit.framework in Frameworks */,
 				9FE0557B208882DE006646BF /* MapKit.framework in Frameworks */,
 				9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */,
 				9FB572D42077115500A26985 /* PushKit.framework in Frameworks */,
@@ -142,6 +154,9 @@
 		98BF832D4B48D7D51166533D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FF51A1320955F290041661F /* Bolts.framework */,
+				9FF51A1420955F290041661F /* FBSDKCoreKit.framework */,
+				9FF51A1220955F290041661F /* FBSDKLoginKit.framework */,
 				9FE0557A208882DE006646BF /* MapKit.framework */,
 				9F8ACCF120809DA200F34663 /* AVFoundation.framework */,
 				9FB572D32077115500A26985 /* PushKit.framework */,
@@ -214,6 +229,7 @@
 		9FE14FE91F22178900F3FE09 /* cleanchat */ = {
 			isa = PBXGroup;
 			children = (
+				9FF51A1820955F320041661F /* cleanchat.entitlements */,
 				9FB572C92071E55800A26985 /* ProgressHUD */,
 				9FB572C52071E51D00A26985 /* Encryption */,
 				9FB572BB2071D4AD00A26985 /* Utilities */,
@@ -250,6 +266,7 @@
 				9FF51A0C209423450041661F /* Group.swift */,
 				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
 				9FF51A10209459DD0041661F /* EditGroupVC.swift */,
+				9FF51A1920956D680041661F /* RegisterForPush.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -289,6 +306,11 @@
 				TargetAttributes = {
 					9FE14FE61F22178900F3FE09 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -398,6 +420,7 @@
 				9FB572AD2071D39100A26985 /* Camera.swift in Sources */,
 				9FF51A11209459DD0041661F /* EditGroupVC.swift in Sources */,
 				9FB572D82078421A00A26985 /* Download.swift in Sources */,
+				9FF51A1A20956D680041661F /* RegisterForPush.swift in Sources */,
 				9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */,
 				9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */,
 				9F8ACCFA2081731D00F34663 /* VideoMessage.swift in Sources */,
@@ -566,7 +589,12 @@
 			baseConfigurationReference = 76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
 				DEVELOPMENT_TEAM = VWFZU9229C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
@@ -584,7 +612,12 @@
 			baseConfigurationReference = 1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
 				DEVELOPMENT_TEAM = VWFZU9229C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;

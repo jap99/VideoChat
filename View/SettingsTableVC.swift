@@ -8,6 +8,8 @@
 
 import UIKit
 import MobileCoreServices // so we can use our user defaults
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class SettingsTableVC: UITableViewController {
 
@@ -172,6 +174,11 @@ class SettingsTableVC: UITableViewController {
         backendless!.userService.logout()
         
         // logout from facebook
+        if FBSDKAccessToken.current() != nil {
+            
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+        }
         
         // resign from push notifications
         

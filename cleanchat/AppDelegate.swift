@@ -11,6 +11,7 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 import NotificationCenter
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -31,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
         backendless!.initApp(APP_ID, apiKey: API_KEY)
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 
@@ -48,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         locationManagerStart()
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -108,6 +111,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         coordinates = locations.last!.coordinate
     }
     
+    
+    // MARK: Facebook login
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let result = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,
+                                                                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
+                                                                           annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        return result
+    }
     
 }
 

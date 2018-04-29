@@ -118,7 +118,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             }
             
             // go to app
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecentVC") as! UITabBarController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
             vc.selectedIndex = 0
             self.present(vc, animated: true, completion: nil)
             
