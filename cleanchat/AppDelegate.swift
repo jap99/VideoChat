@@ -12,9 +12,10 @@ import Firebase
 import FirebaseDatabase
 import NotificationCenter
 import FBSDKCoreKit
+//import UserNotificationsUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
@@ -31,6 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
         backendless!.initApp(APP_ID, apiKey: API_KEY)
+
+        
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        } else {
+            // Fallback on earlier versions
+            
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerForRemoteNotifications()
+            
+//            let types: UIUserNotificationType = [.alert, .badge, .sound]
+//            let settings = UIUserNotificationSettings
+//            application.registerUserNotificationSettings(settings)
+        }
+        
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
@@ -115,12 +136,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // MARK: Facebook login
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let result: Bool = false
+        if #available(iOS 9.0, *) {
+            let resultt = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,
+                                                                               sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
+                                                                               annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+            return resultt
         
-        let result = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,
-                                                                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
-                                                                           annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        return result
+        } else {
+            // Fallback on earlier versions
+             return result
+            
+        }
+        
     }
+    
+    
+    // MARK: Notifications
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        // register device with backendless here
+    }
+    
+    
     
 }
 
