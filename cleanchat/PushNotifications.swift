@@ -34,6 +34,9 @@ func sendPushNotification1(chatRoomID: String, message: String) {
 func sendPushNotification2(members: [String], message: String) {
     
     // members has the data of all the users in a chat room, including current user so we want to remove current user to avoid sending him a push notification
+    let newMembersArray = removeCurrrentUserFromMembersArray(members: members)
+    
+    // get backendless user based on their objectId
     
 }
 
@@ -51,7 +54,36 @@ func removeCurrrentUserFromMembersArray(members: [String]) -> [String] {
 }
 
 
-
+func getMembersToPush(members: [String], result: @escaping (_ usersArray: [BackendlessUser]) -> Void) {
+    
+    var backendlessMembers: [BackendlessUser] = []
+    
+    var count = 0
+    
+    for memberID in members {
+        
+        // query b.e. user table
+        let whereClause = "objectId = '\(memberID)'"
+        let dq = DataQueryBuilder()
+        dq?.setWhereClause(whereClause)
+        
+        let ds = backendless!.persistenceService.of(BackendlessUser.ofClass())
+        ds!.find(dq, response: { (users) in
+            // since we're searching for specific userID this means we'll only get one user back
+            let user = users!.first as! BackendlessUser
+            backendlessMembers.append(user)
+            count += 1
+            
+            if members.count == count { // means we've received all the members from our members array that was passed into this func
+                result(backendlessMembers)
+            }
+            
+        }) { (fault) in
+            print("COULDNT GET USERS TO PUSH: \(fault!.detail)")
+            
+        }
+    }
+}
 
 
 
