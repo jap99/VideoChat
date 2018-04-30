@@ -171,6 +171,9 @@ class SettingsTableVC: UITableViewController {
     }
     
     func logOut() {
+        
+        removeDeviceIdFromUser()
+        
         backendless!.userService.logout()
         
         // logout from facebook

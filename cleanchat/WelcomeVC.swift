@@ -133,6 +133,8 @@ class WelcomeVC: UIViewController {
         ProgressHUD.dismiss()
         backendless!.userService.login(email, password: password, response: { (user) in
             
+            registerUserDeviceID(user: user!)
+             
             self.emailTextField.text = nil
             self.passwordTextField.text = nil
             self.view.endEditing(false)
