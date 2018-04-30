@@ -97,6 +97,8 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
         
         backendless!.userService.login(email, password: password, response: { (user) in
             
+            registerUserDeviceID(user: user!)
+            
             if self.avatarImage != nil {
                 
                 uploadAvatar(image: self.avatarImage!, result: { (imageLink) in
