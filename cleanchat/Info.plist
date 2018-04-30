@@ -2,27 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb2049933361744506</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>2049933361744506</string>
-    <key>FacebookDisplayName</key>
-    <string>CleanChat</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -37,10 +16,47 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb2049933361744506</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>2049933361744506</string>
+	<key>FacebookDisplayName</key>
+	<string>CleanChat</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>We need your library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need your camera.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please let us use your location.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app requires access to the microphone. </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need your photo library.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -62,17 +78,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please let us use your location.</string>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>We need your camera.</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>We need your library.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need your photo library.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app requires access to the microphone. </string>
 </dict>
 </plist>

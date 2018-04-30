@@ -57,6 +57,7 @@
 		9FF51A1620955F290041661F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF51A1320955F290041661F /* Bolts.framework */; };
 		9FF51A1720955F290041661F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF51A1420955F290041661F /* FBSDKCoreKit.framework */; };
 		9FF51A1A20956D680041661F /* RegisterForPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A1920956D680041661F /* RegisterForPush.swift */; };
+		9FF51A1C2097D8040041661F /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF51A1B2097D8040041661F /* PushNotifications.swift */; };
 		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		9FF51A1420955F290041661F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		9FF51A1820955F320041661F /* cleanchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cleanchat.entitlements; sourceTree = "<group>"; };
 		9FF51A1920956D680041661F /* RegisterForPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForPush.swift; sourceTree = "<group>"; };
+		9FF51A1B2097D8040041661F /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
 				9FF51A10209459DD0041661F /* EditGroupVC.swift */,
 				9FF51A1920956D680041661F /* RegisterForPush.swift */,
+				9FF51A1B2097D8040041661F /* PushNotifications.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -308,7 +311,13 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -449,6 +458,7 @@
 				9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */,
 				9FF51A0B209414650041661F /* AddGroupVC.swift in Sources */,
 				9F3B9F9E208F295300F12CE3 /* SettingsTableVC.swift in Sources */,
+				9FF51A1C2097D8040041661F /* PushNotifications.swift in Sources */,
 				9FBF00832086BACB00C85FE6 /* Audio.swift in Sources */,
 				9FB572C32071D51200A26985 /* ChooseUserCell.swift in Sources */,
 				9FB572BE2071D4AE00A26985 /* Constants.swift in Sources */,

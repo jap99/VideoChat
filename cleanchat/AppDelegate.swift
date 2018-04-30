@@ -54,6 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        if let launchOptions = launchOptions {
+            if let notificationsDict = launchOptions[UIApplicationLaunchOptionsKey.remoteNotification] as? [NSObject: AnyObject] {
+                self.application(application, didReceiveRemoteNotification: notificationsDict)
+            }
+        }
         return true
     }
 
@@ -157,6 +163,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         // register device with backendless here
+        backendless!.messagingService.registerDevice(deviceToken, response: { (success) in
+            print("REGISTERED FOR REMOTE NOTIFICATIONS")
+        }) { (error) in
+            print("ERROR REGISTERING FOR REMOTE NOTIFICATIONS - APP DELEGATE - ERROR: \(error!.detail!)")
+        }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("DID FAIL TO REGISTER FOR REMOTE NOTIFICATIONS - ERROR: \(error)")
     }
     
     
