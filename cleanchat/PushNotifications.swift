@@ -37,7 +37,50 @@ func sendPushNotification2(members: [String], message: String) {
     let newMembersArray = removeCurrrentUserFromMembersArray(members: members)
     
     // get backendless user based on their objectId
+    getMembersToPush(members: newMembersArray) { (userArray) in
+        
+        for user in userArray
+        // send push notif
+        sendPushNotifcation(toUser: user, message: message)
+        
+    }
+}
+
+
+func sendPushNotifcation(toUser: BackendlessUser, message: String) {
     
+    // message, badge count, sound
+}
+
+func numberOfUnreadMessagesOfUser(userID: String, result: @escaping (_ counter: Int) -> Void) {
+    
+    var counter = 0
+    var resultCounter = 0 // used to see when we're done going thru all our recents
+    
+    ref.queryOrdered(byChild: kUSERID).queryEqual(toValue: userID).observe(.value) { (snap) in
+        
+        // checked all the recents that belong to current user
+        
+        if snap.exists() {
+            
+            let recents = (snap.value! as NSDictionary).allValues!
+            
+            for recent in recents {
+                
+                let currentRecent = recent as! NSDictionary
+                let tempCount = (currentRecent[kCOUNTER] as? Int)!
+                resultCounter += 1
+                counter += tempCount
+                
+                if shouldSendPush {
+                    // check we get as many results as we received from firebase
+                    if resultCounter == recents.count {
+                        result(counter)
+                    }
+                }
+            }
+        }
+    }
 }
 
 
