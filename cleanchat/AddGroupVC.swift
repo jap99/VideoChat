@@ -122,7 +122,7 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }, error: {
             (fault : Fault?) -> () in
-            ProgressHUD.showError("Couldnt load friends \(fault!.detail)")
+            ProgressHUD.showError("Couldnt load friends \(fault!.detail!)")
         })
         
     }
@@ -157,7 +157,7 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }, error: {
             (fault : Fault?) -> () in
-            print("Couldnt load all friends: \(fault!.detail)")
+            print("Couldnt load all friends: \(fault!.detail!)")
         })
         
         

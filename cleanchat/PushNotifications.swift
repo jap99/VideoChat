@@ -71,7 +71,7 @@ func sendPushNotifcation(toUser: BackendlessUser, message: String) {
             shouldSendPush = false // w/o this variable, ea time a user creates a group they'd get an empty notifc
         }, error: { fault in
             
-            print("COULD SEND PUSH NOTIFICATION: \(fault!.detail)")
+            print("COULD SEND PUSH NOTIFICATION: \(fault!.detail!)")
         })
     }
 }
@@ -133,7 +133,7 @@ func getMembersToPush(members: [String], result: @escaping (_ usersArray: [Backe
         // query b.e. user table
         let whereClause = "objectId = '\(memberID)'"
         let dq = DataQueryBuilder()
-        dq?.setWhereClause(whereClause)
+        dq!.setWhereClause(whereClause)
         
         let ds = backendless!.persistenceService.of(BackendlessUser.ofClass())
         ds!.find(dq, response: { (users) in
@@ -147,7 +147,7 @@ func getMembersToPush(members: [String], result: @escaping (_ usersArray: [Backe
             }
             
         }) { (fault) in
-            print("COULDNT GET USERS TO PUSH: \(fault!.detail)")
+            print("COULDNT GET USERS TO PUSH: \(fault!.detail!)")
             
         }
     }

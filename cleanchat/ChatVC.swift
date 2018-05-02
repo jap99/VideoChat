@@ -730,7 +730,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                     
                 }, error: { (fault) in
                     
-                    ProgressHUD.showError("Couldn't get chat users: \(fault!.detail)")
+                    ProgressHUD.showError("Couldn't get chat users: \(fault!.detail!)")
                 })
             }
         }

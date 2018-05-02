@@ -169,7 +169,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
         }, error: {
             (fault : Fault?) -> () in
-            print("Couldnt load all friends: \(fault!.detail)")
+            print("Couldnt load all friends: \(fault!.detail!)")
         })
     }
     
@@ -218,7 +218,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 self.loadFriends()
         },
             error: { (fault: Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault))")
+                print("Server reported an error: \(String(describing: fault!.detail!))")
         })
         
     }
@@ -246,7 +246,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
         }) { (fault) in
             
-            ProgressHUD.showError("Couldn't delete friend: \(fault!.detail)")
+            ProgressHUD.showError("Couldn't delete friend: \(fault!.detail!)")
         }
     }
     

@@ -168,7 +168,7 @@ class EditGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
         }, error: {
             (fault : Fault?) -> () in
-            print("Couldnt load all friends: \(fault!.detail)")
+            print("Couldnt load all friends: \(fault!.detail!)")
         })
         
         

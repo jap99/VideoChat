@@ -86,7 +86,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             
         }) { (fault) in
             
-            ProgressHUD.showError("Couldn't register: \(fault!.detail)")
+            ProgressHUD.showError("Couldn't register: \(fault!.detail!)")
         }
         
     }
@@ -114,7 +114,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
                         
                     }, error: { (fault) in
                         
-                        ProgressHUD.showError("Couldn't update user: \(fault!.detail)")
+                        ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
                     })
                 })
             }
@@ -126,7 +126,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             
         }) { (fault) in
             
-            ProgressHUD.showError("Could not login: \(fault!.detail)")
+            ProgressHUD.showError("Could not login: \(fault!.detail!)")
         }
     }
     

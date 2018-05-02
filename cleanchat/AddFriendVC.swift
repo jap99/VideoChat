@@ -116,7 +116,7 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         }) { fault in
             
-            ProgressHUD.showError("Couldn't load users: \(fault!.detail)")
+            ProgressHUD.showError("Couldn't load users: \(fault!.detail!)")
         }
     }
     

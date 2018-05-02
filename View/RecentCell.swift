@@ -63,7 +63,7 @@ class RecentCell: UITableViewCell {
                     })
                 }
             }, error: { (fault) in
-                ProgressHUD.showError("Couldn't Download avatar: \(fault!.detail)")
+                ProgressHUD.showError("Couldn't Download avatar: \(fault!.detail!)")
                 
             })
         }

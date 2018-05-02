@@ -230,7 +230,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
             }, error: { (fault) in
                 
-                ProgressHUD.showError("Couldn't load members: \(fault!.detail)")
+                ProgressHUD.showError("Couldn't load members: \(fault!.detail!)")
             })
         }
     }

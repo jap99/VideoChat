@@ -51,7 +51,7 @@ class FriendCell: UITableViewCell {
             
         }) { (fault) in
             
-            ProgressHUD.showError("Couldn't get Avatar: \(fault!.detail)")
+            ProgressHUD.showError("Couldn't get Avatar: \(fault!.detail!)")
         }
         
         // download user avatar

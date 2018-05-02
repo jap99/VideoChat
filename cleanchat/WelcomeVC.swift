@@ -80,7 +80,7 @@ class WelcomeVC: UIViewController {
                     
                     // get avatar from facebook and update b.e.
                 }, error: { (fault) in
-                    print("ERROR REGISTERING USER WITH FB ACCOUNT: \(fault!.detail)")
+                    print("ERROR REGISTERING USER WITH FB ACCOUNT: \(fault!.detail!)")
                 })
             }
         }
@@ -147,7 +147,7 @@ class WelcomeVC: UIViewController {
             
         }) { (fault) in
             
-            ProgressHUD.showError("Could not login: \(fault!.detail)")
+            ProgressHUD.showError("Could not login: \(fault!.detail!)")
         }
     }
     

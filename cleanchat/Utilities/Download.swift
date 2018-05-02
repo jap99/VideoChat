@@ -86,7 +86,7 @@ func uploadVideo(video: NSData, thumbnail: NSData, result: @escaping (_ videoLin
         })
         
     }) { (fault) in
-        ProgressHUD.showError("Error uploading thumbnail \(fault!.detail)")
+        ProgressHUD.showError("Error uploading thumbnail \(fault!.detail!)")
     }
 }
 
@@ -97,7 +97,7 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
     
     // access video file name
     let videoFileName = videoUrl.components(separatedBy: "/").last
-    print("PRINTING VIDEO FILE NAME: \(videoFileName)")
+    print("PRINTING VIDEO FILE NAME: \(String(describing: videoFileName))")
     // check if the file was downloaded before - if yes, save if locally
     if fileExistsAtPath(path: videoFileName!) {
         
@@ -174,7 +174,7 @@ func uploadAudio(audioPath: String, result: @escaping (_ audioLink: String?) -> 
         
     }) { (fault) in
         
-        ProgressHUD.showError("Error uploading Audio: \(fault!.detail)")
+        ProgressHUD.showError("Error uploading Audio: \(fault!.detail!)")
     }
 }
 

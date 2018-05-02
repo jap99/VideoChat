@@ -73,6 +73,10 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let chatVC = ChatVC()
+        chatVC.titleName = user.name as String
+        chatVC.members = [backendless!.userService.currentUser.objectId as String, user.objectId as String]
         startChat(user1: backendless!.userService.currentUser, user2: user)
     }
     
@@ -94,7 +98,7 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             
         }) { fault in
             
-            ProgressHUD.showError("Couldn't load users: \(fault!.detail)")
+            ProgressHUD.showError("Couldn't load users: \(fault!.detail!)")
         }
     }
     
