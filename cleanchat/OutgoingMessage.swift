@@ -58,7 +58,7 @@ class OutgoingMessage {
             
             if error != nil {
                 
-                ProgressHUD.showError("Outgoing message error \(error?.localizedDescription)")
+                ProgressHUD.showError("Outgoing message error \(String(describing: error!.localizedDescription))")
             }
         }
         
@@ -66,6 +66,7 @@ class OutgoingMessage {
         updateRecents(chatRoomId: chatRoomID, lastMessage: (item[kMESSAGE] as? String)!)
         
         // send push notification
+        sendPushNotification1(chatRoomID: chatRoomID, message: (item[kMESSAGE] as? String)!)
     }
     
     

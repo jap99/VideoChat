@@ -39,17 +39,41 @@ func sendPushNotification2(members: [String], message: String) {
     // get backendless user based on their objectId
     getMembersToPush(members: newMembersArray) { (userArray) in
         
-        for user in userArray
+        for user in userArray {
+        shouldSendPush = true 
         // send push notif
         sendPushNotifcation(toUser: user, message: message)
         
     }
+}
 }
 
 
 func sendPushNotifcation(toUser: BackendlessUser, message: String) {
     
     // message, badge count, sound
+    numberOfUnreadMessagesOfUser(userID: toUser.objectId as String) { (counter) in
+        
+        // get device ID from b.e. user
+        let deviceID = toUser.getProperty(kDEVICEID) as! String
+        print("DEVICE ID: \(deviceID)")
+        
+        // get delivery options from b.e.
+        let deliveryOptions = DeliveryOptions()
+        deliveryOptions.pushSinglecast = [deviceID]
+        deliveryOptions.publishPolicy(PUSH.rawValue)
+        
+        let publishOptions = PublishOptions()
+        publishOptions.assignHeaders(["ios-alert": "\(backendless!.userService.currentUser.name!) \n \(message)", "ios-badge": "\(counter)", "ios-sound": "default"])
+        
+        backendless!.messaging.publish("default", message: message, publishOptions: publishOptions, deliveryOptions: deliveryOptions, response: {  messageStatus in
+            
+            shouldSendPush = false // w/o this variable, ea time a user creates a group they'd get an empty notifc
+        }, error: { fault in
+            
+            print("COULD SEND PUSH NOTIFICATION: \(fault!.detail)")
+        })
+    }
 }
 
 func numberOfUnreadMessagesOfUser(userID: String, result: @escaping (_ counter: Int) -> Void) {
@@ -62,9 +86,10 @@ func numberOfUnreadMessagesOfUser(userID: String, result: @escaping (_ counter: 
         // checked all the recents that belong to current user
         
         if snap.exists() {
-            
-            let recents = (snap.value! as NSDictionary).allValues!
-            
+            print("PRINT RECENTS: ")
+            let recents = (snap.value! as! NSDictionary).allValues
+            // let recents = (snap.value! as! NSDictionary).allValues!
+            print(recents)
             for recent in recents {
                 
                 let currentRecent = recent as! NSDictionary
