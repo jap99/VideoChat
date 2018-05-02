@@ -260,15 +260,20 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let text = text {
             // text message
-            outgoingMessage = OutgoingMessage(message: text, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kTEXT)
+            
+            // encrypt
+            let encryptedText = encryptText(chatRoomID: chatRoomId, text: text)
+            outgoingMessage = OutgoingMessage(message: encryptedText, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kTEXT)
         }
         
         if let pic = picture {
             
             let imageData = UIImageJPEGRepresentation(pic, 0.5)
-            let text = kPICTURE
             
-            outgoingMessage = OutgoingMessage(message: text, pictureData: imageData! as NSData, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kPICTURE)
+            //encrypt
+            let encryptedText = encryptText(chatRoomID: chatRoomId, text: kPICTURE)
+            
+            outgoingMessage = OutgoingMessage(message: encryptedText, pictureData: imageData! as NSData, senderId: backendless!.userService.currentUser.objectId as String, senderName: backendless!.userService.currentUser.name as String, date: date, status: kDELIVERED, type: kPICTURE)
         }
         
         if let video = video {
@@ -287,10 +292,11 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             //upload to backendless
             uploadVideo(video: videoData!, thumbnail: dataThumbnail! as NSData) { (videoLink, thumbnailLink) in
                 
-                let text = kVIDEO
+                // encrypt
+                let encryptedText = encryptText(chatRoomID: self.chatRoomId, text: kVIDEO)
                 
                 // create ougoingMessage
-                outgoingMessage = OutgoingMessage(message: text, video: videoLink!, thumbnail: thumbnailLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kVIDEO)
+                outgoingMessage = OutgoingMessage(message: encryptedText, video: videoLink!, thumbnail: thumbnailLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kVIDEO)
                 
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
@@ -305,10 +311,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             
             uploadAudio(audioPath: audioPath) { (audioLink) in
                 //save the audio link we get back form our callback function in firebase
-                let text = kAUDIO
+                
+                //encrypt
+                let encryptedText = encryptText(chatRoomID: self.chatRoomId, text: kAUDIO)
                 
                 // create the message
-                outgoingMessage = OutgoingMessage(message: text, audio: audioLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kAUDIO)
+                outgoingMessage = OutgoingMessage(message: encryptedText, audio: audioLink!, senderId: self.currentUser.objectId as String, senderName: self.currentUser.name as String, date: date, status: kDELIVERED, type: kAUDIO)
                 
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
@@ -320,14 +328,15 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         }
         
         // send location
-        if let location = location {
+        if location != nil {
             
             let lat = NSNumber(value: appDelegate.coordinates!.latitude)
             let long = NSNumber(value: appDelegate.coordinates!.longitude)
             
-            let text = kLOCATION
+            // encrypt
+            let encryptedText = encryptText(chatRoomID: chatRoomId, text: kLOCATION)
             
-            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: long, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDELIVERED, type: kLOCATION)
+            outgoingMessage = OutgoingMessage(message: encryptedText, latitude: lat, longitude: long, senderId: currentUser.objectId as String, senderName: currentUser.name as String, date: date, status: kDELIVERED, type: kLOCATION)
         }
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()

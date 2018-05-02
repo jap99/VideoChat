@@ -69,7 +69,7 @@ class RecentCell: UITableViewCell {
         }
         // specify name label, counter and last message
         nameLabel.text = recent[kWITHUSERUSERNAME] as? String
-        lastMessageLabel.text = (recent[kLASTMESSAGE] as? String)!
+        lastMessageLabel.text = decryptText(chatRoomID: (recent[kCHATROOMID] as? String)!, text: (recent[kLASTMESSAGE] as? String)!)
         counterLabel.text = ""
         
         if (recent[kCOUNTER] as? Int)! != 0 {

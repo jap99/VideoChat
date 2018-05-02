@@ -47,7 +47,7 @@ public class IncomingMessage {
             message = createAudioMessage(item: dictionary)
         }
         
-        if let mes = message {
+        if message != nil {
             // if we've set the message in a previous func we return it here
             return message!
         }
@@ -115,10 +115,12 @@ public class IncomingMessage {
         
         let date = dateFormatter().date(from: (item[kDATE] as? String)!)
         
-        // display msg
         let text = (item[kMESSAGE] as? String)!
         
-        return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: text)
+        // decrypt text
+        let decryptedText = decryptText(chatRoomID: chatRoomID, text: text)
+        
+        return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: decryptedText)
         
     }
     
