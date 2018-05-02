@@ -94,7 +94,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         // check which row we're selecting to see which user to chat with
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 { // SECTION 0 is our GROUP; SECTION 1 is our USER
             
             // start group chat
             startGroupChat(group: self.group!)
@@ -107,6 +107,13 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             chatVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(chatVC, animated: true)
+       
+        } else { // if user taps on a user then we'll show them that user's profile
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC-ID") as! ProfileVC
+            
+            vc.user = users[indexPath.row]
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -219,7 +226,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let dataQuery = DataQueryBuilder()
             
-            dataQuery?.setWhereClause(whereClause)
+            dataQuery!.setWhereClause(whereClause)
             
             let ds = backendless!.persistenceService.of(BackendlessUser.ofClass())
             ds!.find(dataQuery, response: { (users) in

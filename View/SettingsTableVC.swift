@@ -124,6 +124,10 @@ class SettingsTableVC: UITableViewController {
             // in avatar cell
             
             // show profile VC
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC-ID") as! ProfileVC
+            
+            vc.user = backendless!.userService.currentUser
+            self.present(vc, animated: true, completion: nil)
             
         }
         
