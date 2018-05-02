@@ -38,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let center = UNUserNotificationCenter.current()
             center.delegate = self
             center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-                UIApplication.shared.registerForRemoteNotifications()
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
         } else {
             // Fallback on earlier versions
@@ -78,6 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationDidBecomeActive(_ application: UIApplication) {
         locationManagerStart()
         FBSDKAppEvents.activateApp()
+        
+        application.applicationIconBadgeNumber = 0 
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

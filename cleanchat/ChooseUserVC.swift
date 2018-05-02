@@ -77,7 +77,9 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         let chatVC = ChatVC()
         chatVC.titleName = user.name as String
         chatVC.members = [backendless!.userService.currentUser.objectId as String, user.objectId as String]
-        startChat(user1: backendless!.userService.currentUser, user2: user)
+        chatVC.chatRoomId = startChat(user1: backendless!.userService.currentUser, user2: user)
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     // MARK: - LOAD USERS
