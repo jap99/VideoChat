@@ -703,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="789" y="-688"/>
         </scene>
-        <!--View Controller-->
+        <!--CallVC-->
         <scene sceneID="glE-Me-ggi">
             <objects>
-                <viewController id="mw4-en-Y6i" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CallVC-ID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mw4-en-Y6i" customClass="CallVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Wy-FX-En7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +717,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPq-84-fly">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPq-84-fly">
                                 <rect key="frame" x="16" y="141" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -730,6 +730,9 @@
                                     <constraint firstAttribute="height" constant="75" id="SMZ-nt-Rax"/>
                                 </constraints>
                                 <state key="normal" image="hangup"/>
+                                <connections>
+                                    <action selector="endCallButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="xfP-F5-ist"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9D7-jr-S0E">
                                 <rect key="frame" x="222.5" y="463" width="75" height="75"/>
@@ -738,6 +741,9 @@
                                     <constraint firstAttribute="height" constant="75" id="ZTs-Nd-dzn"/>
                                 </constraints>
                                 <state key="normal" image="hangup"/>
+                                <connections>
+                                    <action selector="declineButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="UUC-AL-xKG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzb-FH-sfO">
                                 <rect key="frame" x="22.5" y="463" width="75" height="75"/>
@@ -746,6 +752,9 @@
                                     <constraint firstAttribute="height" constant="75" id="nQX-LX-xB3"/>
                                 </constraints>
                                 <state key="normal" image="answer_button"/>
+                                <connections>
+                                    <action selector="answerButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="Fs1-bu-xwz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -14,6 +14,6 @@
 
 #import "IDMPhotoBrowser.h" // To display our images
 
-// #import <Sinch/Sinch.h> // for calling
+ #import <Sinch/Sinch.h> // for calling
 
 #import "RNCryptor.h" // for encryption

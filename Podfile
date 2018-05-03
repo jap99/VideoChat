@@ -13,7 +13,7 @@ pod 'Firebase/Storage'
 pod 'Firebase'
 pod 'JSQMessagesViewController'
 pod 'IDMPhotoBrowser'
-
+pod 'SinchRTC'
 pod 'Backendless'
 
 #pod 'ProgressHUD'
