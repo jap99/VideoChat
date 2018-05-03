@@ -15,8 +15,11 @@ import FBSDKCoreKit
 //import UserNotificationsUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate, SINClientDelegate, SINCallClientDelegate, SINManagedPushDelegate {
 
+    var _client: SINClient!
+    var push: SINManagedPush!
+    
     var window: UIWindow?
     
     // setup for our location
@@ -26,8 +29,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     let APP_ID = "48E0C0BD-4D5D-7547-FFD1-C6819D10B800"
     let API_KEY = "AA407415-008C-0F4C-FF10-C8E3966D9600" // aka API KEY
     let VERSION_NUM = "v1"
+    
+    let sinchKey = "6515f8d8-b374-49f1-b9f3-02d201f69ec6"
+    let sinchSecret = "tctoTFJAMEu0aq/D67pH5A=="
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Sinch Push
+        self.push = Sinch.managedPush(with: .development)
+        self.push.delegate = self
+        self.push.setDesiredPushTypeAutomatically()
+        
+        func onUserDidLogin(userID: String) {
+            
+            // we'll have a notif center observer
+            self.push.registerUserNotificationSettings()
+            
+            // init sinch
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, queue: nil) { (note) in
+            
+            let userID = note.userInfo!["userId"] as! String
+            UserDefaults.standard.set(userID, forKey: "userId") // save userID to userdefaults
+            UserDefaults.standard.synchronize()
+            
+            onUserDidLogin(userID: userID)
+            
+        }
         
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
