@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             self.push.registerUserNotificationSettings()
             
             // init sinch
+            self.initSinchWithUserID(userId: userID)
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, queue: nil) { (note) in
@@ -275,8 +276,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         top?.present(callVC, animated: true, completion: nil)
     }
     
+    func client(_ client: SINCallClient!, localNotificationForIncomingCall call: SINCall!) -> SINLocalNotification! {
+        let notif = SINLocalNotification()
+        notif.alertAction = "Answer"
+        notif.alertBody = "Incoming Call"
+        
+        return notif
+    }
     
+    // MARK: SINClientDelegate
     
+    func clientDidStart(_ client: SINClient!) {
+        print("SINCH CLIENT STARTED")
+    }
+    
+    func clientDidFail(_ client: SINClient!, error: Error!) {
+        print("SINCH CLIENT FAILED")
+    }
+    
+    func client(_ client: SINClient!, logMessage message: String!, area: String!, severity: SINLogSeverity, timestamp: Date!) {
+        if severity == .critical {
+            print("MESSAGE: \(message)")
+        }
+    }
     
     
 }
