@@ -127,18 +127,45 @@ class CallVC: UIViewController, SINCallDelegate {
         }
     }
     
+    // MARK: SINCall Delegate functions
+    
+    func callDidProgress(_ call: SINCall!) {
+        
+        setCallStatusText(text: "Ringing...")
+        audioController().startPlayingSoundFile(pathForSound(soundName: "ringback"), loop: true)
+    }
+    
+    func callDidEstablish(_ call: SINCall!) {
+        
+        startCallDurationTimer()
+        showButtons()
+        audioController().stopPlayingSoundFile()
+    }
+    
+    func callDidEnd(_ call: SINCall!) {
+        
+        audioController().stopPlayingSoundFile()
+        stopCallDurationTimer()
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: IBActions
     
     @IBAction func declineButton_Pressed(_ sender: UIButton) {
-        
+        _call.hangup()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func endCallButton_Pressed(_ sender: UIButton) {
-        
+        _call.hangup()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func answerButton_Pressed(_ sender: UIButton) {
-        
+        audioController().stopPlayingSoundFile()
+        callAnswered = true
+        showButtons()
+        _call.answer()
     }
 
 }
