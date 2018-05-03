@@ -195,6 +195,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
+        self.push.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken) // SinchRTC
+        
         // register device with backendless here
         backendless!.messagingService.registerDevice(deviceToken, response: { (success) in
             print("REGISTERED FOR REMOTE NOTIFICATIONS")
@@ -209,12 +211,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        
+        self.push.application(application, didReceiveRemoteNotification: userInfo) // SinchRTC
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("DID FAIL TO REGISTER FOR REMOTE NOTIFICATIONS - ERROR: \(error)")
     }
+    
+    // MARK: Sinch init
+    
+    func initSinchWithUserID(userId: String) {
+        
+        if _client == nil {
+            
+            _client = Sinch.client(withApplicationKey: sinchKey, applicationSecret: sinchSecret, environmentHost: "clientapi.sinch.com", userId: userId)
+            
+            _client.delegate = self
+            _client.call().delegate = self
+            _client.setSupportCalling(true)
+            _client.enableManagedPushNotifications()
+            _client.start()
+            _client.startListeningOnActiveConnection()
+        }
+        
+    }
+    
+    
+    func handleRemoteNotifications(userInfo: NSDictionary) {
+        
+        if _client != nil {
+            
+            let userId = UserDefaults.standard.object(forKey: "userId")
+            
+            if userId != nil {
+                
+                self.initSinchWithUserID(userId: userId as String) // starts our Sinch client
+            }
+        }
+        
+        self._client.relayRemotePushNotification(userInfo as! [AnyHashable: Any])
+    }
+    
+    
+    // MARK: SINManagedPushDelegate
+    
+    func managedPush(_ managedPush: SINManagedPush!, didReceiveIncomingPushWithPayload payload: [AnyHashable : Any]!, forType pushType: String!) {
+        self.handleRemoteNotifications(userInfo: payload as NSDictionary)
+    }
+    
+    // MARK: SINCallClientDelegate
+    
+    func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
+        print("HAVE A CALL")
+        // access our call screen
+        var top = self.window?.rootViewController
+        
+        while (top?.presentedViewController != nil) {
+            top = top?.presentedViewController
+        }
+        
+        let callVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CallVC-ID") as! CallVC
+        callVC._call = call
+        top?.present(callVC, animated: true, completion: nil)
+    }
+    
+    
     
     
     
