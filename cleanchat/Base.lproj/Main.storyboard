@@ -735,7 +735,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9D7-jr-S0E">
-                                <rect key="frame" x="222.5" y="463" width="75" height="75"/>
+                                <rect key="frame" x="215" y="463" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="AAZ-jW-Fcx"/>
                                     <constraint firstAttribute="height" constant="75" id="ZTs-Nd-dzn"/>
@@ -746,7 +746,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzb-FH-sfO">
-                                <rect key="frame" x="22.5" y="463" width="75" height="75"/>
+                                <rect key="frame" x="30" y="463" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="0LQ-DI-FK3"/>
                                     <constraint firstAttribute="height" constant="75" id="nQX-LX-xB3"/>
@@ -759,15 +759,13 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="9D7-jr-S0E" firstAttribute="leading" secondItem="Yo6-3y-x9Z" secondAttribute="trailing" priority="999" constant="25" id="1gD-vB-sQW"/>
-                            <constraint firstItem="Yo6-3y-x9Z" firstAttribute="leading" secondItem="Qzb-FH-sfO" secondAttribute="trailing" priority="999" constant="25" id="EAk-qh-Osj"/>
-                            <constraint firstItem="Qzb-FH-sfO" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="22.5" id="FIe-E4-dHC"/>
+                            <constraint firstItem="Qzb-FH-sfO" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="30" id="FIe-E4-dHC"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="CyK-qg-W82" secondAttribute="trailing" constant="16" id="UBL-SG-6WE"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Yo6-3y-x9Z" secondAttribute="bottom" constant="30" id="Wpq-QG-XBz"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="9D7-jr-S0E" secondAttribute="bottom" constant="30" id="aus-OX-p6x"/>
                             <constraint firstItem="Yo6-3y-x9Z" firstAttribute="centerX" secondItem="6Wy-FX-En7" secondAttribute="centerX" id="cF6-Uh-su3"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="QPq-84-fly" secondAttribute="trailing" constant="16" id="dXy-VI-j9l"/>
-                            <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="9D7-jr-S0E" secondAttribute="trailing" constant="22.5" id="eox-MG-ga5"/>
+                            <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="9D7-jr-S0E" secondAttribute="trailing" constant="30" id="eox-MG-ga5"/>
                             <constraint firstItem="QPq-84-fly" firstAttribute="top" secondItem="CyK-qg-W82" secondAttribute="bottom" constant="25" id="erE-D5-osY"/>
                             <constraint firstItem="CyK-qg-W82" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="16" id="fxo-Q3-85t"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Qzb-FH-sfO" secondAttribute="bottom" constant="30" id="p7N-7b-yLI"/>
@@ -776,6 +774,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7M0-4O-Umz"/>
                     </view>
+                    <connections>
+                        <outlet property="answerButton" destination="9D7-jr-S0E" id="ZYl-G6-EWZ"/>
+                        <outlet property="declineButton" destination="9D7-jr-S0E" id="I5y-Pc-JBZ"/>
+                        <outlet property="hangupButton" destination="Yo6-3y-x9Z" id="Fft-QX-r7G"/>
+                        <outlet property="remoteUserNameLabel" destination="CyK-qg-W82" id="wpA-7O-5il"/>
+                        <outlet property="statusLabel" destination="QPq-84-fly" id="5v1-rA-BmC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6V-MM-ey4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

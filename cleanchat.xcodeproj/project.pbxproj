@@ -18,6 +18,8 @@
 		9F624C232099AC9E00D7E869 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F624C222099AC9E00D7E869 /* Encryption.swift */; };
 		9F624C25209A6DA600D7E869 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F624C24209A6DA600D7E869 /* ProfileVC.swift */; };
 		9F624C27209A74C500D7E869 /* CallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F624C26209A74C500D7E869 /* CallVC.swift */; };
+		9F624C29209A93F900D7E869 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C28209A93F800D7E869 /* ringback.wav */; };
+		9F624C2B209A940700D7E869 /* incoming.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C2A209A940700D7E869 /* incoming.wav */; };
 		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
 		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */; };
@@ -102,6 +104,8 @@
 		9F624C222099AC9E00D7E869 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		9F624C24209A6DA600D7E869 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		9F624C26209A74C500D7E869 /* CallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallVC.swift; sourceTree = "<group>"; };
+		9F624C28209A93F800D7E869 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
+		9F624C2A209A940700D7E869 /* incoming.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incoming.wav; sourceTree = "<group>"; };
 		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 				9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */,
 				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
 				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
+				9F624C2A209A940700D7E869 /* incoming.wav */,
+				9F624C28209A93F800D7E869 /* ringback.wav */,
 				9FF51A1F20980EDC0041661F /* AppIcon.appiconset */,
 				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
 				9FE14FF61F22178900F3FE09 /* Info.plist */,
@@ -446,6 +452,7 @@
 				9FB572CD2071E55800A26985 /* ProgressHUD.bundle in Resources */,
 				9FF51A3B20980EDC0041661F /* Icon-83.5@2x.png in Resources */,
 				9FF51A4A20980EDC0041661F /* Icon-Small-50.png in Resources */,
+				9F624C2B209A940700D7E869 /* incoming.wav in Resources */,
 				9FF51A4720980EDC0041661F /* Contents.json in Resources */,
 				9FF51A4620980EDC0041661F /* Icon-40.png in Resources */,
 				9FF51A4920980EDC0041661F /* Icon-Small@3x.png in Resources */,
@@ -460,6 +467,7 @@
 				9FF51A4420980EDC0041661F /* Icon@2x.png in Resources */,
 				9FE14FF21F22178900F3FE09 /* Assets.xcassets in Resources */,
 				9FE14FF01F22178900F3FE09 /* Main.storyboard in Resources */,
+				9F624C29209A93F900D7E869 /* ringback.wav in Resources */,
 				9FF51A3920980EDC0041661F /* Icon-40@2x.png in Resources */,
 				9FF51A3A20980EDC0041661F /* Icon-40@3x.png in Resources */,
 			);
