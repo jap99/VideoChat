@@ -122,7 +122,7 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }, error: {
             (fault : Fault?) -> () in
-            ProgressHUD.showError("Couldnt load friends \(fault!.detail!)")
+            ProgressHUD.showError("We had a difficult time loading your friend's list. Here's the error we got: \(fault!.detail!)")
         })
         
     }
@@ -151,13 +151,13 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.tv.reloadData()
                 
                 if self.friends.count == 0 {
-                    ProgressHUD.showError("Currently you have no friends, please add some")
+                    ProgressHUD.showError("No groups available. Feel free to create one.")
                 }
             }
             
         }, error: {
             (fault : Fault?) -> () in
-            print("Couldnt load all friends: \(fault!.detail!)")
+            print("We had a difficult time loading your friend's list. Here's the error we got: \(fault!.detail!)")
         })
         
         
@@ -170,13 +170,13 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // check if we have a group name
         if groupNameTextField.text == "" {
             
-            ProgressHUD.showError("Group name must be set!")
+            ProgressHUD.showError("Give your group a name. Then add at least one friend and click Done!")
             return
         }
         
         if groupMembers.count == 0 {
             // checking if any members have been added to group yet
-            ProgressHUD.showError("Please select some users")
+            ProgressHUD.showError("A group needs to have at least one additional member in order to be considered a group")
             return
         }
         

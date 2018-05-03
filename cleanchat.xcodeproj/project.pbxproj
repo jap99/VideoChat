@@ -20,6 +20,8 @@
 		9F624C27209A74C500D7E869 /* CallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F624C26209A74C500D7E869 /* CallVC.swift */; };
 		9F624C29209A93F900D7E869 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C28209A93F800D7E869 /* ringback.wav */; };
 		9F624C2B209A940700D7E869 /* incoming.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C2A209A940700D7E869 /* incoming.wav */; };
+		9F624C2E209ABE5500D7E869 /* bubbleboddy.fat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */; };
+		9F624C2F209ABE7300D7E869 /* bubbleboddy.light-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */; };
 		9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCEF20809D3400F34663 /* ChatVC.swift */; };
 		9F8ACCF220809DA200F34663 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ACCF120809DA200F34663 /* AVFoundation.framework */; };
 		9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */; };
@@ -106,6 +108,8 @@
 		9F624C26209A74C500D7E869 /* CallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallVC.swift; sourceTree = "<group>"; };
 		9F624C28209A93F800D7E869 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
 		9F624C2A209A940700D7E869 /* incoming.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incoming.wav; sourceTree = "<group>"; };
+		9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bubbleboddy.light-light.ttf"; sourceTree = "<group>"; };
+		9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bubbleboddy.fat.ttf; sourceTree = "<group>"; };
 		9F8ACCEF20809D3400F34663 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9F8ACCF120809DA200F34663 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 		9FE14FE91F22178900F3FE09 /* cleanchat */ = {
 			isa = PBXGroup;
 			children = (
+				9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */,
+				9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */,
 				9FF51A1820955F320041661F /* cleanchat.entitlements */,
 				9FB572C92071E55800A26985 /* ProgressHUD */,
 				9FB572C52071E51D00A26985 /* Encryption */,
@@ -460,7 +466,9 @@
 				9FF51A4520980EDC0041661F /* NotificationIcon~ipad.png in Resources */,
 				9FF51A4120980EDC0041661F /* Icon-72.png in Resources */,
 				9FF51A3720980EDC0041661F /* Icon.png in Resources */,
+				9F624C2F209ABE7300D7E869 /* bubbleboddy.light-light.ttf in Resources */,
 				9FF51A4220980EDC0041661F /* Icon-72@2x.png in Resources */,
+				9F624C2E209ABE5500D7E869 /* bubbleboddy.fat.ttf in Resources */,
 				9FB572B42071D3EF00A26985 /* GoogleService-Info (1).plist in Resources */,
 				9FF51A4B20980EDC0041661F /* ios-marketing.png in Resources */,
 				9FF51A4C20980EDC0041661F /* Icon-Small@2x.png in Resources */,
@@ -748,6 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VWFZU9229C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -759,8 +768,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "361f1e08-9b60-47c6-a6cd-b703da621cd6";
-				PROVISIONING_PROFILE_SPECIFIER = "CleanChat-Dev-ProvProf";
+				PROVISIONING_PROFILE = "295b7788-927b-49ad-9b9e-0850fe515956";
+				PROVISIONING_PROFILE_SPECIFIER = CleanChat_PROD_provProf;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

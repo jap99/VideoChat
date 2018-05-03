@@ -91,13 +91,13 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func addRecentBarButtonPressed(_ sender: Any) {
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let friendList = UIAlertAction(title: "Friends List", style: .default) { (alert) in
+        let friendList = UIAlertAction(title: "Message A Friend", style: .default) { (alert) in
             
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
             vc.selectedIndex = 2
             self.present(vc, animated: true, completion: nil)
         }
-        let allUsers = UIAlertAction(title: "All Users", style: .default) { (alert) in
+        let allUsers = UIAlertAction(title: "Message Another User", style: .default) { (alert) in
             self.performSegue(withIdentifier: "recentToChooseUserSeg", sender: self)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in }

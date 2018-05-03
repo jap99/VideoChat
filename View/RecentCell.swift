@@ -91,7 +91,7 @@ class RecentCell: UITableViewCell {
         } else {
             // return date of the message
             let currentDateFormatter = dateFormatter()
-            currentDateFormatter.dateFormat = "dd/MM"
+            currentDateFormatter.dateFormat = "MM/dd"
             
             elapsed = "\(currentDateFormatter.string(from: date))"
         }

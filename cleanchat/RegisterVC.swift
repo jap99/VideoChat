@@ -25,6 +25,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
 
         self.navigationController?.isNavigationBarHidden = false
         newUser = BackendlessUser() 
+        registerButtonOutlet.layer.cornerRadius = 4.0
         
     }
 

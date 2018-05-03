@@ -34,6 +34,7 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tv.tableHeaderView = searchController.searchBar // our tv's header is where our search bar will show
+        searchController.searchBar.placeholder = "Search"
         
     }
 
@@ -109,7 +110,7 @@ class AddFriendVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         // now that we have dataStore we can do the query to get our users
         dataStore!.find(dataQuery, response: { (users) in
-            print("PRINTING USERS - \(users)")
+            print("PRINTING USERS - \(String(describing: users))")
             //self.users = users!.data as! [BackendlessUser]
             self.users = users! as! [BackendlessUser]
             self.tv.reloadData()

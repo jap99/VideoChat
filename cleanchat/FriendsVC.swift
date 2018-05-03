@@ -136,7 +136,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 
                 if friends.count == 0 {
                     
-                    ProgressHUD.showError("Currently there are no added friends - \(friends.count)")
+                    ProgressHUD.showError("You have not added any friends.")
                 }
             }
             

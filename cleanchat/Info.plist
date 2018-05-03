@@ -21,16 +21,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb2049933361744506</string>
+				<string>fb101649020700536</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>2049933361744506</string>
+	<string>101649020700536</string>
 	<key>FacebookDisplayName</key>
-	<string>CleanChat</string>
+	<string>New_Chat</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -83,5 +83,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>bubbleboddy.light-light.ttf</string>
+		<string>bubbleboddy.fat.ttf</string>
+	</array>
 </dict>
 </plist>

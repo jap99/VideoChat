@@ -84,7 +84,7 @@ class CallVC: UIViewController, SINCallDelegate {
             
             declineButton.isHidden = false
             hangupButton.isHidden = true
-            answerButton.isHidden = false
+            answerButton.isHidden = true 
         }
     }
     

@@ -620,6 +620,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         if members.count < 3 {
             
             // display call button
+            let callButton = UIBarButtonItem(image: UIImage(named: "Phone"), style: .plain, target: self, action: #selector(ChatVC.callBarButton_Pressed))
+            self.navigationItem.rightBarButtonItem = callButton
         } // otherwise don't because we don't have a conference chat
   
         getWithUserFromRecent(members: members) { (withUsers) in
@@ -719,7 +721,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                 
                 let whereClause = "objectId = '\(userId)'"
                 let dataQuery = DataQueryBuilder()
-                dataQuery?.setWhereClause(whereClause)
+                dataQuery!.setWhereClause(whereClause)
                 
                 let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
                 dataStore!.find(dataQuery, response: { (users) in
@@ -780,6 +782,28 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         // get bg from userdefaults and set it to chat bg color
         self.collectionView.backgroundColor = UIColor(red: CGFloat(userDefaults.float(forKey: kRED)), green: CGFloat(userDefaults.float(forKey: kGREEN)), blue: CGFloat(userDefaults.float(forKey: kBLUE)), alpha: 1.0)
     }
+    
+    
+    // MARK: Call Functions
+    
+    func callClient() -> SINCallClient {
+        return appDelegate._client.call()
+    }
+    
+    @objc func callBarButton_Pressed() {
+        
+        let userToCallId = withUsers.first!.objectId as String // first object id we want to call
+        let call = callClient().callUser(withId: userToCallId)
+        
+        let callVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CallVC-ID") as! CallVC
+        callVC._call = call
+        self.present(callVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
     
     
     

@@ -41,6 +41,9 @@ class WelcomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registerButtonOutlet.layer.cornerRadius = 4.0
+        
+        loginButtonOutlet.layer.cornerRadius = 4.0
         
     }
 
