@@ -25,3 +25,23 @@ func dateFormatter() -> DateFormatter {
     return dateFormatter
 }
 
+func userNameFromCallerID(callerID: String, result: @escaping (_ callerName: String?) -> Void) {
+    
+    // acess our b.e. and find the user with the objectId aka callerId that's been passed to us
+    let whereClause = "objectId = '\(callerID)'"
+    let dq = DataQueryBuilder()
+    dq?.setWhereClause(whereClause)
+    
+    let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
+    dataStore!.find(dq, response: { users in
+        
+        let user = users!.first as! BackendlessUser
+        result(user.name as String)
+        
+    }, error: {
+        fault in
+        
+        ProgressHUD.showError("COULDNT GET USERNAME THAT IS CALLING: \(fault!.detail!)")
+    })
+    
+}

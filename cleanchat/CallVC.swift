@@ -29,8 +29,41 @@ class CallVC: UIViewController, SINCallDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        _call.delegate = self
+        if _call.direction == SINCallDirection.incoming {
+            setCallStatusText(text: "")
+            showButtons()
+            audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
+        } else {
+            callAnswered = true
+            setCallStatusText(text: "Calling...")
+            showButtons()
+        }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.remoteUserNameLabel.text = "Unknown"
+        let id = _call.remoteUserId // accessing our call; remoteUserId will be our b.e. userId - their username
+        
+        userNameFromCallerID(callerID: id!) { (userName) in
+            self.remoteUserNameLabel.text = userName!
+        }
+    }
+    
+    
+    // Access Sinch audio controller so we can answer phone and speak
+    func audioController() -> SINAudioController {
+            return appDelegate._client.audioController()
+    }
+    
+    func setCall(call: SINCall) { // need this function because we're passing the call from the app delegate
+        _call = call
+        _call.delegate = self
+    }
+    
+    
     
     // MARK: UI Update
 
