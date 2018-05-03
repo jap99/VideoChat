@@ -214,7 +214,7 @@
             </objects>
             <point key="canvasLocation" x="4545" y="-634.85915492957747"/>
         </scene>
-        <!--RecentVC-->
+        <!--Feed-->
         <scene sceneID="Fz1-xt-ROY">
             <objects>
                 <viewController id="Ghs-CA-zXT" customClass="RecentVC" customModule="cleanchat" customModuleProvider="target" sceneMemberID="viewController">
@@ -317,7 +317,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vdh-wK-XmQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XWm-sU-AQR">
+                    <navigationItem key="navigationItem" title="Feed" id="XWm-sU-AQR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WO4-dO-pj0">
                             <connections>
                                 <action selector="addRecentBarButtonPressed:" destination="Ghs-CA-zXT" id="55f-zz-Dd5"/>
@@ -727,7 +727,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzb-FH-sfO">
-                                <rect key="frame" x="30" y="463" width="75" height="75"/>
+                                <rect key="frame" x="30" y="453" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="0LQ-DI-FK3"/>
                                     <constraint firstAttribute="height" constant="75" id="nQX-LX-xB3"/>
@@ -738,7 +738,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-3y-x9Z">
-                                <rect key="frame" x="215" y="463" width="75" height="75"/>
+                                <rect key="frame" x="215" y="453" width="75" height="75"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="MjG-Sm-fia"/>
@@ -746,18 +746,18 @@
                                 </constraints>
                                 <state key="normal" image="hangup"/>
                                 <connections>
-                                    <action selector="endCallButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="xfP-F5-ist"/>
+                                    <action selector="declineButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="Rr7-tJ-5ze"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9D7-jr-S0E">
-                                <rect key="frame" x="122.5" y="463" width="75" height="75"/>
+                                <rect key="frame" x="122.5" y="453" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="AAZ-jW-Fcx"/>
                                     <constraint firstAttribute="height" constant="75" id="ZTs-Nd-dzn"/>
                                 </constraints>
                                 <state key="normal" image="hangup"/>
                                 <connections>
-                                    <action selector="declineButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="UUC-AL-xKG"/>
+                                    <action selector="endCallButton_Pressed:" destination="mw4-en-Y6i" eventType="touchUpInside" id="Eh8-yi-8a2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -765,13 +765,13 @@
                         <constraints>
                             <constraint firstItem="Qzb-FH-sfO" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="30" id="FIe-E4-dHC"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="CyK-qg-W82" secondAttribute="trailing" constant="16" id="UBL-SG-6WE"/>
-                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Yo6-3y-x9Z" secondAttribute="bottom" constant="30" id="Wpq-QG-XBz"/>
+                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Yo6-3y-x9Z" secondAttribute="bottom" constant="40" id="Wpq-QG-XBz"/>
                             <constraint firstItem="9D7-jr-S0E" firstAttribute="centerX" secondItem="6Wy-FX-En7" secondAttribute="centerX" id="ZH4-2J-dy7"/>
-                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="9D7-jr-S0E" secondAttribute="bottom" constant="30" id="aus-OX-p6x"/>
+                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="9D7-jr-S0E" secondAttribute="bottom" constant="40" id="aus-OX-p6x"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="QPq-84-fly" secondAttribute="trailing" constant="16" id="dXy-VI-j9l"/>
                             <constraint firstItem="QPq-84-fly" firstAttribute="top" secondItem="CyK-qg-W82" secondAttribute="bottom" constant="25" id="erE-D5-osY"/>
                             <constraint firstItem="CyK-qg-W82" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="16" id="fxo-Q3-85t"/>
-                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Qzb-FH-sfO" secondAttribute="bottom" constant="30" id="p7N-7b-yLI"/>
+                            <constraint firstItem="7M0-4O-Umz" firstAttribute="bottom" secondItem="Qzb-FH-sfO" secondAttribute="bottom" constant="40" id="p7N-7b-yLI"/>
                             <constraint firstItem="QPq-84-fly" firstAttribute="leading" secondItem="7M0-4O-Umz" secondAttribute="leading" constant="16" id="pEo-o9-JSX"/>
                             <constraint firstItem="CyK-qg-W82" firstAttribute="top" secondItem="7M0-4O-Umz" secondAttribute="top" constant="60" id="sHX-Eq-lnN"/>
                             <constraint firstItem="7M0-4O-Umz" firstAttribute="trailing" secondItem="Yo6-3y-x9Z" secondAttribute="trailing" constant="30" id="wGS-Or-glM"/>
@@ -779,9 +779,9 @@
                         <viewLayoutGuide key="safeArea" id="7M0-4O-Umz"/>
                     </view>
                     <connections>
-                        <outlet property="answerButton" destination="9D7-jr-S0E" id="ZYl-G6-EWZ"/>
-                        <outlet property="declineButton" destination="9D7-jr-S0E" id="I5y-Pc-JBZ"/>
-                        <outlet property="hangupButton" destination="Yo6-3y-x9Z" id="Fft-QX-r7G"/>
+                        <outlet property="answerButton" destination="Qzb-FH-sfO" id="N6E-s1-35c"/>
+                        <outlet property="declineButton" destination="Yo6-3y-x9Z" id="hF1-wv-1tK"/>
+                        <outlet property="hangupButton" destination="9D7-jr-S0E" id="R0n-z7-ISt"/>
                         <outlet property="remoteUserNameLabel" destination="CyK-qg-W82" id="wpA-7O-5il"/>
                         <outlet property="statusLabel" destination="QPq-84-fly" id="5v1-rA-BmC"/>
                     </connections>

@@ -24,25 +24,37 @@ class CallVC: UIViewController, SINCallDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate // since we're setting up call in app delegate later on
     
+    override func viewWillLayoutSubviews() {
+        //callAnswered = true
+        showButtons()
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         _call.delegate = self
-        if _call.direction == SINCallDirection.incoming {
-            setCallStatusText(text: "")
-            showButtons()
-            audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
-        } else {
-            callAnswered = true
-            setCallStatusText(text: "Calling...")
-            showButtons()
-        }
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if _call.direction == SINCallDirection.incoming {
+            self.declineButton.isHidden = false
+            self.hangupButton.isHidden = true
+            self.answerButton.isHidden = false
+            setCallStatusText(text: "00 : 00")
+            //showButtons()
+            audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
+        } else {
+            //callAnswered = true
+            setCallStatusText(text: "Calling...")
+            //showButtons()
+            self.declineButton.isHidden = true
+            self.hangupButton.isHidden = false
+            self.answerButton.isHidden = true
+        }
         
         self.remoteUserNameLabel.text = "Unknown"
         let id = _call.remoteUserId // accessing our call; remoteUserId will be our b.e. userId - their username
@@ -74,18 +86,6 @@ class CallVC: UIViewController, SINCallDelegate {
     
     func showButtons() {
         
-        // answered call or is calling
-        if callAnswered {
-            declineButton.isHidden = true
-            hangupButton.isHidden = false
-            answerButton.isHidden = true
-            
-        } else {
-            
-            declineButton.isHidden = false
-            hangupButton.isHidden = true
-            answerButton.isHidden = true 
-        }
     }
     
     // MARK: Helper
@@ -127,18 +127,35 @@ class CallVC: UIViewController, SINCallDelegate {
         }
     }
     
+    
+    
     // MARK: SINCall Delegate functions
     
+        // OUTGOING CALL FUNCTIONS
     func callDidProgress(_ call: SINCall!) {
-        
+       
+        if call.direction == .incoming {
+            self.declineButton.isHidden = false
+            self.hangupButton.isHidden = true
+            self.answerButton.isHidden = false
+       
+        } else if call.direction == .outgoing {
+            self.declineButton.isHidden = true
+            self.hangupButton.isHidden = false
+            self.answerButton.isHidden = true
+        }
+       
         setCallStatusText(text: "Ringing...")
         audioController().startPlayingSoundFile(pathForSound(soundName: "ringback"), loop: true)
+ 
     }
     
     func callDidEstablish(_ call: SINCall!) {
         
         startCallDurationTimer()
-        showButtons()
+        self.declineButton.isHidden = false
+        self.hangupButton.isHidden = true
+        self.answerButton.isHidden = false
         audioController().stopPlayingSoundFile()
     }
     
@@ -148,6 +165,13 @@ class CallVC: UIViewController, SINCallDelegate {
         stopCallDurationTimer()
         dismiss(animated: true, completion: nil)
     }
+    
+        // INCOMING CALL FUNCTIONS
+    
+    
+    
+    
+    
     
     // MARK: IBActions
     
@@ -162,8 +186,8 @@ class CallVC: UIViewController, SINCallDelegate {
     }
     
     @IBAction func answerButton_Pressed(_ sender: UIButton) {
-        audioController().stopPlayingSoundFile()
         callAnswered = true
+        audioController().stopPlayingSoundFile()
         showButtons()
         _call.answer()
     }
