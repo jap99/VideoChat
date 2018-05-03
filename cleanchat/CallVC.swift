@@ -18,7 +18,7 @@ class CallVC: UIViewController, SINCallDelegate {
     @IBOutlet weak var answerButton: UIButton!
     
     var durationTimer: Timer! = nil
-    var _call: SINCall
+    var _call: SINCall!
     
     var callAnswered = false // used to know which UI to display
     

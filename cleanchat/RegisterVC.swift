@@ -99,6 +99,8 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             
             registerUserDeviceID(user: user!)
             
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
+            
             if self.avatarImage != nil {
                 
                 uploadAvatar(image: self.avatarImage!, result: { (imageLink) in

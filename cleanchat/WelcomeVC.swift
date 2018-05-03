@@ -27,6 +27,8 @@ class WelcomeVC: UIViewController {
         // check if user is available
         if backendless!.userService.currentUser != nil {
            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : backendless!.userService.currentUser.objectId])
+            
             DispatchQueue.main.async {
                 
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
@@ -69,6 +71,8 @@ class WelcomeVC: UIViewController {
                 // access token - pass our access token in from facebook; once we're logged in, the result from our callback will have our access token
                 // fields mapping - b.e. needs to know which info from facebook it needs to map to put the user table in our b.e.
                 backendless!.userService.login(withFacebookSDK: userId, tokenString: tokenStringg, expirationDate: expirationDate, fieldsMapping: fieldsMapping, response: { (user) in
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
                     
                     // go to app after fb user's registered
                     
@@ -134,6 +138,8 @@ class WelcomeVC: UIViewController {
         backendless!.userService.login(email, password: password, response: { (user) in
             
             registerUserDeviceID(user: user!)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
              
             self.emailTextField.text = nil
             self.passwordTextField.text = nil

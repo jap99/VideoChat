@@ -246,7 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             if userId != nil {
                 
-                self.initSinchWithUserID(userId: userId as String) // starts our Sinch client
+                self.initSinchWithUserID(userId: userId as! String) // starts our Sinch client
             }
         }
         
