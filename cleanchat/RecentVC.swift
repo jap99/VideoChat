@@ -18,13 +18,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         UIApplication.shared.statusBarStyle = .lightContent
     }
     
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tv.tableFooterView = UIView()
+        
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.barTintColor = lead
@@ -34,7 +33,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.isStatusBarHidden = false
+       
     }
 
     
@@ -53,6 +52,13 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
         let recent = recents[indexPath.section]
         
+        let layer = cell.layer
+       // layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowRadius = 40
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 35.0
+        layer.frame = cell.frame
+        
         cell.bindData(recent: recent)
         
         return cell
@@ -66,7 +72,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = .black
+        headerView.backgroundColor = .darkGray
         return headerView
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

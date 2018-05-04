@@ -15,6 +15,7 @@ class MapVC: UIViewController {
      @IBOutlet weak var cancelButton: UIButton!
  
     var location: CLLocation! // used to pass our location to our mapView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  

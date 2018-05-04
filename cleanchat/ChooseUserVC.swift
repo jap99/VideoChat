@@ -19,6 +19,8 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tv.tableFooterView = UIView()
+        
         tv.delegate = self; tv.dataSource = self
         searchController.searchResultsUpdater = self // tells users when there's an update
         searchController.dimsBackgroundDuringPresentation = false

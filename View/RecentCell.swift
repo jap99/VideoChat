@@ -19,19 +19,18 @@ class RecentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        //self.layer.masksToBounds = false
+        self.layer.cornerRadius = 10.0
+        self.clipsToBounds = true 
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-       // contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 0, 0, 0))
     }
     
     func bindData(recent: NSDictionary) {
         
-        self.layer.cornerRadius = 28.0
-        self.layer.masksToBounds = true
         //circle
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
         avatarImageView.layer.masksToBounds = true

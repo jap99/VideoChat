@@ -17,7 +17,8 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tv.tableFooterView = UIView()
         self.navigationController?.navigationBar.topItem?.title = ""
         
         loadGroups()
