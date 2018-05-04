@@ -10,6 +10,18 @@
 
 import Foundation
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 private let dateFormat = "yyyyMMddHHmmss"
 // private let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 
@@ -45,3 +57,28 @@ func userNameFromCallerID(callerID: String, result: @escaping (_ callerName: Str
     })
     
 }
+
+extension UIImage {
+    func imageWithColor(color: UIColor) -> UIImage? {
+        var image = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.set()
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}
+
+
+let pinkBorder = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1).cgColor
+let pinkColor = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1)
+let lightBlue = UIColor(red: 0/255, green: 38/255, blue: 144/255, alpha: 1)//UIColor(red: 0/255, green: 38/255, blue: 212/255, alpha: 1)    //UIColor(red: 50/255, green: 142/255, blue: 225/255, alpha: 1)
+let lead = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
+let snow = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)

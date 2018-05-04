@@ -23,9 +23,51 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
+        // corner radius
+       emailTextField.layer.cornerRadius = 5.0
+       passwordTextField.layer.cornerRadius = 5.0
+       usernameTextField.layer.cornerRadius = 5.0
+       registerButtonOutlet.layer.cornerRadius = 5.0
+        
+        // border color
+        emailTextField.layer.borderColor = lightBlue.cgColor
+        passwordTextField.layer.borderColor = lightBlue.cgColor
+        usernameTextField.layer.borderColor = lightBlue.cgColor
+        
+        // border width
+        emailTextField.layer.borderWidth = 0.5
+        passwordTextField.layer.borderWidth = 0.5
+        usernameTextField.layer.borderWidth = 0.5
+        
+        //shadow color
+        emailTextField.layer.shadowColor = lightBlue.cgColor
+        passwordTextField.layer.shadowColor = lightBlue.cgColor
+        usernameTextField.layer.shadowColor = lightBlue.cgColor
+        registerButtonOutlet.layer.shadowColor = lightBlue.cgColor
+        
+        // shadow radius
+        emailTextField.layer.shadowRadius = 6.0
+        passwordTextField.layer.shadowRadius = 6.0
+        usernameTextField.layer.shadowRadius = 6.0
+        registerButtonOutlet.layer.shadowRadius = 6.0
+        
+        // shadow opacity
+        emailTextField.layer.shadowOpacity = 4.0
+        passwordTextField.layer.shadowOpacity = 4.0
+        usernameTextField.layer.shadowOpacity = 4.0
+        registerButtonOutlet.layer.shadowOpacity = 4.0
+    
+        // placeholder color
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
         self.navigationController?.isNavigationBarHidden = false
         newUser = BackendlessUser() 
-        registerButtonOutlet.layer.cornerRadius = 4.0
+        
+        self.hideKeyboardWhenTappedAround()
+        
         
     }
 

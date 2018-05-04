@@ -26,6 +26,8 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
         loadFriends()
         
         searchController.searchResultsUpdater = self

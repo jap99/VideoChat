@@ -21,12 +21,12 @@ class RecentCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
- 
-    }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+       // contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 0, 0, 0))
+    }
     
     func bindData(recent: NSDictionary) {
         
@@ -34,7 +34,16 @@ class RecentCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
         avatarImageView.layer.masksToBounds = true
         
-        avatarImageView.image = UIImage(named: "avatarPlaceholder")
+        avatarImageView.image = UIImage(named: "ic_account_circle_48pt")
+        avatarImageView.clipsToBounds = true
+        avatarImageView.backgroundColor = UIColor.clear
+        
+        avatarImageView.layer.borderColor = UIColor.black.cgColor
+        avatarImageView.layer.borderWidth = 2.0
+       // avatarImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        avatarImageView.layer.shadowColor = UIColor.darkText.cgColor
+        avatarImageView.layer.shadowRadius = 5.0
+        avatarImageView.layer.shadowOpacity = 5.0
         
         // in case name is too long; fixes font size
         nameLabel.adjustsFontSizeToFitWidth = true
@@ -48,7 +57,7 @@ class RecentCell: UITableViewCell {
             let withUserId = (recent[kWITHUSERUSERID] as! String)
             let whereClause = "objectId = '\(withUserId)'"
             let dataQuery = DataQueryBuilder()
-            dataQuery?.setWhereClause(whereClause)
+            dataQuery!.setWhereClause(whereClause)
             
             let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
             dataStore!.find(dataQuery, response: { (users) in

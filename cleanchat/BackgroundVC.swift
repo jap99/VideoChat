@@ -23,8 +23,8 @@ class BackgroundVC: UIViewController {
         super.viewDidLoad()
         
         colorCubeView.layer.borderWidth = 1
-        colorCubeView.layer.borderColor = UIColor.black.cgColor
-        
+        colorCubeView.layer.borderColor = UIColor.lightGray.cgColor
+        colorCubeView.layer.cornerRadius = 3.0
         // laodUserDefaults
         
     }

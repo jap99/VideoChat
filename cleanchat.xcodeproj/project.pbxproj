@@ -50,6 +50,8 @@
 		9FB572D82078421A00A26985 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572D72078421A00A26985 /* Download.swift */; };
 		9FBF00812086B73100C85FE6 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF00802086B73100C85FE6 /* AudioMessage.swift */; };
 		9FBF00832086BACB00C85FE6 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF00822086BACB00C85FE6 /* Audio.swift */; };
+		9FE044B6209C56EE0012F45F /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE044B5209C56EE0012F45F /* TabBarVC.swift */; };
+		9FE044B8209C7A780012F45F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE044B7209C7A780012F45F /* GradientView.swift */; };
 		9FE0557B208882DE006646BF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE0557A208882DE006646BF /* MapKit.framework */; };
 		9FE14FEB1F22178900F3FE09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */; };
 		9FE14FED1F22178900F3FE09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE14FEC1F22178900F3FE09 /* ViewController.swift */; };
@@ -141,6 +143,8 @@
 		9FB572D72078421A00A26985 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		9FBF00802086B73100C85FE6 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		9FBF00822086BACB00C85FE6 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		9FE044B5209C56EE0012F45F /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		9FE044B7209C7A780012F45F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9FE0557A208882DE006646BF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9FE14FE71F22178900F3FE09 /* cleanchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cleanchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				9F624C222099AC9E00D7E869 /* Encryption.swift */,
 				9F624C24209A6DA600D7E869 /* ProfileVC.swift */,
 				9F624C26209A74C500D7E869 /* CallVC.swift */,
+				9FE044B5209C56EE0012F45F /* TabBarVC.swift */,
+				9FE044B7209C7A780012F45F /* GradientView.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 				9FB572C82071E51D00A26985 /* RNCryptor.swift in Sources */,
 				9FF51A0F20942CF00041661F /* GroupSettingsVC.swift in Sources */,
 				9F3B9FA4208FFBF600F12CE3 /* FriendsVC.swift in Sources */,
+				9FE044B6209C56EE0012F45F /* TabBarVC.swift in Sources */,
 				9F624C25209A6DA600D7E869 /* ProfileVC.swift in Sources */,
 				9F0617CB208880A300422183 /* MapVC.swift in Sources */,
 				9FB572B62071D41400A26985 /* RecentVC.swift in Sources */,
@@ -582,6 +589,7 @@
 				9FB572BF2071D4AE00A26985 /* Utilities.swift in Sources */,
 				9F3B9FA0208F2BE100F12CE3 /* ShowAvatarCell.swift in Sources */,
 				9FBF00812086B73100C85FE6 /* AudioMessage.swift in Sources */,
+				9FE044B8209C7A780012F45F /* GradientView.swift in Sources */,
 				9F8ACCF42080A3D500F34663 /* OutgoingMessage.swift in Sources */,
 				9F624C232099AC9E00D7E869 /* Encryption.swift in Sources */,
 				9FF51A0B209414650041661F /* AddGroupVC.swift in Sources */,

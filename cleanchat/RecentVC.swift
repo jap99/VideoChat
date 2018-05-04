@@ -14,13 +14,29 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var recents: [NSDictionary] = []
     var firstLoad: Bool? // checks if it's user's first time loading the app and if we need to do setup
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
     
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.barTintColor = lead
         
         loadRecents()
         tv.delegate = self; tv.dataSource = self
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.isStatusBarHidden = false
+    }
+
     
     // MARK: - UITableViewDataSource
     
@@ -45,6 +61,9 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDelegate
     
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 20.0
+//    }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
