@@ -41,18 +41,17 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+       return recents.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return recents.count
+         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
-        let recent = recents[indexPath.row]
+        let recent = recents[indexPath.section]
         
         cell.bindData(recent: recent)
         
@@ -61,16 +60,22 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDelegate
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20.0
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .black
+        return headerView
+    }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        let recent = recents[indexPath.row]
+        let recent = recents[indexPath.section]
         
         if (recent[kTYPE] as? String)! == kGROUP {
             
@@ -78,7 +83,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         } else {
             
-            recents.remove(at: indexPath.row)
+            recents.remove(at: indexPath.section)
             deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
             tableView.reloadData()
         }
@@ -89,7 +94,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // present chatVC
-        let recent = recents[indexPath.row]
+        let recent = recents[indexPath.section]
         
         // restart recents
         restartRecentChat(recent: recent)

@@ -30,6 +30,8 @@ class RecentCell: UITableViewCell {
     
     func bindData(recent: NSDictionary) {
         
+        self.layer.cornerRadius = 28.0
+        self.layer.masksToBounds = true
         //circle
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
         avatarImageView.layer.masksToBounds = true
