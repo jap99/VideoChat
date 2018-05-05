@@ -8,7 +8,7 @@
 
 import Foundation
 
-func registerUserDeviceID(user: BackendlessUser) {
+func registerUserDeviceID(user: BackendlessUser?) {
     
     // check if we have a deviceID
     
@@ -45,15 +45,18 @@ func removeDeviceIdFromUser() {
 
 func updateBackendlessUser(avatarUrl: String) {
     
-    let properties = ["Avatar" : avatarUrl]
+    var properties = ["Avatar" : avatarUrl]
     
     // for push notification, works only on device
     
-//    if let deviceId = backendless!.messagingService.getRegistration().deviceId {
-//
-//
-//        properties = ["Avatar" : avatarUrl, kDEVICEID: deviceId]
-//    }
+    let deviceRegistration: DeviceRegistration = (backendless?.messaging.currentDevice())!
+    let deviceId: String = deviceRegistration.deviceId
+    
+    if backendless!.messagingService.getRegistration(deviceId) != nil {
+
+
+        properties = ["Avatar" : avatarUrl, kDEVICEID: deviceId]
+    }
     
     backendless!.userService.currentUser.updateProperties(properties)
     

@@ -60,7 +60,7 @@ class ChooseUserCell: UITableViewCell {
             }
         }) { (fault) in
             
-            ProgressHUD.showError("Couldn't get Avatar: \(fault!.detail!)")
+            ProgressHUD.showError("Couldn't get Avatar for user: \(fault!.detail!)")
         }
         
         

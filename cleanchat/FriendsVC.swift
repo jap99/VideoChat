@@ -138,7 +138,25 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 
                 if friends.count == 0 {
                     
-                    ProgressHUD.showError("You have not added any friends.")
+                //    ProgressHUD.showError("You have not added any friends.")
+                    
+                   // self.view.frame.origin.x
+                    //self.view.frame.size.width
+                    let noFriendsView1 = UIView(frame: CGRect(x: 100, y: 400, width: 300, height: 300))
+                    noFriendsView1.backgroundColor = UIColor.orange
+                    self.view.addSubview(noFriendsView1)
+                    
+                    let noFriendsView2 = UIView(frame: CGRect(x: 100, y: 400, width: 300, height: 300))
+                    noFriendsView2.backgroundColor = UIColor.orange
+                    self.tv.contentMode = .center
+                    //self.tv.addSubview(noFriendsView)
+                    self.tv.isHidden = false
+                    
+                    
+                    
+                    
+                    
+                   // let nfLabel = UILabel(
                 }
             }
             

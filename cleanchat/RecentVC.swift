@@ -22,7 +22,8 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tv.tableFooterView = UIView()
+        //tv.tableFooterView = UIView()
+        tv.separatorStyle = .none
         
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -121,19 +122,29 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func addRecentBarButtonPressed(_ sender: Any) {
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//        optionMenu.modalPresentationStyle = .popover
+//        optionMenu.popoverPresentationController =
+//
         let friendList = UIAlertAction(title: "Message A Friend", style: .default) { (alert) in
             
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
             vc.selectedIndex = 2
+            
             self.present(vc, animated: true, completion: nil)
         }
+        
         let allUsers = UIAlertAction(title: "Message Another User", style: .default) { (alert) in
+            
             self.performSegue(withIdentifier: "recentToChooseUserSeg", sender: self)
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in }
+        
         optionMenu.addAction(friendList)
         optionMenu.addAction(allUsers)
         optionMenu.addAction(cancelAction)
+        
+        optionMenu.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         self.present(optionMenu, animated: true, completion: nil)
     }
     

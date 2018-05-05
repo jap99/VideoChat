@@ -37,9 +37,9 @@ class FriendCell: UITableViewCell {
         let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
         
         dataStore!.find(dataQuery, response: { (users) in
-           // print(users)
+           print("PRINTING WITH B/E USER --- \(users)")
             let withUser = users!.first as! BackendlessUser
-            //print(withUser)
+            print("PRINTING WITH B/E USER --- \(withUser)")
             
             if let avatarURL = withUser.getProperty("Avatar") {
                 

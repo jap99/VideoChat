@@ -21,6 +21,8 @@ class WelcomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+         UIApplication.shared.statusBarStyle = .lightContent
+        
         self.navigationController?.isNavigationBarHidden = true
         backendless!.userService.setStayLoggedIn(true)
         
@@ -37,6 +39,7 @@ class WelcomeVC: UIViewController {
             }
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

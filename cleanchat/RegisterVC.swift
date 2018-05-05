@@ -20,9 +20,12 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     var newUser: BackendlessUser?
     var avatarImage: UIImage?
     
+    override func viewWillAppear(_ animated: Bool) {
+         UIApplication.shared.statusBarStyle = .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         self.navigationController?.navigationBar.topItem?.title = ""
         
         // corner radius
