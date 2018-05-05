@@ -43,18 +43,20 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationController?.navigationBar.topItem?.title = ""
+        
+        //self.view.tintColor = darkBlue
+        
+  //      self.navigationController?.navigationBar.topItem?.title = ""
         
         self.navigationController?.navigationBar.isHidden = false 
         self.hideKeyboardWhenTappedAround()
         
         // corner radius
-        registerButtonOutlet.layer.cornerRadius = 5.0
-        loginButtonOutlet.layer.cornerRadius = 5.0
-        emailTextField.layer.cornerRadius = 5.0
-        passwordTextField.layer.cornerRadius = 5.0
-        loginWithFBButton.layer.cornerRadius = 5.0
+        registerButtonOutlet.layer.cornerRadius = 4.0
+        loginButtonOutlet.layer.cornerRadius = 4.0
+        emailTextField.layer.cornerRadius = 4.0
+        passwordTextField.layer.cornerRadius = 4.0
+        loginWithFBButton.layer.cornerRadius = 4.0
         
         // border width
         emailTextField.layer.borderWidth = 0.5
@@ -63,36 +65,36 @@ class WelcomeVC: UIViewController {
         registerButtonOutlet.layer.borderWidth = 0.5
         
         // border color
-        emailTextField.layer.borderColor = lightBlue.cgColor
-        passwordTextField.layer.borderColor = lightBlue.cgColor
-        loginButtonOutlet.layer.borderColor = lightBlue.cgColor
-        registerButtonOutlet.layer.borderColor = lightBlue.cgColor
+        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+        loginButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        registerButtonOutlet.layer.borderColor = UIColor.white.cgColor
         
-        // shadow color
-        emailTextField.layer.shadowColor = lightBlue.cgColor
-        passwordTextField.layer.shadowColor = lightBlue.cgColor
-        loginButtonOutlet.layer.shadowColor = lightBlue.cgColor
-        registerButtonOutlet.layer.shadowColor = lightBlue.cgColor
-        
-        // shadow radius
-        emailTextField.layer.shadowRadius = 6.0
-        passwordTextField.layer.shadowRadius = 6.0
-        loginButtonOutlet.layer.shadowRadius = 4.0
-        registerButtonOutlet.layer.shadowRadius = 4.0
-        
-        // shadow opacity
-        emailTextField.layer.shadowOpacity = 4.0
-        passwordTextField.layer.shadowOpacity = 4.0
-        loginButtonOutlet.layer.shadowOpacity = 4.0
-        registerButtonOutlet.layer.shadowOpacity = 4.0
+//        // shadow color
+//        emailTextField.layer.shadowColor = UIColor.white.cgColor
+//        passwordTextField.layer.shadowColor = UIColor.white.cgColor
+//        loginButtonOutlet.layer.shadowColor = UIColor.white.cgColor
+//        registerButtonOutlet.layer.shadowColor = UIColor.white.cgColor
+//
+//        // shadow radius
+////        emailTextField.layer.shadowRadius = 6.0
+////        passwordTextField.layer.shadowRadius = 6.0
+////        loginButtonOutlet.layer.shadowRadius = 4.0
+////        registerButtonOutlet.layer.shadowRadius = 4.0
+//
+//        // shadow opacity
+//        emailTextField.layer.shadowOpacity = 4.0
+//        passwordTextField.layer.shadowOpacity = 4.0
+//        loginButtonOutlet.layer.shadowOpacity = 4.0
+//        registerButtonOutlet.layer.shadowOpacity = 4.0
         
         // background color
 //        loginButtonOutlet.backgroundColor = lead
 //        registerButtonOutlet.backgroundColor = lead
 //
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
-        
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+//        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
+//
+//        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
         
         
     }

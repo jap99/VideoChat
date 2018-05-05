@@ -24,11 +24,13 @@ class EditGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     let dataStore = backendless!.data.of(Friend.ofClass())
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         loadFriend()
         groupMembers = (group![kMEMBERS] as? [String])!
+        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
     }
     
     

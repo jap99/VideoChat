@@ -17,7 +17,7 @@ class TabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.isTranslucent = false
+        //self.tabBar.isTranslucent = true
         updateTabBarColors()
     }
     
@@ -25,13 +25,13 @@ class TabBarVC: UITabBarController {
     func updateTabBarColors() {
         
         UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.darkText], for: .selected)
-        self.tabBar.tintColor = lightBlue
-        self.tabBar.layer.shadowOpacity = 5.0
-        self.tabBar.layer.shadowColor = lightBlue.cgColor//pinkBorder//UIColor.black.cgColor
-        self.tabBar.layer.shadowRadius = 4.0
+        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: darkBlue], for: .selected)
+        self.tabBar.tintColor = darkBlue
+        //self.tabBar.layer.shadowOpacity = 5.0
+        //self.tabBar.layer.shadowColor = darkBlue.cgColor//pinkBorder//UIColor.black.cgColor
+        //self.tabBar.layer.shadowRadius = 4.0
         
-        self.tabBar.barTintColor = UIColor.darkText
+        self.tabBar.barTintColor = .white
         
         if #available(iOS 10.0, *) {
             self.tabBar.unselectedItemTintColor = UIColor.lightGray

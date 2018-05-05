@@ -27,6 +27,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         
         loadFriends()
         

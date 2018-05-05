@@ -20,6 +20,8 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         tv.tableFooterView = UIView()
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = darkBlue
+        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         
         loadGroups()
        

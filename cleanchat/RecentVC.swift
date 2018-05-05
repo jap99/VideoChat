@@ -14,6 +14,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var recents: [NSDictionary] = []
     var firstLoad: Bool? // checks if it's user's first time loading the app and if we need to do setup
+   
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
     }
@@ -21,13 +22,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tv.tableFooterView = UIView()
+         
         tv.separatorStyle = .none
         
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+     //   self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.barTintColor = lead
+        self.navigationController?.navigationBar.barTintColor = .white
         
         loadRecents()
         tv.delegate = self; tv.dataSource = self
@@ -53,12 +53,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
         let recent = recents[indexPath.section]
         
-        let layer = cell.layer
-       // layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = 40
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 35.0
-        layer.frame = cell.frame
+//        let layer = cell.layer
+//       // layer.shadowOffset = CGSize(width: 0, height: 1)
+//        layer.shadowRadius = 40
+//        layer.shadowColor = UIColor.lightGray.cgColor
+//        layer.shadowOpacity = 35.0
+//        layer.frame = cell.frame
         
         cell.bindData(recent: recent)
         
@@ -73,7 +73,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = .darkGray
+        headerView.backgroundColor = .white
         return headerView
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

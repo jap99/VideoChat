@@ -25,19 +25,21 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
+        self.navigationController?.navigationBar.tintColor = darkBlue
+        
         self.navigationController?.navigationBar.topItem?.title = ""
         
         // corner radius
-       emailTextField.layer.cornerRadius = 5.0
-       passwordTextField.layer.cornerRadius = 5.0
-       usernameTextField.layer.cornerRadius = 5.0
-       registerButtonOutlet.layer.cornerRadius = 5.0
+       emailTextField.layer.cornerRadius = 4.0
+       passwordTextField.layer.cornerRadius = 4.0
+       usernameTextField.layer.cornerRadius = 4.0
+       registerButtonOutlet.layer.cornerRadius = 4.0
         
         // border color
-        emailTextField.layer.borderColor = lightBlue.cgColor
-        passwordTextField.layer.borderColor = lightBlue.cgColor
-        usernameTextField.layer.borderColor = lightBlue.cgColor
+        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
         
         // border width
         emailTextField.layer.borderWidth = 0.5
@@ -45,27 +47,27 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
         usernameTextField.layer.borderWidth = 0.5
         
         //shadow color
-        emailTextField.layer.shadowColor = lightBlue.cgColor
-        passwordTextField.layer.shadowColor = lightBlue.cgColor
-        usernameTextField.layer.shadowColor = lightBlue.cgColor
-        registerButtonOutlet.layer.shadowColor = lightBlue.cgColor
+//        emailTextField.layer.shadowColor = .cgColor
+//        passwordTextField.layer.shadowColor = lightBlue.cgColor
+//        usernameTextField.layer.shadowColor = lightBlue.cgColor
+//        registerButtonOutlet.layer.shadowColor = lightBlue.cgColor
         
-        // shadow radius
-        emailTextField.layer.shadowRadius = 6.0
-        passwordTextField.layer.shadowRadius = 6.0
-        usernameTextField.layer.shadowRadius = 6.0
-        registerButtonOutlet.layer.shadowRadius = 6.0
-        
-        // shadow opacity
-        emailTextField.layer.shadowOpacity = 4.0
-        passwordTextField.layer.shadowOpacity = 4.0
-        usernameTextField.layer.shadowOpacity = 4.0
-        registerButtonOutlet.layer.shadowOpacity = 4.0
-    
-        // placeholder color
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+//        // shadow radius
+//        emailTextField.layer.shadowRadius = 6.0
+//        passwordTextField.layer.shadowRadius = 6.0
+//        usernameTextField.layer.shadowRadius = 6.0
+//        registerButtonOutlet.layer.shadowRadius = 6.0
+//
+//        // shadow opacity
+//        emailTextField.layer.shadowOpacity = 4.0
+//        passwordTextField.layer.shadowOpacity = 4.0
+//        usernameTextField.layer.shadowOpacity = 4.0
+//        registerButtonOutlet.layer.shadowOpacity = 4.0
+//
+//        // placeholder color
+//        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+//        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
+//        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: pinkColor,kCTFontAttributeName as NSAttributedStringKey :UIFont(name: "Avenir", size: 13)!])
         self.navigationController?.isNavigationBarHidden = false
         newUser = BackendlessUser() 
         
@@ -89,9 +91,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             camera.presentPhotoLibrary(target: self, canEdit: true)
         }
         
-        let cancelPhoto =  UIAlertAction(title: "Cancel", style: .default) { (alert) in
-            
-        }
+        let cancelPhoto =  UIAlertAction(title: "Cancel", style: .default) { (alert) in }
         
         optionMenu.addAction(takePhoto)
         optionMenu.addAction(sharePhoto)
@@ -107,8 +107,7 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             ProgressHUD.show("Registering...", interaction: false)
             register(email: emailTextField.text!, username: usernameTextField.text!, password: passwordTextField.text!, avatarImage: avatarImage)
         
-        } else {
-            
+        } else { 
             ProgressHUD.showError("Email and Password Required")
         }
     }

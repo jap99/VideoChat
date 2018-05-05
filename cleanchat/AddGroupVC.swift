@@ -25,7 +25,7 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
         // put header view on top of tv
         self.tv.tableHeaderView = headerView
-        
+        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         loadFriends()
     }
 

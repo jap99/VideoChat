@@ -20,6 +20,7 @@ class GroupSettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
 
         getUsersFromBackendless(userIds: (group![kMEMBERS] as? [String])!)
+        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         
     }
 

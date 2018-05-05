@@ -77,8 +77,18 @@ extension UIApplication {
 }
 
 
+func getBlueRightArrow() -> UIImageView {
+    let rightArrow = UIImage(named: "rightArrow.png")
+    let blueRightArrow = UIImageView(image: rightArrow!)
+    let blueRightArroww = blueRightArrow.image?.imageWithColor(color: darkBlue)
+    let b = UIImageView(image: blueRightArroww)
+    
+    return b
+}
+
 let pinkBorder = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1).cgColor
 let pinkColor = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1)
 let lightBlue = UIColor(red: 0/255, green: 38/255, blue: 144/255, alpha: 1)//UIColor(red: 0/255, green: 38/255, blue: 212/255, alpha: 1)    //UIColor(red: 50/255, green: 142/255, blue: 225/255, alpha: 1)
 let lead = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 let snow = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+let darkBlue = UIColor(red: 20/255, green: 32/255, blue: 60/255, alpha: 1)

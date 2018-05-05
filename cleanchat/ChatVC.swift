@@ -41,7 +41,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     var outgoingMessage: OutgoingMessage?
     
     // put two jsq message bubbles
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: darkBlue)
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +68,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         self.title = titleName
         
+        self.navigationController?.navigationBar.tintColor = darkBlue
+        
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
         
@@ -77,22 +79,22 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     
     // MARK: JSQMessages Data Source functions
     
+    // this is the color of the font inside the chat bubble
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         
         let data = messages[indexPath.row]
         
-        // incoming or outgoing?
         if data.senderId == backendless!.userService.currentUser.objectId as String {
-            // outgoing
-            cell.textView?.textColor = UIColor.white
+            
+            cell.textView?.textColor = UIColor.white // outgoing
+        
         } else {
-            cell.textView?.textColor = UIColor.black
+            cell.textView?.textColor = UIColor.black // incoming
         }
         
         return cell
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -114,7 +116,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         let data = messages[indexPath.row]
         
         if data.senderId == backendless!.userService.currentUser.objectId as String {
-            // we're the sender aka outgoing
+            
             return outgoingBubble
         } else {
             return incomingBubble

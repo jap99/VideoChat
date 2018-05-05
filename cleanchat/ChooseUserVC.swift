@@ -20,7 +20,7 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         super.viewDidLoad()
         
         tv.tableFooterView = UIView()
-        
+        self.navigationController?.navigationBar.tintColor = darkBlue
         tv.delegate = self; tv.dataSource = self
         searchController.searchResultsUpdater = self // tells users when there's an update
         searchController.dimsBackgroundDuringPresentation = false

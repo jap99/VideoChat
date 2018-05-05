@@ -19,6 +19,7 @@ class SettingsTableVC: UITableViewController {
        
     }
 
+    
   
     // MARK: - Table view data source
 
@@ -38,12 +39,17 @@ class SettingsTableVC: UITableViewController {
         return 0
     }
 
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 && indexPath.row == 0 {
             // hence we're in section 1 row 1 = avatar cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarCell", for: indexPath) as! FriendCell
+
+
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
             
             cell.bindData(friend: backendless!.userService.currentUser!)
             return cell
@@ -52,14 +58,22 @@ class SettingsTableVC: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 0 {
             // second section, first row = privacy cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "privacyCell", for: indexPath)
-            
+
             cell.textLabel?.text = "Privacy Policy"
+            
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
+            
+            cell.tintColor = UIColor.red
             return cell
         }
         
         if indexPath.section == 1 && indexPath.row == 1 {
             // second section, second row = terms cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "termsCell", for: indexPath)
+
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
             
             cell.textLabel?.text = "Terms of Service"
             return cell
@@ -69,6 +83,9 @@ class SettingsTableVC: UITableViewController {
             // second section, third row = bg cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "backgroundCell", for: indexPath)
             
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
+            
             cell.textLabel?.text = "Backgrounds"
             return cell
         }
@@ -77,12 +94,18 @@ class SettingsTableVC: UITableViewController {
             // second section, fourth row = show avatar cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "showAvatarCell", for: indexPath) as! ShowAvatarCell
             
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
+            
             return cell
         }
         
         if indexPath.section == 2 && indexPath.row == 0 {
             // third section, first row = privacy cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "logoutCell", for: indexPath)
+            
+            cell.accessoryType = .disclosureIndicator
+            cell.accessoryView = getBlueRightArrow()
             
             return cell
         }

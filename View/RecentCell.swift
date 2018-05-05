@@ -37,15 +37,15 @@ class RecentCell: UITableViewCell {
         
         avatarImageView.image = UIImage(named: "ic_account_circle_48pt")
         avatarImageView.clipsToBounds = true
-        avatarImageView.backgroundColor = UIColor.clear
+        avatarImageView.backgroundColor = UIColor.white
         
-        avatarImageView.layer.borderColor = UIColor.black.cgColor
+        avatarImageView.layer.borderColor = darkBlue.cgColor
         avatarImageView.layer.borderWidth = 2.0
-       // avatarImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        avatarImageView.layer.shadowColor = UIColor.darkText.cgColor
-        avatarImageView.layer.shadowRadius = 5.0
-        avatarImageView.layer.shadowOpacity = 5.0
-        
+//       // avatarImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
+//        avatarImageView.layer.shadowColor = UIColor.darkText.cgColor
+//        avatarImageView.layer.shadowRadius = 5.0
+//        avatarImageView.layer.shadowOpacity = 5.0
+//
         // in case name is too long; fixes font size
         nameLabel.adjustsFontSizeToFitWidth = true
         
