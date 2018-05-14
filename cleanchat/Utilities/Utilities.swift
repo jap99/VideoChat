@@ -86,9 +86,19 @@ func getBlueRightArrow() -> UIImageView {
     return b
 }
 
+func resizeImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+    image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
+    let resizedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+    UIGraphicsEndImageContext()
+    return resizedImage
+}
+
+ 
 let pinkBorder = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1).cgColor
 let pinkColor = UIColor(red: 236/255, green: 14/255, blue: 128/255, alpha: 1)
 let lightBlue = UIColor(red: 0/255, green: 38/255, blue: 144/255, alpha: 1)//UIColor(red: 0/255, green: 38/255, blue: 212/255, alpha: 1)    //UIColor(red: 50/255, green: 142/255, blue: 225/255, alpha: 1)
 let lead = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 let snow = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 let darkBlue = UIColor(red: 20/255, green: 32/255, blue: 60/255, alpha: 1)
+let lightGray = UIColor(red: 246/255, green: 246/255, blue: 250/255, alpha: 1)

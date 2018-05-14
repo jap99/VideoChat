@@ -19,9 +19,12 @@ class RecentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.layer.masksToBounds = false
-        self.layer.cornerRadius = 10.0
-        self.clipsToBounds = true 
+        
+        self.layer.cornerRadius = 4.0
+        self.clipsToBounds = true
+        self.contentView.layer.borderWidth = 0.5
+        self.layer.borderColor = darkBlue.cgColor
+       // self.backgroundColor = .white
     }
     
     override func layoutSubviews() {
@@ -33,14 +36,14 @@ class RecentCell: UITableViewCell {
         
         //circle
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
-        avatarImageView.layer.masksToBounds = true
+       // avatarImageView.layer.masksToBounds = true
         
-        avatarImageView.image = UIImage(named: "ic_account_circle_48pt")
+       // avatarImageView.image = UIImage(named: "ic_account_circle_white")
         avatarImageView.clipsToBounds = true
-        avatarImageView.backgroundColor = UIColor.white
+        //avatarImageView.backgroundColor = lead
         
-        avatarImageView.layer.borderColor = darkBlue.cgColor
-        avatarImageView.layer.borderWidth = 2.0
+//        avatarImageView.layer.borderColor = darkBlue.cgColor
+//        avatarImageView.layer.borderWidth = 2.0
 //       // avatarImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
 //        avatarImageView.layer.shadowColor = UIColor.darkText.cgColor
 //        avatarImageView.layer.shadowRadius = 5.0
@@ -96,7 +99,7 @@ class RecentCell: UITableViewCell {
         let elapsed: String?
         
         // depends on how many seconds have passed
-        if seconds < 60 {
+        if seconds < 120 {
             elapsed = "Just Now"
         } else {
             // return date of the message

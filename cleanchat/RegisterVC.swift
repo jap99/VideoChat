@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import Foundation
 
 class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -16,35 +17,62 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var registerButtonOutlet: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var profileImage_HeightConstraint: NSLayoutConstraint!
     
     var newUser: BackendlessUser?
     var avatarImage: UIImage?
     
+    var imagePicker: UIImagePickerController?
+    
     override func viewWillAppear(_ animated: Bool) {
          UIApplication.shared.statusBarStyle = .lightContent
+        emailTextField.textColor = darkBlue
+        passwordTextField.textColor = darkBlue
+        usernameTextField.textColor = darkBlue
+        
     }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
+        setupGestureRecognizer()
+        self.profileImage_HeightConstraint.constant = 1
+        imagePicker = UIImagePickerController()
+        imagePicker?.delegate = self
         
-        self.navigationController?.navigationBar.tintColor = darkBlue
-        
+        self.navigationController?.navigationBar.tintColor = lead
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGray
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGray
         
         // corner radius
-       emailTextField.layer.cornerRadius = 4.0
-       passwordTextField.layer.cornerRadius = 4.0
-       usernameTextField.layer.cornerRadius = 4.0
-       registerButtonOutlet.layer.cornerRadius = 4.0
+       emailTextField.layer.cornerRadius = 3.0
+       passwordTextField.layer.cornerRadius = 3.0
+       usernameTextField.layer.cornerRadius = 3.0
+       registerButtonOutlet.layer.cornerRadius = 3.0
         
         // border color
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        emailTextField.layer.borderColor = UIColor.darkText.cgColor
+        passwordTextField.layer.borderColor = UIColor.darkText.cgColor
+        usernameTextField.layer.borderColor = UIColor.darkText.cgColor
+        registerButtonOutlet.layer.borderColor = UIColor.darkText.cgColor
         
         // border width
         emailTextField.layer.borderWidth = 0.5
         passwordTextField.layer.borderWidth = 0.5
         usernameTextField.layer.borderWidth = 0.5
+        registerButtonOutlet.layer.borderWidth = 0.5
+        
+        // background color
+        registerButtonOutlet.backgroundColor = .white
+        
+        // text color
+        registerButtonOutlet.setTitleColor(darkBlue, for: .normal)
         
         //shadow color
 //        emailTextField.layer.shadowColor = .cgColor
@@ -77,13 +105,20 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
 
     
+
+    
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
         
+        presentCameraOptions()
+    }
+    
+    func presentCameraOptions() {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let camera = Camera(delegate_: self)
         
         let takePhoto =  UIAlertAction(title: "Take Photo", style: .default) { (alert) in
+            self.profileImageView.image = nil
             camera.presentPhotoCamera(target: self, canEdit: true)
         }
         
@@ -98,7 +133,6 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
         optionMenu.addAction(cancelPhoto)
         self.present(optionMenu, animated: true, completion: nil)
     }
-    
     
     @IBAction func registerButtonPressed(_ sender: Any) {
         
@@ -164,6 +198,26 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
                         ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
                     })
                 })
+            } else {
+                
+                // if no image selected, provide avatar image
+                if let firstCharacter = self.usernameTextField.text?.lowercased().first {
+                    
+                    let avatarImage = UIImage(named: "icons8-circled_\(firstCharacter)")
+                    self.avatarImage = avatarImage
+                    uploadAvatar(image: self.avatarImage!, result: { (imageLink) in
+                        
+                        let properties = ["Avatar" : imageLink!]
+                        
+                        backendless!.userService.currentUser.updateProperties(properties)
+                        
+                        backendless!.userService.update(backendless!.userService.currentUser, response: { (updatedUser) in
+                            print("Updated avatar image with letter icon")
+                        }, error: { (fault) in
+                            ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
+                        })
+                    })
+                }
             }
             
             // go to app
@@ -181,9 +235,26 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     // MARK: - UIImagePickerController Delegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.profileImage_HeightConstraint.constant = 120
+        self.profileImageView.image = nil
         
-        self.avatarImage = (info[UIImagePickerControllerEditedImage] as! UIImage)
-        
+        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.profileImageView.contentMode = .scaleAspectFit
+            self.avatarImage = img
+            self.profileImageView.image = img
+            self.view.setNeedsLayout()
+        }
+         
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func setupGestureRecognizer() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(RegisterVC.tapGesture))
+        self.profileImageView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func tapGesture() {
+        presentCameraOptions()
+    }
+    
 }

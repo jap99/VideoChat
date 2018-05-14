@@ -49,7 +49,7 @@ class SettingsTableVC: UITableViewController {
 
 
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             cell.bindData(friend: backendless!.userService.currentUser!)
             return cell
@@ -62,7 +62,7 @@ class SettingsTableVC: UITableViewController {
             cell.textLabel?.text = "Privacy Policy"
             
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             cell.tintColor = UIColor.red
             return cell
@@ -73,7 +73,7 @@ class SettingsTableVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "termsCell", for: indexPath)
 
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             cell.textLabel?.text = "Terms of Service"
             return cell
@@ -84,7 +84,7 @@ class SettingsTableVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "backgroundCell", for: indexPath)
             
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             cell.textLabel?.text = "Backgrounds"
             return cell
@@ -95,7 +95,7 @@ class SettingsTableVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "showAvatarCell", for: indexPath) as! ShowAvatarCell
             
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             return cell
         }
@@ -105,7 +105,7 @@ class SettingsTableVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "logoutCell", for: indexPath)
             
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = getBlueRightArrow()
+            //cell.accessoryView = getBlueRightArrow()
             
             return cell
         }
@@ -213,9 +213,10 @@ class SettingsTableVC: UITableViewController {
         // resign from push notifications
         
         // show loginVC
-        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
-        
-        self.present(login, animated: true, completion: nil)
+        performSegue(withIdentifier: "logoutVCtoWelcomeVC-Segue", sender: Any?.self)
+//        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
+//        
+//        self.present(login, animated: true, completion: nil)
     }
     
     

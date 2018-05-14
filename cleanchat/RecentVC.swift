@@ -13,7 +13,8 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tv: UITableView!
     
     var recents: [NSDictionary] = []
-    var firstLoad: Bool? // checks if it's user's first time loading the app and if we need to do setup
+    var firstLoad: Bool?
+    let headerView = UIView()
    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
@@ -24,21 +25,22 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
          
         tv.separatorStyle = .none
-        
-     //   self.navigationController?.navigationBar.barStyle = .blackTranslucent
-        self.navigationController?.navigationBar.topItem?.title = ""
+
+        headerView.backgroundColor = .white
+        tv.backgroundColor = .white
         self.navigationController?.navigationBar.barTintColor = .white
+        self.view.backgroundColor = .white
+        
+        self.navigationController?.navigationBar.topItem?.title = ""
         
         loadRecents()
         tv.delegate = self; tv.dataSource = self
     }
+   
     
-    override func viewWillDisappear(_ animated: Bool) {
-       
-    }
-
     
-    // MARK: - UITableViewDataSource
+    
+    // MARK: - Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
        return recents.count
@@ -52,28 +54,19 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
         let recent = recents[indexPath.section]
-        
-//        let layer = cell.layer
-//       // layer.shadowOffset = CGSize(width: 0, height: 1)
-//        layer.shadowRadius = 40
-//        layer.shadowColor = UIColor.lightGray.cgColor
-//        layer.shadowOpacity = 35.0
-//        layer.frame = cell.frame
-        
+ 
         cell.bindData(recent: recent)
         
         return cell
     }
     
-    // MARK: - UITableViewDelegate
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 16.0
+        return 18.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .white
         return headerView
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -122,9 +115,6 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func addRecentBarButtonPressed(_ sender: Any) {
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//        optionMenu.modalPresentationStyle = .popover
-//        optionMenu.popoverPresentationController =
-//
         let friendList = UIAlertAction(title: "Message A Friend", style: .default) { (alert) in
             
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
@@ -169,12 +159,9 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     // another query to have all the users for the chatroom ID but make sure we don't query recents that don't belong to our user by referring to currentRecent[kCHATROOMID].observe...
                     //this query below prevents additional recents from being created in firebase when a user is selected and our online and offline databases are in sync
                     firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: currentRecent[kCHATROOMID]).observe(.value, with: { (snapshot) in
-                        
                     })
-                    
                 }
             }
-            
             self.tv.reloadData()
         }
     }

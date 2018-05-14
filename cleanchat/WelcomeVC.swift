@@ -23,7 +23,7 @@ class WelcomeVC: UIViewController {
         
          UIApplication.shared.statusBarStyle = .lightContent
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false 
         backendless!.userService.setStayLoggedIn(true)
         
         // check if user is available
@@ -45,18 +45,24 @@ class WelcomeVC: UIViewController {
         super.viewDidLoad()
         
         //self.view.tintColor = darkBlue
-        
+       // self.navigationItem.setHidesBackButton(true, animated: true)
   //      self.navigationController?.navigationBar.topItem?.title = ""
         
         self.navigationController?.navigationBar.isHidden = false 
         self.hideKeyboardWhenTappedAround()
         
         // corner radius
-        registerButtonOutlet.layer.cornerRadius = 4.0
-        loginButtonOutlet.layer.cornerRadius = 4.0
-        emailTextField.layer.cornerRadius = 4.0
-        passwordTextField.layer.cornerRadius = 4.0
-        loginWithFBButton.layer.cornerRadius = 4.0
+        registerButtonOutlet.layer.cornerRadius = 3.0
+        loginButtonOutlet.layer.cornerRadius = 3.0
+        emailTextField.layer.cornerRadius = 3.0
+        passwordTextField.layer.cornerRadius = 3.0
+        loginWithFBButton.layer.cornerRadius = 3.0
+        
+        // text color
+        registerButtonOutlet.setTitleColor(darkBlue, for: .normal)
+        loginButtonOutlet.setTitleColor(darkBlue, for: .normal)
+        emailTextField.textColor = darkBlue
+        passwordTextField.textColor = darkBlue
         
         // border width
         emailTextField.layer.borderWidth = 0.5
@@ -65,10 +71,10 @@ class WelcomeVC: UIViewController {
         registerButtonOutlet.layer.borderWidth = 0.5
         
         // border color
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        loginButtonOutlet.layer.borderColor = UIColor.white.cgColor
-        registerButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        emailTextField.layer.borderColor = UIColor.darkText.cgColor
+        passwordTextField.layer.borderColor = UIColor.darkText.cgColor
+        loginButtonOutlet.layer.borderColor = UIColor.darkText.cgColor
+        registerButtonOutlet.layer.borderColor = UIColor.darkText.cgColor
         
 //        // shadow color
 //        emailTextField.layer.shadowColor = UIColor.white.cgColor
@@ -89,9 +95,9 @@ class WelcomeVC: UIViewController {
 //        registerButtonOutlet.layer.shadowOpacity = 4.0
         
         // background color
-//        loginButtonOutlet.backgroundColor = lead
-//        registerButtonOutlet.backgroundColor = lead
-//
+        loginButtonOutlet.backgroundColor = .white
+        registerButtonOutlet.backgroundColor = .white
+
 //        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
 //
 //        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])

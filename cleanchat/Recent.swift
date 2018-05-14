@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 func startChat(user1: BackendlessUser, user2: BackendlessUser) -> String {
     
     // get the users' Id
@@ -34,6 +36,10 @@ func startChat(user1: BackendlessUser, user2: BackendlessUser) -> String {
     
     return chatRoomId
 }
+
+
+
+
 
 func createRecent(userId: String, chatRoomId: String, members: [String], withUserUserId: String, withUserUsername: String, type: String) {
     
@@ -64,6 +70,12 @@ func createRecent(userId: String, chatRoomId: String, members: [String], withUse
     })
 }
 
+
+
+
+
+
+
 func createRecentItem(userId: String, chatRoomId: String, members: [String], withUserUserId: String, withUserUsername: String, type: String) {
     
     let reference = firebase.child(kRECENT).childByAutoId()
@@ -92,12 +104,23 @@ func createRecentItem(userId: String, chatRoomId: String, members: [String], wit
     }
 }
 
+
+
+
+
+
 func updateChatStatus(chat: NSDictionary, chatRoomId: String) {
     
     let values = [kSTATUS: kREAD]
     
     firebase.child(kMESSAGE).child(chatRoomId).child((chat[kMESSAGEID] as? String)!).updateChildValues(values)
 }
+
+
+
+
+
+
 
 
 // group chats
@@ -107,6 +130,15 @@ func startGroupChat(group: NSDictionary) {
     // create a recent item for our group
     createGroupRecent(chatRoomId: (group[kGROUPID] as? String)!, members: (group[kMEMBERS] as? [String])!, groupName: (group[kNAME] as? String)!, ownerID: backendless!.userService.currentUser.objectId as String, type: kGROUP)
 }
+
+
+
+
+
+
+
+
+
 
 func createGroupRecent(chatRoomId: String, members: [String], groupName: String, ownerID: String, type: String) {
     
@@ -143,6 +175,12 @@ func createGroupRecent(chatRoomId: String, members: [String], groupName: String,
 }
 
 
+
+
+
+
+
+
 func restartRecentChat(recent: NSDictionary) {
     
     if (recent[kTYPE] as? String)! == kPRIVATE {
@@ -175,6 +213,16 @@ func restartRecentChat(recent: NSDictionary) {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 func clearRecentCounter(chatRoomID: String) {
     
     // get all recents belonging to current chatroom
@@ -197,6 +245,14 @@ func clearRecentCounter(chatRoomID: String) {
     }
 }
 
+
+
+
+
+
+
+
+
 func clearRecentCounterItem(recent: NSDictionary) {
     
     firebase.child(kRECENT).child((recent[kRECENTID] as? String)!).updateChildValues([kCOUNTER: 0]) { (error, ref) -> Void in
@@ -206,6 +262,13 @@ func clearRecentCounterItem(recent: NSDictionary) {
         }
     }
 }
+
+
+
+
+
+
+
 
 func updateRecentItem(recent: NSDictionary, lastMessage: String) {
     
@@ -233,6 +296,13 @@ func updateRecentItem(recent: NSDictionary, lastMessage: String) {
 }
 
 
+
+
+
+
+
+
+
 func updateRecents(chatRoomId: String, lastMessage: String) {
     
     firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: chatRoomId).observeSingleEvent(of: .value) { (snapshot) in
@@ -248,6 +318,12 @@ func updateRecents(chatRoomId: String, lastMessage: String) {
 }
 
 
+
+
+
+
+
+
 func deleteRecentItem(recentID: String) {
     
     firebase.child(kRECENT).child(recentID).removeValue { (error, ref) in
@@ -258,6 +334,12 @@ func deleteRecentItem(recentID: String) {
         }
     }
 }
+
+
+
+
+
+
 
 
 func deleteMultipleRecentItems(chatRoomID: String) { // will be called in our group
@@ -276,6 +358,11 @@ func deleteMultipleRecentItems(chatRoomID: String) { // will be called in our gr
         }
     }
 }
+
+
+
+
+
 
 
 func deleteRecentWithNotification(recent: NSDictionary) {
@@ -316,6 +403,12 @@ func deleteRecentWithNotification(recent: NSDictionary) {
 }
 
 
+
+
+
+
+
+
 func removeCurrentUserFromGroup(group: NSDictionary) {
     
     // get hold of users
@@ -348,6 +441,10 @@ func removeCurrentUserFromGroup(group: NSDictionary) {
 }
 
 
+
+
+
+
 func updateMembersInRecent(members: [String], group: NSDictionary) {
     
     // gets all the recents for specific chatroom
@@ -366,6 +463,11 @@ func updateMembersInRecent(members: [String], group: NSDictionary) {
     }
 }
 
+
+
+
+
+
 func updateRecentGroupMembers(members: [String], recent: [String: AnyObject]) {
     
     // creating value of new members and saving it 
@@ -379,6 +481,11 @@ func updateRecentGroupMembers(members: [String], recent: [String: AnyObject]) {
         }
     }
 }
+
+
+
+
+
 
 func deleteChatroom(chatRoomID: String) {
     
