@@ -15,6 +15,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var recents: [NSDictionary] = []
     var firstLoad: Bool?
     let headerView = UIView()
+    var emptyLabel = UILabel()
    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
@@ -171,7 +172,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     //this query below prevents additional recents from being created in firebase when a user is selected and our online and offline databases are in sync
                     firebase.child(kRECENT).queryOrdered(byChild: kCHATROOMID).queryEqual(toValue: currentRecent[kCHATROOMID]).observe(.value, with: { (snapshot) in
                     })
+                    setupLabelForEmptyView(label: self.emptyLabel, message: "You have not sent or received any messages. This section is currently empty.", vc: nil, hide: true)
+                    self.tv.isHidden = false
                 }
+            } else {
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not sent or received any messages. This section is currently empty.", vc: self, hide: false)
+                self.tv.isHidden = true 
             }
             self.tv.reloadData()
         }
