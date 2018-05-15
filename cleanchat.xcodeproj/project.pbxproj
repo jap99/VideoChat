@@ -34,7 +34,6 @@
 		9FB572AD2071D39100A26985 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AC2071D39100A26985 /* Camera.swift */; };
 		9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */; };
 		9FB572B22071D3E500A26985 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB572B12071D3E500A26985 /* GoogleService-Info.plist */; };
-		9FB572B42071D3EF00A26985 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */; };
 		9FB572B62071D41400A26985 /* RecentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B52071D41400A26985 /* RecentVC.swift */; };
 		9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B72071D42000A26985 /* RegisterVC.swift */; };
 		9FB572BA2071D43000A26985 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572B92071D43000A26985 /* WelcomeVC.swift */; };
@@ -127,7 +126,6 @@
 		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
 		9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cleanchat-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FB572B12071D3E500A26985 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 		9FB572B52071D41400A26985 /* RecentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentVC.swift; sourceTree = "<group>"; };
 		9FB572B72071D42000A26985 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		9FB572B92071D43000A26985 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				9FB572B72071D42000A26985 /* RegisterVC.swift */,
 				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
 				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
-				9FB572B32071D3EF00A26985 /* GoogleService-Info (1).plist */,
 				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
 				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
 				9F624C2A209A940700D7E869 /* incoming.wav */,
@@ -482,7 +479,6 @@
 				9F624C2F209ABE7300D7E869 /* bubbleboddy.light-light.ttf in Resources */,
 				9FF51A4220980EDC0041661F /* Icon-72@2x.png in Resources */,
 				9F624C2E209ABE5500D7E869 /* bubbleboddy.fat.ttf in Resources */,
-				9FB572B42071D3EF00A26985 /* GoogleService-Info (1).plist in Resources */,
 				9FF51A4B20980EDC0041661F /* ios-marketing.png in Resources */,
 				9FF51A4C20980EDC0041661F /* Icon-Small@2x.png in Resources */,
 				9FF51A4420980EDC0041661F /* Icon@2x.png in Resources */,
