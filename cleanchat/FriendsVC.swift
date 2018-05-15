@@ -22,6 +22,8 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     let dataStore = backendless!.data.of(Friend.ofClass())
    
+    var emptyLabel = UILabel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +124,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         dataStore?.find(dataQuery, response: { (friends_) -> () in
             
             if friends_ != nil {
-                
+                self.tv.isHidden = false
                 print("USER HAS FRIENDS")
                 let friends = friends_! as! [Friend]
                 print("PRINTING NUMBER OF FRIENDS: \(friends.count)")
@@ -134,31 +136,18 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 }
                 
                 self.fetchFriends(withIds: self.friendId)
-
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 1.", vc: self, hide: true)
                 self.tv.reloadData()
                 
                 if friends.count == 0 {
+
+                    self.tv.isHidden = true
                     
-                //    ProgressHUD.showError("You have not added any friends.")
-                    
-                   // self.view.frame.origin.x
-                    //self.view.frame.size.width
-                    let noFriendsView1 = UIView(frame: CGRect(x: 100, y: 400, width: 300, height: 300))
-                    noFriendsView1.backgroundColor = UIColor.orange
-                    self.view.addSubview(noFriendsView1)
-                    
-                    let noFriendsView2 = UIView(frame: CGRect(x: 100, y: 400, width: 300, height: 300))
-                    noFriendsView2.backgroundColor = UIColor.orange
-                    self.tv.contentMode = .center
-                    //self.tv.addSubview(noFriendsView)
-                    self.tv.isHidden = false
-                    
-                    
-                    
-                    
-                    
-                   // let nfLabel = UILabel(
+                    setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 2.", vc: self, hide: false)
                 }
+            } else {
+                self.tv.isHidden = true
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 3.", vc: self, hide: false)
             }
             
         }) { (fault) in
@@ -264,6 +253,7 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         dataStore!.remove(friend, response: { (success) in
             
             print("Friend deleted")
+            self.loadFriends()
             
         }) { (fault) in
             

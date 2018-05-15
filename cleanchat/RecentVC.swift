@@ -24,12 +24,12 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
          
-        tv.separatorStyle = .none
+        tv.separatorStyle = .singleLine
 
-        headerView.backgroundColor = .white
-        tv.backgroundColor = .white
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.view.backgroundColor = .white
+        //headerView.backgroundColor = .white
+        //tv.backgroundColor = .white
+        //self.navigationController?.navigationBar.barTintColor = .white
+        //self.view.backgroundColor = .white
         
         self.navigationController?.navigationBar.topItem?.title = ""
         

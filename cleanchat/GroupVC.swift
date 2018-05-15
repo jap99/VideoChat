@@ -14,6 +14,7 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tv: UITableView!
     
+    let emptyLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +94,10 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 for group in sorted {
                     
                     self.groups.append(group as! NSDictionary)
-                    
+                    setupLabelForEmptyView(label: self.emptyLabel, message: nil, vc: nil, hide: true)
                 }
+            } else {
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any groups to your profile.", vc: self, hide: false)
             }
             
             self.tv.reloadData() // reloaded when add a new group to our array

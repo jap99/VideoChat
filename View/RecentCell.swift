@@ -20,16 +20,15 @@ class RecentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 4.0
-        self.clipsToBounds = true
-        self.contentView.layer.borderWidth = 0.5
-        self.layer.borderColor = darkBlue.cgColor
+//        self.layer.cornerRadius = 4.0
+//        self.clipsToBounds = true
+//        self.contentView.layer.borderWidth = 0.5
+//        self.layer.borderColor = UIColor.lightGray.cgColor
        // self.backgroundColor = .white
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
-        
+        super.layoutSubviews() 
     }
     
     func bindData(recent: NSDictionary) {

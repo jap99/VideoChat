@@ -19,13 +19,18 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let dataStore = backendless!.data.of(Friend.ofClass())
     
+    var emptyLabel = UILabel()
+    var doneButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        hideKeyboardWhenTappedAround()
+        doneButton = self.navigationItem.rightBarButtonItem!
         // put header view on top of tv
         self.tv.tableHeaderView = headerView
-        self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
+        doneButton.tintColor = darkBlue
+        //self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         loadFriends()
     }
 
@@ -122,7 +127,7 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }, error: {
             (fault : Fault?) -> () in
-            ProgressHUD.showError("We had a difficult time loading your friend's list. Here's the error we got: \(fault!.detail!)")
+            ProgressHUD.showError("There was an issue loading your friend's list. Here's the error we got: \(fault!.detail!)")
         })
         
     }
@@ -143,15 +148,19 @@ class AddGroupVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             if allUsers != nil {
                 let friends = allUsers as! [BackendlessUser]
-                
+                self.doneButton.isEnabled = true
+                self.groupNameTextField.isHidden = false 
                 for friendUser in friends {
                     self.friends.append(friendUser)
                 }
                 
                 self.tv.reloadData()
+                setupLabelForEmptyView(label: self.emptyLabel, message: nil, vc: nil, hide: true)
                 
                 if self.friends.count == 0 {
-                    ProgressHUD.showError("No groups available. Feel free to create one.")
+                    self.doneButton.isEnabled = false
+                    self.groupNameTextField.isHidden = true
+                    setupLabelForEmptyView(label: self.emptyLabel, message: "You must add friends to your account before creating a group.", vc: self, hide: false)
                 }
             }
             

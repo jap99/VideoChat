@@ -29,6 +29,7 @@
 		9F8ACCF82081701F00F34663 /* VideoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF72081701F00F34663 /* VideoThumbnail.swift */; };
 		9F8ACCFA2081731D00F34663 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ACCF92081731D00F34663 /* VideoMessage.swift */; };
 		9F8EABB520A8A7500027EDFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8EABB420A8A74F0027EDFB /* Foundation.framework */; };
+		9F8EABB720AADA010027EDFB /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8EABB620AADA010027EDFB /* EmptyView.swift */; };
 		9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC7B207C3EE50050DCE7 /* Recent.swift */; };
 		9FB572AD2071D39100A26985 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AC2071D39100A26985 /* Camera.swift */; };
 		9FB572AF2071D3A100A26985 /* ChooseUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */; };
@@ -120,6 +121,7 @@
 		9F8ACCF72081701F00F34663 /* VideoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoThumbnail.swift; sourceTree = "<group>"; };
 		9F8ACCF92081731D00F34663 /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		9F8EABB420A8A74F0027EDFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9F8EABB620AADA010027EDFB /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		9F9EDC7B207C3EE50050DCE7 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		9FB572AC2071D39100A26985 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				9FB572D520783FF500A26985 /* FriendCell.swift */,
 				9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */,
 				9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */,
+				9F8EABB620AADA010027EDFB /* EmptyView.swift */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -577,6 +580,7 @@
 				9F3B9FA2208F36F200F12CE3 /* BackgroundVC.swift in Sources */,
 				9FB572B82071D42000A26985 /* RegisterVC.swift in Sources */,
 				9F8ACCF020809D3400F34663 /* ChatVC.swift in Sources */,
+				9F8EABB720AADA010027EDFB /* EmptyView.swift in Sources */,
 				9FE14FEB1F22178900F3FE09 /* AppDelegate.swift in Sources */,
 				9F9EDC7C207C3EE50050DCE7 /* Recent.swift in Sources */,
 				9F8ACCF82081701F00F34663 /* VideoThumbnail.swift in Sources */,
@@ -754,9 +758,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "361f1e08-9b60-47c6-a6cd-b703da621cd6";
 				PROVISIONING_PROFILE_SPECIFIER = "CleanChat-Dev-ProvProf";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -784,6 +789,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = CleanChat_PROD_provProf;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

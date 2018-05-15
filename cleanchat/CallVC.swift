@@ -47,7 +47,7 @@ class CallVC: UIViewController, SINCallDelegate {
             setCallStatusText(text: "00 : 00")
             //showButtons()
             audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
-        } else {
+        } else if _call.direction == SINCallDirection.outgoing {
             //callAnswered = true
             setCallStatusText(text: "Calling...")
             //showButtons()
@@ -153,9 +153,12 @@ class CallVC: UIViewController, SINCallDelegate {
     func callDidEstablish(_ call: SINCall!) {
         
         startCallDurationTimer()
-        self.declineButton.isHidden = false
-        self.hangupButton.isHidden = true
-        self.answerButton.isHidden = false
+//        self.declineButton.isHidden = false
+//        self.hangupButton.isHidden = true
+//        self.answerButton.isHidden = false
+        self.declineButton.isHidden = true
+        self.hangupButton.isHidden = false
+        self.answerButton.isHidden = true
         audioController().stopPlayingSoundFile()
     }
     
