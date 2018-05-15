@@ -19,6 +19,11 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        if backendless?.userService.currentUser == nil {
+            print("logged out bro")
+        }
+        
     }
     
 

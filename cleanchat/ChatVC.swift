@@ -41,7 +41,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     var outgoingMessage: OutgoingMessage?
     
     // put two jsq message bubbles
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: darkBlue)
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +49,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         clearRecentCounter(chatRoomID: chatRoomId)
         loadUserDefaults()
         setBackgroundColor()
+        updateUI()
+        loadMessages()
+        
+        collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
+        collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,9 +78,6 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
-        
-        updateUI()
-        loadMessages()
     }
     
     // MARK: JSQMessages Data Source functions
@@ -128,21 +131,24 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if indexPath.item % 3 == 0 {
             let message = messages[indexPath.item]
-            
+
             return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
         }
         return nil
+        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
         
         if indexPath.item % 3 == 0 {
             let message = messages[indexPath.item]
-            
+
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
-        
+
         return 0.0
+ 
+    
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
@@ -681,6 +687,7 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
                 }
             }
             self.collectionView.reloadData()
+            self.view.setNeedsLayout()
         }
     }
     

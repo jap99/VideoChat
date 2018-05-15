@@ -201,22 +201,18 @@ class SettingsTableVC: UITableViewController {
         
         removeDeviceIdFromUser()
         
-        backendless!.userService.logout()
-        
-        // logout from facebook
-        if FBSDKAccessToken.current() != nil {
+        backendless!.userService.logout({ (response) in
             
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
+            if FBSDKAccessToken.current() != nil {
+                
+                let loginManager = FBSDKLoginManager()
+                loginManager.logOut()
+            }
+            self.performSegue(withIdentifier: "logoutVCtoWelcomeVC-Segue", sender: Any?.self)
+        }) { (fault) in
+            
+            ProgressHUD.show("There was an issue logging you out. Please try again.", interaction: true)
         }
-        
-        // resign from push notifications
-        
-        // show loginVC
-        performSegue(withIdentifier: "logoutVCtoWelcomeVC-Segue", sender: Any?.self)
-//        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
-//        
-//        self.present(login, animated: true, completion: nil)
     }
     
     

@@ -39,12 +39,13 @@ class CallVC: UIViewController, SINCallDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
          UIApplication.shared.statusBarStyle = .lightContent
         if _call.direction == SINCallDirection.incoming {
             self.declineButton.isHidden = false
             self.hangupButton.isHidden = true
             self.answerButton.isHidden = false
-            setCallStatusText(text: "00 : 00")
+            setCallStatusText(text: "")
             //showButtons()
             audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
         } else if _call.direction == SINCallDirection.outgoing {
