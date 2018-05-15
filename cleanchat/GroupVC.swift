@@ -74,6 +74,15 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         groupDeleteWarning(indexPath: indexPath)
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tv.dataSource?.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        deleteButton.backgroundColor = darkBlue
+        return [deleteButton]
+    }
+    
     
     // MARK: Load groups
     

@@ -69,13 +69,24 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tv.dataSource!.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        deleteButton.backgroundColor = darkBlue
+        return [deleteButton]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         let recent = recents[indexPath.section]
+        
         
         if (recent[kTYPE] as? String)! == kGROUP {
             

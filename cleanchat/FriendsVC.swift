@@ -87,6 +87,15 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tv.dataSource?.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        deleteButton.backgroundColor = darkBlue
+        return [deleteButton]
+    }
+    
     // MARK: Table view delegate functions
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,18 +145,18 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 }
                 
                 self.fetchFriends(withIds: self.friendId)
-                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 1.", vc: self, hide: true)
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: true)
                 self.tv.reloadData()
                 
                 if friends.count == 0 {
 
                     self.tv.isHidden = true
                     
-                    setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 2.", vc: self, hide: false)
+                    setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: false)
                 }
             } else {
                 self.tv.isHidden = true
-                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile 3.", vc: self, hide: false)
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: false)
             }
             
         }) { (fault) in
