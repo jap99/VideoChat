@@ -39,7 +39,7 @@ class CallVC: UIViewController, SINCallDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+         UIApplication.shared.statusBarStyle = .lightContent
         if _call.direction == SINCallDirection.incoming {
             self.declineButton.isHidden = false
             self.hangupButton.isHidden = true

@@ -198,27 +198,28 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
                         ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
                     })
                 })
-            } else {
-                
-                // if no image selected, provide avatar image
-                if let firstCharacter = self.usernameTextField.text?.lowercased().first {
-                    
-                    let avatarImage = UIImage(named: "icons8-circled_\(firstCharacter)")
-                    self.avatarImage = avatarImage
-                    uploadAvatar(image: self.avatarImage!, result: { (imageLink) in
-                        
-                        let properties = ["Avatar" : imageLink!]
-                        
-                        backendless!.userService.currentUser.updateProperties(properties)
-                        
-                        backendless!.userService.update(backendless!.userService.currentUser, response: { (updatedUser) in
-                            print("Updated avatar image with letter icon")
-                        }, error: { (fault) in
-                            ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
-                        })
-                    })
-                }
             }
+//            else {
+//                
+//                // if no image selected, provide avatar image
+//                if let firstCharacter = self.usernameTextField.text?.lowercased().first {
+//                    
+//                    let avatarImage = UIImage(named: "icons8-circled_\(firstCharacter)")
+//                    self.avatarImage = avatarImage
+//                    uploadAvatar(image: self.avatarImage!, result: { (imageLink) in
+//                        
+//                        let properties = ["Avatar" : imageLink!]
+//                        
+//                        backendless!.userService.currentUser.updateProperties(properties)
+//                        
+//                        backendless!.userService.update(backendless!.userService.currentUser, response: { (updatedUser) in
+//                            print("Updated avatar image with letter icon")
+//                        }, error: { (fault) in
+//                            ProgressHUD.showError("Couldn't update user: \(fault!.detail!)")
+//                        })
+//                    })
+//                }
+//            }
             
             // go to app
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
