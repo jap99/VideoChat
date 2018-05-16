@@ -26,9 +26,10 @@ class WelcomeVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = false 
         backendless!.userService.setStayLoggedIn(true)
         
-        // check if user is available
-        if backendless!.userService.currentUser != nil {
-           
+        if let _ = backendless?.userService.find(byId: backendless!.userService.currentUser.objectId as! String),
+            let _ = backendless?.userService.currentUser.getProperty("deviceId") {
+            
+        } else {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : backendless!.userService.currentUser.objectId])
             
             DispatchQueue.main.async {

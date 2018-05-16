@@ -8,20 +8,22 @@
 
 import Foundation
 
+
 func registerUserDeviceID(user: BackendlessUser?) {
     
     // check if we have a deviceID
     
     let deviceRegistration: DeviceRegistration = (backendless?.messaging.currentDevice())!
-    let deviceId: String = deviceRegistration.deviceId
+    let deviceId: String = deviceRegistration.deviceId // represents the deviceID in both USERS & DEVICE REGISTRATION when user logs in w email; haven't tested w facebook yet
     
-    if backendless!.messagingService.getRegistration(deviceId) != nil {
+    if backendless!.messagingService.getRegistration(deviceId) != nil { // DEVICE REGISTRATION's deviceId column
         
         let properties = [kDEVICEID: deviceId]
         
         backendless!.userService.currentUser!.updateProperties(properties)
         
         backendless!.userService.update(backendless!.userService.currentUser, response: { (newUser) in
+            
             print("USER UPDATED SUCCESSFULLY IS REGISTERUSERDEVICEID FUNC")
         }) { (error) in
             print("COULD NOT UPDATE USER IN REGISTERUSERDEVICEID FUNC \(error!.detail)")
@@ -53,8 +55,7 @@ func updateBackendlessUser(avatarUrl: String) {
     let deviceId: String = deviceRegistration.deviceId
     
     if backendless!.messagingService.getRegistration(deviceId) != nil {
-
-
+ 
         properties = ["Avatar" : avatarUrl, kDEVICEID: deviceId]
     }
     

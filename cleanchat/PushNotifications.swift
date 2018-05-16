@@ -40,14 +40,13 @@ func sendPushNotification2(members: [String], message: String) {
     getMembersToPush(members: newMembersArray) { (userArray) in
         
         for user in userArray {
-        shouldSendPush = true 
-        // send push notif
-        sendPushNotifcation(toUser: user, message: message)
-        
+            shouldSendPush = true
+            // send push notif
+            sendPushNotifcation(toUser: user, message: message)
+            
+        }
     }
 }
-}
-
 
 func sendPushNotifcation(toUser: BackendlessUser, message: String) {
     
@@ -55,7 +54,7 @@ func sendPushNotifcation(toUser: BackendlessUser, message: String) {
     numberOfUnreadMessagesOfUser(userID: toUser.objectId as String) { (counter) in
         
         // get device ID from b.e. user
-        let deviceID = toUser.getProperty(kDEVICEID) as! String
+        let deviceID = toUser.getProperty(kDEVICEID) as! String           // LAST TIME I CHECKED THIS WAS NULL IN USERS SECTION FOR PERSON RECEIVING PUSH VIA EMAIL LOGIN
         print("DEVICE ID: \(deviceID)")
         
         // get delivery options from b.e.
@@ -108,7 +107,7 @@ func numberOfUnreadMessagesOfUser(userID: String, result: @escaping (_ counter: 
     }
 }
 
-
+//func removeCurrrentUserFromMembersArray(members: [String] -> [String]) -> ()
 func removeCurrrentUserFromMembersArray(members: [String]) -> [String] {
     
     var updatedMembersArray = [String]()
@@ -121,7 +120,6 @@ func removeCurrrentUserFromMembersArray(members: [String]) -> [String] {
     return updatedMembersArray
 }
 
-
 func getMembersToPush(members: [String], result: @escaping (_ usersArray: [BackendlessUser]) -> Void) {
     
     var backendlessMembers: [BackendlessUser] = []
@@ -130,8 +128,7 @@ func getMembersToPush(members: [String], result: @escaping (_ usersArray: [Backe
     
     for memberID in members {
         
-        // query b.e. user table
-        let whereClause = "objectId = '\(memberID)'"
+        let whereClause = "objectId = '\(memberID)'" // represents the objectId & ownerId in the USER section (this is the user we're sending the push to)
         let dq = DataQueryBuilder()
         dq!.setWhereClause(whereClause)
         

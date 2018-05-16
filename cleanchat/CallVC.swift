@@ -24,34 +24,27 @@ class CallVC: UIViewController, SINCallDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate // since we're setting up call in app delegate later on
     
-    override func viewWillLayoutSubviews() {
-        //callAnswered = true
-        showButtons()
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         _call.delegate = self
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         UIApplication.shared.statusBarStyle = .lightContent
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         if _call.direction == SINCallDirection.incoming {
             self.declineButton.isHidden = false
             self.hangupButton.isHidden = true
             self.answerButton.isHidden = false
             setCallStatusText(text: "")
-            //showButtons()
             audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
+        
         } else if _call.direction == SINCallDirection.outgoing {
-            //callAnswered = true
+            
             setCallStatusText(text: "Calling...")
-            //showButtons()
             self.declineButton.isHidden = true
             self.hangupButton.isHidden = false
             self.answerButton.isHidden = true
@@ -65,7 +58,6 @@ class CallVC: UIViewController, SINCallDelegate {
         }
     }
     
-    
     // Access Sinch audio controller so we can answer phone and speak
     func audioController() -> SINAudioController {
             return appDelegate._client.audioController()
@@ -76,19 +68,13 @@ class CallVC: UIViewController, SINCallDelegate {
         _call.delegate = self
     }
     
-    
-    
     // MARK: UI Update
 
     func setCallStatusText(text: String) {
         
         statusLabel.text = text // passing our status to our UI
     }
-    
-    func showButtons() {
-        
-    }
-    
+  
     // MARK: Helper
     
     // returns the path of the sounds to be played
@@ -114,7 +100,6 @@ class CallVC: UIViewController, SINCallDelegate {
     }
     
     func startCallDurationTimer() {
-        // first every half seconds, it's on our VC, we'll have a selector
         self.durationTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.onDurationTimer), userInfo: nil, repeats: true)
     }
     
@@ -128,8 +113,6 @@ class CallVC: UIViewController, SINCallDelegate {
         }
     }
     
-    
-    
     // MARK: SINCall Delegate functions
     
         // OUTGOING CALL FUNCTIONS
@@ -139,6 +122,7 @@ class CallVC: UIViewController, SINCallDelegate {
             self.declineButton.isHidden = false
             self.hangupButton.isHidden = true
             self.answerButton.isHidden = false
+            audioController().startPlayingSoundFile(self.pathForSound(soundName: "incoming"), loop: true)
        
         } else if call.direction == .outgoing {
             self.declineButton.isHidden = true
@@ -148,15 +132,12 @@ class CallVC: UIViewController, SINCallDelegate {
        
         setCallStatusText(text: "Ringing...")
         audioController().startPlayingSoundFile(pathForSound(soundName: "ringback"), loop: true)
- 
     }
     
     func callDidEstablish(_ call: SINCall!) {
         
         startCallDurationTimer()
-//        self.declineButton.isHidden = false
-//        self.hangupButton.isHidden = true
-//        self.answerButton.isHidden = false
+
         self.declineButton.isHidden = true
         self.hangupButton.isHidden = false
         self.answerButton.isHidden = true
@@ -171,10 +152,6 @@ class CallVC: UIViewController, SINCallDelegate {
     }
     
         // INCOMING CALL FUNCTIONS
-    
-    
-    
-    
     
     
     // MARK: IBActions
@@ -192,7 +169,6 @@ class CallVC: UIViewController, SINCallDelegate {
     @IBAction func answerButton_Pressed(_ sender: UIButton) {
         callAnswered = true
         audioController().stopPlayingSoundFile()
-        showButtons()
         _call.answer()
     }
 

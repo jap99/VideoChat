@@ -19,14 +19,11 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
-        
         if backendless?.userService.currentUser == nil {
             print("logged out bro")
-        }
-        
+        } 
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
          
@@ -43,9 +40,6 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tv.delegate = self; tv.dataSource = self
     }
    
-    
-    
-    
     // MARK: - Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {

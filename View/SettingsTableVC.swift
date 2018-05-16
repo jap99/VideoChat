@@ -151,25 +151,19 @@ class SettingsTableVC: UITableViewController {
             
             vc.user = backendless!.userService.currentUser
             self.present(vc, animated: true, completion: nil)
-            
         }
         
         if indexPath.section == 1 && indexPath.row == 0 {
             // show privacy cell
-            
-            
         }
         
         if indexPath.section == 1 && indexPath.row == 1 {
             // show terms of service cell
-            
-            
         }
         
         if indexPath.section == 1 && indexPath.row == 2 {
             // show bg cell
             performSegue(withIdentifier: "settingsToBackground-Segue", sender: self)
-            
         }
         
         if indexPath.section == 2 && indexPath.row == 0 {

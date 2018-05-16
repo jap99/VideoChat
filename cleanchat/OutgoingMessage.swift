@@ -72,14 +72,4 @@ class OutgoingMessage {
         sendPushNotification1(chatRoomID: chatRoomID, message: decryptedText)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

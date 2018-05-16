@@ -51,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, queue: nil) { (note) in
             
-            let userID = note.userInfo!["userId"] as! String
-            UserDefaults.standard.set(userID, forKey: "userId") // save userID to userdefaults
+            let userID = note.userInfo!["userId"] as! String // represents the objectId & ownerId in USERS
+            UserDefaults.standard.set(userID, forKey: "userId")
             UserDefaults.standard.synchronize()
             
             onUserDidLogin(userID: userID)
@@ -199,7 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         self.push.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken) // SinchRTC
         
         // register device with backendless here
-        backendless!.messagingService.registerDevice(deviceToken, response: { (success) in
+        backendless!.messagingService.registerDevice(deviceToken, response: { (success) in     // HERE WE'RE REGISTERING DEVICE WITH THE DEVICE TOKEN.. LETS FIND OUT WHERE ELSE WE USE THIS TOKEN AND WHY WERE NOT USING ANOTHER FLAG INSTEAD FOR PUSH NOTIFICATIONS
             print("REGISTERED FOR REMOTE NOTIFICATIONS")
         }) { (error) in
             print("ERROR REGISTERING FOR REMOTE NOTIFICATIONS - APP DELEGATE - ERROR: \(error!.detail!)")
@@ -296,7 +296,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func client(_ client: SINClient!, logMessage message: String!, area: String!, severity: SINLogSeverity, timestamp: Date!) {
         if severity == .critical {
-            print("MESSAGE: \(message)")
+            print("CRITICAL LOG MESSAGE: \(message)")
+        } else if severity == .info {
+            print("INFO LOG MESSAGE: \(message)")
+        } else if severity == .trace {
+            print("TRACE LOG MESSAGE: \(message)")
+        } else if severity == .warn {
+            print("WARN LOG MESSAGE: \(message)")
         }
     }
     
