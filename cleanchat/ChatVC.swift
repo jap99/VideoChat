@@ -276,7 +276,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         if let pic = picture {
             
-            let imageData = UIImageJPEGRepresentation(pic, 0.5)
+//            let imageData = UIImageJPEGRepresentation(pic, 0.5)
+            let imageData = pic.jpegData(compressionQuality: 0.5)
             
             //encrypt
             let encryptedText = encryptText(chatRoomID: chatRoomId, text: kPICTURE)
@@ -295,7 +296,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             let squared = squareImage(image: picture, size: 320)
             
             // create data from our image
-            let dataThumbnail = UIImageJPEGRepresentation(squared, 0.3)
+//            let dataThumbnail = UIImageJPEGRepresentation(squared, 0.3)
+            let dataThumbnail = squared.jpegData(compressionQuality: 0.3)
             
             //upload to backendless
             uploadVideo(video: videoData!, thumbnail: dataThumbnail! as NSData) { (videoLink, thumbnailLink) in
@@ -579,13 +581,13 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         // return media url of temp. media file
-        let video = info[UIImagePickerControllerMediaURL] as? NSURL
-        
-        let picture = info[UIImagePickerControllerEditedImage] as? UIImage
-        
-        // the video & pic are nil so we'll pass both in incase either exists
-        sendMessage(text: nil, date: Date(), picture: picture, location: nil, video: video, audio: nil)
-        
+//        let video = info[UIImagePickerControllerMediaURL] as? NSURL
+//        
+//        let picture = info[UIImagePickerControllerEditedImage] as? UIImage
+//        
+//        // the video & pic are nil so we'll pass both in incase either exists
+//        sendMessage(text: nil, date: Date(), picture: picture, location: nil, video: video, audio: nil)
+//        
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -699,8 +701,8 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
             
             getAvatarFromURL(url: imageLink as! String, result: { (image) in // downloads the image if we have a link, then saves in our avatarImagesDictionary
                 
-                let imageData = UIImageJPEGRepresentation(image!, 0.5)
-                
+//                let imageData = UIImageJPEGRepresentation(image!, 0.5)
+                let imageData = image!.jpegData(compressionQuality: 0.5)
                 if self.avatarImagesDictionary != nil {
                     
                     // remove object then set the updated one

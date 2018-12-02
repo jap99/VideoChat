@@ -10,45 +10,41 @@ import UIKit
 
 class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, AddFriendDelegate {
 
-    @IBOutlet weak var tv: UITableView!
-    
-    var friendObjects: [Friend] = [] 
-    
+    var friendObjects: [Friend] = []
     var friends:  [BackendlessUser] = []
     var friendId: [String] = []
-    
     let searchController = UISearchController(searchResultsController: nil)
     var filteredFriends: [BackendlessUser] = []
-    
     let dataStore = backendless!.data.of(Friend.ofClass())
-   
     var emptyLabel = UILabel()
+    
+    @IBOutlet weak var tv: UITableView!
+    
 
+    // MARK: - START
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
-        
         loadFriends()
-        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tv.tableHeaderView = searchController.searchBar
     }
  
-    // MARK: IBActions
+    
+    // MARK: - IB_ACTIONS
     
     @IBAction func addFriendsBarButton_Pressed (_ sender: AnyObject) {
         performSegue(withIdentifier: "friendToAddFriend-Segue", sender: self)
     }
 
-    // MARK: Table view data source
+    
+    // MARK: - TABLE VIEW
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredFriends.count
         }
@@ -58,7 +54,6 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! FriendCell
         var friend: BackendlessUser
-        
         if searchController.isActive && searchController.searchBar.text != "" {
             friend = filteredFriends[indexPath.row]
         } else {
@@ -72,18 +67,14 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         return true // so we can delete our friends
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // delete friend
-        
         print("FRIEND OBJECTS COUNT: \(friendObjects.count)")
         let friend = friendObjects[indexPath.row]
-        
         friendObjects.remove(at: indexPath.row)
         friends.remove(at: indexPath.row)
         friendId.remove(at: indexPath.row)
-        
         deleteFriend(friend: friend)
-        
         tableView.reloadData()
     }
     
@@ -96,20 +87,14 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         return [deleteButton]
     }
     
-    // MARK: Table view delegate functions
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tv.deselectRow(at: indexPath, animated: true)
         var friend: BackendlessUser
-        
         if searchController.isActive && searchController.searchBar.text != "" {
             friend = filteredFriends[indexPath.row]
-            
         } else {
             friend = friends[indexPath.row]
         }
-        
         // create a chat
         let chatVC = ChatVC()
         chatVC.titleName = friend.name as String
@@ -121,162 +106,122 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         navigationController?.pushViewController(chatVC, animated: true)
     }
     
+    
+    // MARK: - ACTIONS
+    
     func loadFriends() {
-        
         cleanup()
-        
-        let whereClause = "userOneId = '\(backendless!.userService.currentUser.objectId!)'"
-        print(backendless!.userService.currentUser.objectId)
+        let whereClause = "userOneId = '\(String(describing: backendless?.userService?.currentUser?.objectId!))'"
+        print(backendless?.userService?.currentUser?.objectId!)
         let dataQuery = DataQueryBuilder()
         dataQuery!.setWhereClause(whereClause)
-        
         dataStore?.find(dataQuery, response: { (friends_) -> () in
-            
             if friends_ != nil {
                 self.tv.isHidden = false
                 print("USER HAS FRIENDS")
                 let friends = friends_! as! [Friend]
                 print("PRINTING NUMBER OF FRIENDS: \(friends.count)")
                 self.friendObjects = friends
-                
                 for friend in friends {
-                    
                     self.friendId.append(friend.userTwo!) // get user's id
                 }
-                
                 self.fetchFriends(withIds: self.friendId)
                 setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: true)
                 self.tv.reloadData()
-                
                 if friends.count == 0 {
-
                     self.tv.isHidden = true
-                    
                     setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: false)
                 }
             } else {
                 self.tv.isHidden = true
                 setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any friends to your profile.", vc: self, hide: false)
             }
-            
         }) { (fault) in
-            
-            print("Couldn't load friends. Error: \(fault!.detail)")
+            print("Couldn't load friends. Error: \(String(describing: fault!.detail))")
             
         }
     }
     
-    //new function
     func fetchFriends(withIds: [String]) {
-        
         let string = "'" + withIds.joined(separator: "', '") + "'"
         let whereClause = "objectId IN (\(string))"
         let queryBuilder = DataQueryBuilder()
         queryBuilder!.setWhereClause(whereClause)
-        
         let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
         dataStore?.find(queryBuilder, response: {
             (allUsers) -> () in
-            
             if allUsers != nil {
-                
                 for friendUser in allUsers as! [BackendlessUser] {
                     self.friends.append(friendUser)
                 }
                 self.tv.reloadData()
             }
-            
         }, error: {
             (fault : Fault?) -> () in
             print("Couldnt load all friends: \(fault!.detail!)")
         })
     }
     
-    // MARK: Helper functions
-    
     func cleanup() {
-        
         friendObjects.removeAll()
         friends.removeAll()
         friendId.removeAll()
         tv.reloadData()
     }
     
-    // MARK: Search controller
-    
-    func filteredContentForSearchText(searchText: String, scope: String = "All") {
-        
-        filteredFriends = friends.filter { friend in
-            
-            return friend.name.lowercased.contains(searchText.lowercased())
-        }
-        
-        tv.reloadData()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        filteredContentForSearchText(searchText: searchController.searchBar.text!)
-    }
-    
-    
-    // MARK: AddFriend delegate function
-    
-    func saveFriend(selectedFriend: BackendlessUser) {
-
-        if friendId.contains(selectedFriend.objectId as String) {
-            return
-        }
-        
-        let friend = Friend()
-        friend.userOneId = backendless!.userService.currentUser.objectId as String
-        friend.userTwo = selectedFriend.objectId as String
-        
-        Backendless.sharedInstance().data.of(Friend.self).save(friend, response: { (result: (Any?)) -> Void in
-               // let friendd = result as! Friend
-                self.loadFriends()
-        },
-            error: { (fault: Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault!.detail!))")
-        })
-        
-    }
- 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "friendToAddFriend-Segue" {
-            
-            let vc = segue.destination as! AddFriendVC
-            vc.delegate = self
-            
-            vc.hidesBottomBarWhenPushed = true
-        }
-    }
-    
-    
-    // MARK: Delete Friend
-    
     func deleteFriend(friend: Friend) {
-        
         dataStore!.remove(friend, response: { (success) in
-            
             print("Friend deleted")
             self.loadFriends()
-            
         }) { (fault) in
-            
             ProgressHUD.showError("Couldn't delete friend: \(fault!.detail!)")
         }
     }
     
     
+    // MARK: - UI_SEARCH_RESULTS_UPDATING
+    
+    func filteredContentForSearchText(searchText: String, scope: String = "All") {
+        filteredFriends = friends.filter { friend in
+            return friend.name.lowercased.contains(searchText.lowercased())
+        }
+        tv.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredContentForSearchText(searchText: searchController.searchBar.text!)
+    }
     
     
+    // MARK: - ADD_FRIEND_DELEGATE
     
+    func saveFriend(selectedFriend: BackendlessUser) {
+        if friendId.contains(selectedFriend.objectId as String) {
+            return
+        }
+        let friend = Friend()
+        friend.userOneId = backendless!.userService.currentUser.objectId as String
+        friend.userTwo = selectedFriend.objectId as String
+        Backendless.sharedInstance().data.of(Friend.self).save(friend, response: { (result: (Any?)) -> Void in
+               // let friendd = result as! Friend
+                self.loadFriends()
+        }, error: { (fault: Fault?) -> () in
+                print("Server reported an error: \(String(describing: fault!.detail!))")
+        })
+    }
+  
     
+    // MARK: - NAVIGATION
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "friendToAddFriend-Segue" {
+            let vc = segue.destination as! AddFriendVC
+            vc.delegate = self
+            vc.hidesBottomBarWhenPushed = true
+        }
+    }
     
+
     
     
 }

@@ -19,37 +19,30 @@ class WelcomeVC: UIViewController {
     @IBOutlet weak var registerButtonOutlet: UIButton!
     @IBOutlet weak var loginWithFBButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-         UIApplication.shared.statusBarStyle = .lightContent
-        
-        self.navigationController?.isNavigationBarHidden = false 
-        backendless!.userService.setStayLoggedIn(true)
-        
-        if let _ = backendless?.userService.find(byId: backendless!.userService.currentUser.objectId as! String),
-            let _ = backendless?.userService.currentUser.getProperty("deviceId") {
-            
-        } else {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : backendless!.userService.currentUser.objectId])
-            
-            DispatchQueue.main.async {
-                
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
-                vc.selectedIndex = 0
-                self.present(vc, animated: true, completion: nil)
-            }
-        }
-    }
     
+    // MARK: - SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setup1()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setup2()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
+    
+    // MARK: - SETUP
+    
+    func setup1() {
         //self.view.tintColor = darkBlue
-       // self.navigationItem.setHidesBackButton(true, animated: true)
-  //      self.navigationController?.navigationBar.topItem?.title = ""
-        
-        self.navigationController?.navigationBar.isHidden = false 
+        // self.navigationItem.setHidesBackButton(true, animated: true)
+        //      self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.isHidden = false
         self.hideKeyboardWhenTappedAround()
         
         // corner radius
@@ -77,73 +70,80 @@ class WelcomeVC: UIViewController {
         loginButtonOutlet.layer.borderColor = UIColor.darkText.cgColor
         registerButtonOutlet.layer.borderColor = UIColor.darkText.cgColor
         
-//        // shadow color
-//        emailTextField.layer.shadowColor = UIColor.white.cgColor
-//        passwordTextField.layer.shadowColor = UIColor.white.cgColor
-//        loginButtonOutlet.layer.shadowColor = UIColor.white.cgColor
-//        registerButtonOutlet.layer.shadowColor = UIColor.white.cgColor
-//
-//        // shadow radius
-////        emailTextField.layer.shadowRadius = 6.0
-////        passwordTextField.layer.shadowRadius = 6.0
-////        loginButtonOutlet.layer.shadowRadius = 4.0
-////        registerButtonOutlet.layer.shadowRadius = 4.0
-//
-//        // shadow opacity
-//        emailTextField.layer.shadowOpacity = 4.0
-//        passwordTextField.layer.shadowOpacity = 4.0
-//        loginButtonOutlet.layer.shadowOpacity = 4.0
-//        registerButtonOutlet.layer.shadowOpacity = 4.0
+        //        // shadow color
+        //        emailTextField.layer.shadowColor = UIColor.white.cgColor
+        //        passwordTextField.layer.shadowColor = UIColor.white.cgColor
+        //        loginButtonOutlet.layer.shadowColor = UIColor.white.cgColor
+        //        registerButtonOutlet.layer.shadowColor = UIColor.white.cgColor
+        //
+        //        // shadow radius
+        ////        emailTextField.layer.shadowRadius = 6.0
+        ////        passwordTextField.layer.shadowRadius = 6.0
+        ////        loginButtonOutlet.layer.shadowRadius = 4.0
+        ////        registerButtonOutlet.layer.shadowRadius = 4.0
+        //
+        //        // shadow opacity
+        //        emailTextField.layer.shadowOpacity = 4.0
+        //        passwordTextField.layer.shadowOpacity = 4.0
+        //        loginButtonOutlet.layer.shadowOpacity = 4.0
+        //        registerButtonOutlet.layer.shadowOpacity = 4.0
         
         // background color
         loginButtonOutlet.backgroundColor = .white
         registerButtonOutlet.backgroundColor = .white
-
-//        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
-//
-//        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
         
-        
+        //        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
+        //
+        //        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray, kCTFontAttributeName as NSAttributedStringKey: UIFont(name: "Avenir-Book", size: 15)!])
     }
-
+    
+    func setup2() {
+        self.navigationController?.isNavigationBarHidden = false
+        backendless!.userService.setStayLoggedIn(true)
+        if let currentUserID = backendless?.userService?.currentUser?.objectId, let _ = backendless?.userService?.currentUser.getProperty("deviceId") {
+//            backendless?.userService?.find(byId: currentUserID, response: { (_) in
+//            }, error: { (error) in
+//                if let error = error {
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : currentUserID])
+//            DispatchQueue.main.async {
+//                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
+//                vc.selectedIndex = 0
+//                self.present(vc, animated: true, completion: nil)
+//            }
+//                }
+//            })
+        } else {
+//            goToLoginVC()
+        }
+    }
+    
+    // MARK: - IB_ACTION
+    
     @IBAction func fbLoginButtonPressed(_ sender: Any) {
-        
         // since we're using custom facebook button and not the standard one, we use facebook login manager instead of facebook login button
-        
         let fbLoginManager = FBSDKLoginManager()
-
         // what we're asking of the user
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            
             if error != nil {
                 print("Error logging in with Facebook: \(error!.localizedDescription)")
                 return
             }
-            
             // else log user in with backendless
-            
             if let token = result?.token {
                 print("RESULT'S TOKEN PRINTED - \(token)")
-                
                 let userId: String = token.userID
                 let tokenStringg: String = token.tokenString
                 let expirationDate: Date = token.expirationDate
                 let fieldsMapping = ["id": "facebookId", "name": "name", "email": "email", "birthday": "birthday", "first_name": "fb_first_name", "last_name": "fb_last_name", "gender": "gender"] // the left side is how it's shown in facebook and the right side is how it will show in the b.e. table
-                
                 // access token - pass our access token in from facebook; once we're logged in, the result from our callback will have our access token
                 // fields mapping - b.e. needs to know which info from facebook it needs to map to put the user table in our b.e.
                 backendless!.userService.login(withFacebookSDK: userId, tokenString: tokenStringg, expirationDate: expirationDate, fieldsMapping: fieldsMapping, response: { (user) in
-                    
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
-                    
                     // go to app after fb user's registered
-                    
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
                     vc.selectedIndex = 0
                     self.present(vc, animated: true, completion: nil)
-                    
                     self.updateFacebookUser()
-                    
                     // get avatar from facebook and update b.e.
                 }, error: { (fault) in
                     print("ERROR REGISTERING USER WITH FB ACCOUNT: \(fault!.detail!)")
@@ -152,39 +152,11 @@ class WelcomeVC: UIViewController {
         }
     }
     
-    func updateFacebookUser() {
-        
-        // make graph request for avatar
-        
-        // get email onlly
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"]).start { (connection, result, error) in
-            
-            if error != nil {
-                print("ERROR FACEBOOK GRAPH REQUEST: \(error!.localizedDescription)")
-                return
-            }
-            
-            if let facebookId = (result as! NSDictionary)["id"] as? String {
-                
-                // use the user's id to get the user's avatar
-                let avatarUrl = "http://graph.facebook.com/\(facebookId)/picture?type=normal"
-                
-                updateBackendlessUser(avatarUrl: avatarUrl)
-                
-            } else {
-                print("FACEBOOK REQUEST ERROR, no facebook ID")
-            }
-        }
-    }
-    
     @IBAction func loginButtonPressed(_ sender: Any) {
-        
         if emailTextField.text != "" && passwordTextField.text != "" {
-            
             ProgressHUD.show("Logging in...", interaction: false)
             loginUser(email: emailTextField.text!, password: passwordTextField.text!)
         } else {
-            
             ProgressHUD.showError("Email and Password Required")
         }
     }
@@ -193,28 +165,39 @@ class WelcomeVC: UIViewController {
     }
     
     
+    // MARK: - ACTION
+    
+    func updateFacebookUser() {
+        // make graph request for avatar
+        // get email onlly
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"]).start { (connection, result, error) in
+            if error != nil {
+                print("ERROR FACEBOOK GRAPH REQUEST: \(error!.localizedDescription)")
+                return
+            }
+            if let facebookId = (result as! NSDictionary)["id"] as? String {
+                // use the user's id to get the user's avatar
+                let avatarUrl = "http://graph.facebook.com/\(facebookId)/picture?type=normal"
+                updateBackendlessUser(avatarUrl: avatarUrl)
+            } else {
+                print("FACEBOOK REQUEST ERROR, no facebook ID")
+            }
+        }
+    }
     
     func loginUser(email: String, password: String) {
-        
         ProgressHUD.dismiss()
         backendless!.userService.login(email, password: password, response: { (user) in
-            
             registerUserDeviceID(user: user!)
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
-             
             self.emailTextField.text = nil
             self.passwordTextField.text = nil
             self.view.endEditing(false)
-            
             // go to app
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
             vc.selectedIndex = 0
             self.present(vc, animated: true, completion: nil)
-            
-            
         }) { (fault) in
-            
             ProgressHUD.showError("Could not login: \(fault!.detail!)")
         }
     }

@@ -59,7 +59,7 @@ class VideoMessage: JSQMediaItem {
                 
                 iconView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                 
-                iconView.contentMode = UIViewContentMode.center
+                iconView.contentMode = UIView.ContentMode.center
                 let imageView = UIImageView(image: self.image!)
                 imageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                 

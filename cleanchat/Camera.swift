@@ -29,7 +29,7 @@ class Camera {
         
         
         //check if photo library is available on our device else return w/o crashing
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum) {
             return
         }
         
@@ -81,7 +81,7 @@ class Camera {
     func presentMultiCamera(target: UIViewController,  canEdit: Bool) {
         
         // check if device has a camera
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             return
         }
         
@@ -100,16 +100,16 @@ class Camera {
                     
                     // passing in image and video so we can have both at same time
                     imagePicker.mediaTypes = [type1, type2]
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    imagePicker.sourceType = UIImagePickerController.SourceType.camera
                 }
             }
             
             // set rear camera to default if available
             if UIImagePickerController.isCameraDeviceAvailable(.rear) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.rear
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.rear
            
             } else if UIImagePickerController.isCameraDeviceAvailable(.front) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.front
             }
         } else {
             //show alert, no camera available
@@ -125,7 +125,7 @@ class Camera {
     
     func presentPhotoCamera(target: UIViewController,  canEdit: Bool) {
         
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             return
         }
         
@@ -140,14 +140,14 @@ class Camera {
                 if (availableTypes as NSArray).contains(type1) {
                     
                     imagePicker.mediaTypes = [type1]
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    imagePicker.sourceType = UIImagePickerController.SourceType.camera
                 }
             }
             if UIImagePickerController.isCameraDeviceAvailable(.rear) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.rear
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.rear
             }
             else if UIImagePickerController.isCameraDeviceAvailable(.front) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.front
             }
         } else {
             //show alert, no camera available
@@ -164,7 +164,7 @@ class Camera {
     // Video Camera
     func presentVideoCamera(target: UIViewController,  canEdit: Bool) {
         
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             return
         }
         
@@ -179,15 +179,15 @@ class Camera {
                 if (availableTypes as NSArray).contains(type1) {
                     
                     imagePicker.mediaTypes = [type1]
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    imagePicker.sourceType = UIImagePickerController.SourceType.camera
                     imagePicker.videoMaximumDuration = kMAXDURATION
                 }
             }
             
             if UIImagePickerController.isCameraDeviceAvailable(.rear) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.rear
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.rear
             } else if UIImagePickerController.isCameraDeviceAvailable(.front) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
+                imagePicker.cameraDevice = UIImagePickerController.CameraDevice.front
             }
         
         } else {
@@ -203,7 +203,7 @@ class Camera {
     
     //video library
     func presentVideoLibrary(target: UIViewController, canEdit: Bool) {
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum) {
             return
         }
         

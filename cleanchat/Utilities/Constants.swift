@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-import FirebaseDatabase
+//import FirebaseDatabase
 
 let backendless = Backendless.sharedInstance()
 var firebase = Database.database().reference()

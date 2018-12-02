@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D45AF370E3591D12812C6E2 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F30936AE5F551B110523A50D /* libPods-cleanchat.a */; };
 		9F0617CB208880A300422183 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0617CA208880A300422183 /* MapVC.swift */; };
 		9F3B9F9E208F295300F12CE3 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */; };
 		9F3B9FA0208F2BE100F12CE3 /* ShowAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */; };
@@ -91,12 +92,10 @@
 		9FF51A4B20980EDC0041661F /* ios-marketing.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF51A3420980EDC0041661F /* ios-marketing.png */; };
 		9FF51A4C20980EDC0041661F /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF51A3520980EDC0041661F /* Icon-Small@2x.png */; };
 		9FF51A4D20980EDC0041661F /* NotificationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF51A3620980EDC0041661F /* NotificationIcon@3x.png */; };
-		BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1773E68DF44E895C7A15159D /* Pods-cleanchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.release.xcconfig"; sourceTree = "<group>"; };
-		5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cleanchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA8B7BA391341F32BE4D5 /* Pods-cleanchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cleanchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat.debug.xcconfig"; sourceTree = "<group>"; };
 		9F0617CA208880A300422183 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		9FF51A3420980EDC0041661F /* ios-marketing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-marketing.png"; sourceTree = "<group>"; };
 		9FF51A3520980EDC0041661F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		9FF51A3620980EDC0041661F /* NotificationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationIcon@3x.png"; sourceTree = "<group>"; };
+		F30936AE5F551B110523A50D /* libPods-cleanchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cleanchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +204,7 @@
 				9FB572D42077115500A26985 /* PushKit.framework in Frameworks */,
 				9FB572D22077114800A26985 /* SystemConfiguration.framework in Frameworks */,
 				9FB572D02077112600A26985 /* CoreLocation.framework in Frameworks */,
-				BC47591ED0DAA30F49FF3F13 /* libPods-cleanchat.a in Frameworks */,
+				1D45AF370E3591D12812C6E2 /* libPods-cleanchat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +232,7 @@
 				9FB572D32077115500A26985 /* PushKit.framework */,
 				9FB572D12077114800A26985 /* SystemConfiguration.framework */,
 				9FB572CF2077112600A26985 /* CoreLocation.framework */,
-				5F1FA4CEF7F4AB062A044E84 /* libPods-cleanchat.a */,
+				F30936AE5F551B110523A50D /* libPods-cleanchat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -393,8 +393,7 @@
 				9FE14FE31F22178900F3FE09 /* Sources */,
 				9FE14FE41F22178900F3FE09 /* Frameworks */,
 				9FE14FE51F22178900F3FE09 /* Resources */,
-				C3B55A4F5AE31453E6FBA113 /* [CP] Embed Pods Frameworks */,
-				31DAB8329EFEC2F0534B8367 /* [CP] Copy Pods Resources */,
+				52A13742BFA8E0A2F4327EBF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -493,7 +492,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31DAB8329EFEC2F0534B8367 /* [CP] Copy Pods Resources */ = {
+		52A13742BFA8E0A2F4327EBF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -513,7 +512,16 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IDMPhotoBrowser.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IDMPBLocalizations.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQAudioRecorderController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesAssets.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesCollectionViewCellIncoming.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesCollectionViewCellOutgoing.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesLoadEarlierHeaderView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesToolbarContentView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSQMessagesTypingIndicatorFooterView.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -536,21 +544,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3B55A4F5AE31453E6FBA113 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -741,6 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VWFZU9229C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -748,17 +742,16 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "361f1e08-9b60-47c6-a6cd-b703da621cd6";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "CleanChat-Dev-ProvProf";
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -777,16 +770,16 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "295b7788-927b-49ad-9b9e-0850fe515956";
-				PROVISIONING_PROFILE_SPECIFIER = CleanChat_PROD_provProf;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "cleanchat-prod-pp";
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

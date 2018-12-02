@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import Firebase
-import FirebaseDatabase
+//import FirebaseDatabase
 import NotificationCenter
 import FBSDKCoreKit
 //import UserNotificationsUI
@@ -33,37 +33,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     let sinchKey = "6515f8d8-b374-49f1-b9f3-02d201f69ec6"
     let sinchSecret = "tctoTFJAMEu0aq/D67pH5A=="
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Sinch Push
         self.push = Sinch.managedPush(with: .development)
         self.push.delegate = self
         self.push.setDesiredPushTypeAutomatically()
-        
         func onUserDidLogin(userID: String) {
-            
             // we'll have a notif center observer
             self.push.registerUserNotificationSettings()
-            
             // init sinch
             self.initSinchWithUserID(userId: userID)
         }
-        
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, queue: nil) { (note) in
-            
-            let userID = note.userInfo!["userId"] as! String // represents the objectId & ownerId in USERS
-            UserDefaults.standard.set(userID, forKey: "userId")
-            UserDefaults.standard.synchronize()
-            
-            onUserDidLogin(userID: userID)
-            
+            if let userID = note.userInfo!["userId"] as? String { // represents the objectId & ownerId in USERS
+                UserDefaults.standard.set(userID, forKey: "userId")
+                UserDefaults.standard.synchronize()
+                onUserDidLogin(userID: userID)
+            } else {
+                print("GOT HERE")
+            }
         }
-        
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
         backendless!.initApp(APP_ID, apiKey: API_KEY)
-
-        
+ 
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.delegate = self
@@ -74,21 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         } else {
             // Fallback on earlier versions
-            
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(settings)
             UIApplication.shared.registerForRemoteNotifications()
-            
 //            let types: UIUserNotificationType = [.alert, .badge, .sound]
 //            let settings = UIUserNotificationSettings
 //            application.registerUserNotificationSettings(settings)
         }
-        
-        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
         if let launchOptions = launchOptions {
-            if let notificationsDict = launchOptions[UIApplicationLaunchOptionsKey.remoteNotification] as? [NSObject: AnyObject] {
+            if let notificationsDict = launchOptions[UIApplication.LaunchOptionsKey.remoteNotification] as? [NSObject: AnyObject] {
                 self.application(application, didReceiveRemoteNotification: notificationsDict)
             }
         }
@@ -96,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-       
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -104,48 +92,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-       
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         locationManagerStart()
         FBSDKAppEvents.activateApp()
-        
         application.applicationIconBadgeNumber = 0 
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-       
     }
     
-    // MARK: Location Manager
     
+    // MARK: - ACTIONS
+
     func locationManagerStart() {
-        
         if locationManager == nil {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
             locationManager!.desiredAccuracy = kCLLocationAccuracyBest
             locationManager!.requestWhenInUseAuthorization()
         }
-        
         locationManager!.startUpdatingLocation()
     }
     
-    func locationManagerStop() {
-        
+    func locationManagerStop() { 
         locationManager!.stopUpdatingLocation()
     }
 
 
-    // MARK: Location ManagerDelegate
+    // MARK: LOCATION_MANAGER_DELEGATE
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("FAILED TO GET LOCATION")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
         switch status {
         case .notDetermined:
             manager.requestAlwaysAuthorization()
@@ -168,36 +150,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         coordinates = locations.last!.coordinate
     }
     
     
-    // MARK: Facebook login
+    // MARK: - FACEBOOK
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let result: Bool = false
         if #available(iOS 9.0, *) {
-            let resultt = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,
-                                                                               sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
-                                                                               annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+            let sourceAppOptions = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String
+            let annoOptions = options[UIApplication.OpenURLOptionsKey.annotation]
+            let resultt = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: sourceAppOptions, annotation: annoOptions)
             return resultt
-        
         } else {
             // Fallback on earlier versions
              return result
-            
         }
-        
     }
     
     
-    // MARK: Notifications
+    // MARK: - NOTIFICATIONS
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
         self.push.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken) // SinchRTC
-        
         // register device with backendless here
         backendless!.messagingService.registerDevice(deviceToken, response: { (success) in     // HERE WE'RE REGISTERING DEVICE WITH THE DEVICE TOKEN.. LETS FIND OUT WHERE ELSE WE USE THIS TOKEN AND WHY WERE NOT USING ANOTHER FLAG INSTEAD FOR PUSH NOTIFICATIONS
             print("REGISTERED FOR REMOTE NOTIFICATIONS")
@@ -207,11 +183,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
         self.push.application(application, didReceiveRemoteNotification: userInfo) // SinchRTC
     }
     
@@ -219,14 +193,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("DID FAIL TO REGISTER FOR REMOTE NOTIFICATIONS - ERROR: \(error)")
     }
     
-    // MARK: Sinch init
+    // MARK: - SINCH
     
     func initSinchWithUserID(userId: String) {
-        
         if _client == nil {
-            
             _client = Sinch.client(withApplicationKey: sinchKey, applicationSecret: sinchSecret, environmentHost: "clientapi.sinch.com", userId: userId)
-            
             _client.delegate = self
             _client.call().delegate = self
             _client.setSupportCalling(true)
@@ -234,43 +205,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             _client.start()
             _client.startListeningOnActiveConnection()
         }
-        
     }
     
-    
     func handleRemoteNotifications(userInfo: NSDictionary) {
-        
         if _client != nil {
-            
             let userId = UserDefaults.standard.object(forKey: "userId")
-            
             if userId != nil {
-                
                 self.initSinchWithUserID(userId: userId as! String) // starts our Sinch client
             }
         }
-        
         self._client.relayRemotePushNotification(userInfo as! [AnyHashable: Any])
     }
     
     
-    // MARK: SINManagedPushDelegate
+    // MARK: SIN_MANAGED_PUSH_DELEGATE
     
     func managedPush(_ managedPush: SINManagedPush!, didReceiveIncomingPushWithPayload payload: [AnyHashable : Any]!, forType pushType: String!) {
         self.handleRemoteNotifications(userInfo: payload as NSDictionary)
     }
     
-    // MARK: SINCallClientDelegate
+    
+    // MARK: - SIN_CALL_CLIENT_DELEGATE
     
     func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
         print("HAVE A CALL")
         // access our call screen
         var top = self.window?.rootViewController
-        
         while (top?.presentedViewController != nil) {
             top = top?.presentedViewController
         }
-        
         let callVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CallVC-ID") as! CallVC
         callVC._call = call
         top?.present(callVC, animated: true, completion: nil)
@@ -280,11 +243,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let notif = SINLocalNotification()
         notif.alertAction = "Answer"
         notif.alertBody = "Incoming Call"
-        
         return notif
     }
     
-    // MARK: SINClientDelegate
+    // MARK: - SIN_CLIENT_DELEGATE
     
     func clientDidStart(_ client: SINClient!) {
         print("SINCH CLIENT STARTED")
@@ -296,13 +258,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func client(_ client: SINClient!, logMessage message: String!, area: String!, severity: SINLogSeverity, timestamp: Date!) {
         if severity == .critical {
-            print("CRITICAL LOG MESSAGE: \(message)")
+            print("CRITICAL LOG MESSAGE: \(String(describing: message))")
         } else if severity == .info {
-            print("INFO LOG MESSAGE: \(message)")
+            print("INFO LOG MESSAGE: \(String(describing: message))")
         } else if severity == .trace {
-            print("TRACE LOG MESSAGE: \(message)")
+            print("TRACE LOG MESSAGE: \(String(describing: message))")
         } else if severity == .warn {
-            print("WARN LOG MESSAGE: \(message)")
+            print("WARN LOG MESSAGE: \(String(describing: message))")
         }
     }
     

@@ -24,8 +24,8 @@ class TabBarVC: UITabBarController {
     
     func updateTabBarColors() {
         
-        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.lightGray], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: darkBlue], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedString.Key: UIColor.lightGray], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedString.Key: darkBlue], for: .selected)
         self.tabBar.tintColor = darkBlue
         //self.tabBar.layer.shadowOpacity = 5.0
         //self.tabBar.layer.shadowColor = darkBlue.cgColor//pinkBorder//UIColor.black.cgColor

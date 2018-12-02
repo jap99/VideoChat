@@ -41,7 +41,8 @@ func uploadAvatar(image: UIImage, result: @escaping (_ imageLink: String?) -> Vo
     // returning the link of where the image is uploaded
     
     // need to convert image to data in order to upload
-    let imageData = UIImageJPEGRepresentation(image, 0.5)
+//    let imageData = UIImageJPEGRepresentation(image, 0.5)
+    let imageData = image.jpegData(compressionQuality: 0.5)
     
     
     let dateString = dateFormatter().string(from: Date())
@@ -55,7 +56,7 @@ func uploadAvatar(image: UIImage, result: @escaping (_ imageLink: String?) -> Vo
         
     }) { (fault) in
         
-        ProgressHUD.showError("Couldn't upload avatar image: \(fault!.detail)")
+        ProgressHUD.showError("Couldn't upload avatar image: \(String(describing: fault!.detail))")
     }
     
 }
@@ -82,7 +83,7 @@ func uploadVideo(video: NSData, thumbnail: NSData, result: @escaping (_ videoLin
             result(file?.fileURL, thumbnail?.fileURL)
             
         }, error: { (fault) in
-            ProgressHUD.showError("Error uploading video - \(fault!.detail)")
+            ProgressHUD.showError("Error uploading video - \(String(describing: fault!.detail))")
         })
         
     }) { (fault) in
@@ -137,8 +138,8 @@ func videoThumbnail(video: NSURL) -> UIImage {
     // take first second from video and return it as an image
     imageGenerator.appliesPreferredTrackTransform = true
     
-    let time = CMTimeMake(Int64(0.5), 1000)
-    var actualTime = kCMTimeZero
+    let time = CMTimeMake(value: Int64(0.5), timescale: 1000)
+    var actualTime = CMTime.zero
     
     var image: CGImage?
     
