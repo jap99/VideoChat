@@ -16,34 +16,60 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     @IBOutlet weak var tv: UITableView!
     
+    
+    // MARK: - INIT
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tv.tableFooterView = UIView()
         self.navigationController?.navigationBar.tintColor = darkBlue
         tv.delegate = self; tv.dataSource = self
         searchController.searchResultsUpdater = self // tells users when there's an update
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true // required for searchResultsController
-        
         tv.tableHeaderView = searchController.searchBar
-        
         loadUsers()
     }
     
     
- 
+    // MARK: - ACTIONS - (LOAD USERS)
+    
+    func loadUsers() {
+        let whereClause = "objectId != '\(backendless!.userService.currentUser.objectId!)'" // gets all Id's that aren't equal to our current user id because we don't want to load him also
+        let dataQuery = DataQueryBuilder()
+        dataQuery!.setWhereClause(whereClause)
+        let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
+        // now that we have dataStore we can do the query to get back our users
+        dataStore!.find(dataQuery, response: { (users) in
+            self.users = users! as! [BackendlessUser]
+            self.tv.reloadData()
+        }) { fault in
+            ProgressHUD.showError("Couldn't load users: \(fault!.detail!)")
+        }
+    }
+    
+    // MARK: - ACTIONS - (SEARCH FUNCTIONS)
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredUsers = users.filter { user in
+            return user.name.lowercased.contains(searchText.lowercased())
+        }
+        tv.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    
     // MARK: - TABLE VIEW
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! FriendCell
-        
         var friend: BackendlessUser
-        
         if searchController.isActive && searchController.searchBar.text != "" {
-            
             friend = filteredUsers[indexPath.row]
         } else {
-            
             friend = users[indexPath.row]
         }
         cell.bindData(friend: friend)
@@ -55,27 +81,22 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredUsers.count
         }
         return users.count
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // create a recent item each time
         let user: BackendlessUser
-        
         // check if user searched for this user or chose it from user's array
         if searchController.isActive && searchController.searchBar.text != "" {
             user = filteredUsers[indexPath.row]
         } else {
             user = users[indexPath.row]
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let chatVC = ChatVC()
         chatVC.titleName = user.name as String
         chatVC.members = [backendless!.userService.currentUser.objectId as String, user.objectId as String]
@@ -84,40 +105,6 @@ class ChooseUserVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         navigationController?.pushViewController(chatVC, animated: true)
     }
     
-    // MARK: - LOAD USERS
     
-    func loadUsers() {
-        
-        let whereClause = "objectId != '\(backendless!.userService.currentUser.objectId!)'" // gets all Id's that aren't equal to our current user id because we don't want to load him also
-        let dataQuery = DataQueryBuilder()
-        dataQuery!.setWhereClause(whereClause)
-        
-        let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
-        
-        // now that we have dataStore we can do the query to get back our users
-        dataStore!.find(dataQuery, response: { (users) in
-            
-            self.users = users! as! [BackendlessUser]
-            self.tv.reloadData()
-            
-        }) { fault in
-            
-            ProgressHUD.showError("Couldn't load users: \(fault!.detail!)")
-        }
-    }
     
-    // MARK: - SEARCH FUNCTIONS
-    
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        
-        filteredUsers = users.filter { user in
-            
-            return user.name.lowercased.contains(searchText.lowercased())
-        }
-        tv.reloadData()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
-    }
 }

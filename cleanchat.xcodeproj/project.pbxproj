@@ -250,10 +250,10 @@
 		9FB572C02071D51200A26985 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9FE044B7209C7A780012F45F /* GradientView.swift */,
 				9FB572C12071D51200A26985 /* ChooseUserCell.swift */,
 				9FB572C22071D51200A26985 /* RecentCell.swift */,
 				9FB572D520783FF500A26985 /* FriendCell.swift */,
-				9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */,
 				9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */,
 				9F8EABB620AADA010027EDFB /* EmptyView.swift */,
 			);
@@ -279,6 +279,57 @@
 			path = ProgressHUD;
 			sourceTree = SOURCE_ROOT;
 		};
+		9FCE485A220C0D57009CD991 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B9FA5208FFD0900F12CE3 /* Friend.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9FCE485B220C0D72009CD991 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9FF51A0A209414650041661F /* AddGroupVC.swift */,
+				9F3B9F9D208F295300F12CE3 /* SettingsTableVC.swift */,
+				9F624C26209A74C500D7E869 /* CallVC.swift */,
+				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
+				9F3B9FA7209006AE00F12CE3 /* AddFriendVC.swift */,
+				9FF51A10209459DD0041661F /* EditGroupVC.swift */,
+				9F624C24209A6DA600D7E869 /* ProfileVC.swift */,
+				9F3BA00920940D6D00F12CE3 /* GroupVC.swift */,
+				9F3B9FA3208FFBF600F12CE3 /* FriendsVC.swift */,
+				9F0617CA208880A300422183 /* MapVC.swift */,
+				9F3B9FA1208F36F200F12CE3 /* BackgroundVC.swift */,
+				9F8ACCEF20809D3400F34663 /* ChatVC.swift */,
+				9FE14FEC1F22178900F3FE09 /* ViewController.swift */,
+				9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */,
+				9FB572B72071D42000A26985 /* RegisterVC.swift */,
+				9FB572B92071D43000A26985 /* WelcomeVC.swift */,
+				9FE044B5209C56EE0012F45F /* TabBarVC.swift */,
+				9FB572B52071D41400A26985 /* RecentVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9FCE485C220C1175009CD991 /* Additional Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */,
+				9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */,
+				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
+				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
+				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
+				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
+				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
+				9F624C2A209A940700D7E869 /* incoming.wav */,
+				9F624C28209A93F800D7E869 /* ringback.wav */,
+				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
+				9FE14FF61F22178900F3FE09 /* Info.plist */,
+			);
+			path = "Additional Resources";
+			sourceTree = "<group>";
+		};
 		9FE14FDE1F22178900F3FE09 = {
 			isa = PBXGroup;
 			children = (
@@ -300,54 +351,27 @@
 		9FE14FE91F22178900F3FE09 /* cleanchat */ = {
 			isa = PBXGroup;
 			children = (
-				9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */,
-				9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */,
+				9FCE485A220C0D57009CD991 /* Model */,
 				9FF51A1820955F320041661F /* cleanchat.entitlements */,
 				9FB572C92071E55800A26985 /* ProgressHUD */,
 				9FB572C52071E51D00A26985 /* Encryption */,
 				9FB572BB2071D4AD00A26985 /* Utilities */,
 				9FB572C02071D51200A26985 /* View */,
-				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
-				9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */,
-				9FE14FEC1F22178900F3FE09 /* ViewController.swift */,
-				9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */,
-				9FB572AC2071D39100A26985 /* Camera.swift */,
-				9FB572B52071D41400A26985 /* RecentVC.swift */,
-				9F8ACCEF20809D3400F34663 /* ChatVC.swift */,
-				9FB572B92071D43000A26985 /* WelcomeVC.swift */,
-				9FB572B72071D42000A26985 /* RegisterVC.swift */,
-				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
-				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
-				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
-				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
-				9F624C2A209A940700D7E869 /* incoming.wav */,
-				9F624C28209A93F800D7E869 /* ringback.wav */,
+				9FCE485B220C0D72009CD991 /* ViewControllers */,
+				9FCE485C220C1175009CD991 /* Additional Resources */,
 				9FF51A1F20980EDC0041661F /* AppIcon.appiconset */,
-				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
-				9FE14FF61F22178900F3FE09 /* Info.plist */,
+				9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */,
+				9FB572AC2071D39100A26985 /* Camera.swift */,
 				9F9EDC7B207C3EE50050DCE7 /* Recent.swift */,
 				9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */,
 				9F8ACCF72081701F00F34663 /* VideoThumbnail.swift */,
 				9F8ACCF92081731D00F34663 /* VideoMessage.swift */,
 				9FBF00802086B73100C85FE6 /* AudioMessage.swift */,
 				9FBF00822086BACB00C85FE6 /* Audio.swift */,
-				9F0617CA208880A300422183 /* MapVC.swift */,
-				9F3B9FA1208F36F200F12CE3 /* BackgroundVC.swift */,
-				9F3B9FA3208FFBF600F12CE3 /* FriendsVC.swift */,
-				9F3B9FA5208FFD0900F12CE3 /* Friend.swift */,
-				9F3B9FA7209006AE00F12CE3 /* AddFriendVC.swift */,
-				9F3BA00920940D6D00F12CE3 /* GroupVC.swift */,
-				9FF51A0A209414650041661F /* AddGroupVC.swift */,
 				9FF51A0C209423450041661F /* Group.swift */,
-				9FF51A0E20942CF00041661F /* GroupSettingsVC.swift */,
-				9FF51A10209459DD0041661F /* EditGroupVC.swift */,
 				9FF51A1920956D680041661F /* RegisterForPush.swift */,
 				9FF51A1B2097D8040041661F /* PushNotifications.swift */,
 				9F624C222099AC9E00D7E869 /* Encryption.swift */,
-				9F624C24209A6DA600D7E869 /* ProfileVC.swift */,
-				9F624C26209A74C500D7E869 /* CallVC.swift */,
-				9FE044B5209C56EE0012F45F /* TabBarVC.swift */,
-				9FE044B7209C7A780012F45F /* GradientView.swift */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";

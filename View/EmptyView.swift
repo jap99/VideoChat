@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 func setupLabelForEmptyView(label: UILabel, message: String?, vc: UIViewController?, hide: Bool)  {
-    
     if hide {
         label.isHidden = true
     } else {

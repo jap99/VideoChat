@@ -10,18 +10,18 @@ import UIKit
 
 class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, AddFriendDelegate {
 
-    var friendObjects: [Friend] = []
-    var friends:  [BackendlessUser] = []
-    var friendId: [String] = []
+    var friendObjects = [Friend]()
+    var friends =  [BackendlessUser]()
+    var friendId = [String]()
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredFriends: [BackendlessUser] = []
+    var filteredFriends = [BackendlessUser]()
     let dataStore = backendless!.data.of(Friend.ofClass())
     var emptyLabel = UILabel()
     
     @IBOutlet weak var tv: UITableView!
     
 
-    // MARK: - START
+    // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,68 +42,35 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
 
     
-    // MARK: - TABLE VIEW
+    // MARK: - UI_SEARCH_RESULTS_UPDATING
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredFriends.count
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    func filteredContentForSearchText(searchText: String, scope: String = "All") {
+        filteredFriends = friends.filter { friend in
+            return friend.name.lowercased.contains(searchText.lowercased())
         }
-        return friends.count
+        tv.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! FriendCell
-        var friend: BackendlessUser
-        if searchController.isActive && searchController.searchBar.text != "" {
-            friend = filteredFriends[indexPath.row]
-        } else {
-            friend = friends[indexPath.row]
-        }
-        cell.bindData(friend: friend)
-        return cell
-    }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true // so we can delete our friends
-    }
+    // MARK: - ADD_FRIEND_DELEGATE
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // delete friend
-        print("FRIEND OBJECTS COUNT: \(friendObjects.count)")
-        let friend = friendObjects[indexPath.row]
-        friendObjects.remove(at: indexPath.row)
-        friends.remove(at: indexPath.row)
-        friendId.remove(at: indexPath.row)
-        deleteFriend(friend: friend)
-        tableView.reloadData()
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            self.tv.dataSource?.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
+    func saveFriend(selectedFriend: BackendlessUser) {
+        if friendId.contains(selectedFriend.objectId as String) {
             return
         }
-        deleteButton.backgroundColor = darkBlue
-        return [deleteButton]
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tv.deselectRow(at: indexPath, animated: true)
-        var friend: BackendlessUser
-        if searchController.isActive && searchController.searchBar.text != "" {
-            friend = filteredFriends[indexPath.row]
-        } else {
-            friend = friends[indexPath.row]
-        }
-        // create a chat
-        let chatVC = ChatVC()
-        chatVC.titleName = friend.name as String
-        chatVC.members = [backendless!.userService.currentUser.objectId as String,
-        friend.objectId as String]
-        chatVC.chatRoomId = startChat(user1: backendless!.userService.currentUser, user2: friend)
-        
-        chatVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(chatVC, animated: true)
+        let friend = Friend()
+        friend.userOneId = backendless!.userService.currentUser.objectId as String
+        friend.userTwo = selectedFriend.objectId as String
+        Backendless.sharedInstance().data.of(Friend.self).save(friend, response: { (result: (Any?)) -> Void in
+            // let friendd = result as! Friend
+            self.loadFriends()
+        }, error: { (fault: Fault?) -> () in
+            print("Server reported an error: \(String(describing: fault!.detail!))")
+        })
     }
     
     
@@ -177,39 +144,72 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             ProgressHUD.showError("Couldn't delete friend: \(fault!.detail!)")
         }
     }
+  
     
+    // MARK: - TABLE VIEW
     
-    // MARK: - UI_SEARCH_RESULTS_UPDATING
-    
-    func filteredContentForSearchText(searchText: String, scope: String = "All") {
-        filteredFriends = friends.filter { friend in
-            return friend.name.lowercased.contains(searchText.lowercased())
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredFriends.count
         }
-        tv.reloadData()
+        return friends.count
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredContentForSearchText(searchText: searchController.searchBar.text!)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! FriendCell
+        var friend: BackendlessUser
+        if searchController.isActive && searchController.searchBar.text != "" {
+            friend = filteredFriends[indexPath.row]
+        } else {
+            friend = friends[indexPath.row]
+        }
+        cell.bindData(friend: friend)
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true // so we can delete our friends
+    }
     
-    // MARK: - ADD_FRIEND_DELEGATE
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // delete friend
+        print("FRIEND OBJECTS COUNT: \(friendObjects.count)")
+        let friend = friendObjects[indexPath.row]
+        friendObjects.remove(at: indexPath.row)
+        friends.remove(at: indexPath.row)
+        friendId.remove(at: indexPath.row)
+        deleteFriend(friend: friend)
+        tableView.reloadData()
+    }
     
-    func saveFriend(selectedFriend: BackendlessUser) {
-        if friendId.contains(selectedFriend.objectId as String) {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tv.dataSource?.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
             return
         }
-        let friend = Friend()
-        friend.userOneId = backendless!.userService.currentUser.objectId as String
-        friend.userTwo = selectedFriend.objectId as String
-        Backendless.sharedInstance().data.of(Friend.self).save(friend, response: { (result: (Any?)) -> Void in
-               // let friendd = result as! Friend
-                self.loadFriends()
-        }, error: { (fault: Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault!.detail!))")
-        })
+        deleteButton.backgroundColor = darkBlue
+        return [deleteButton]
     }
-  
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tv.deselectRow(at: indexPath, animated: true)
+        var friend: BackendlessUser
+        if searchController.isActive && searchController.searchBar.text != "" {
+            friend = filteredFriends[indexPath.row]
+        } else {
+            friend = friends[indexPath.row]
+        }
+        // create a chat
+        let chatVC = ChatVC()
+        chatVC.titleName = friend.name as String
+        chatVC.members = [backendless!.userService.currentUser.objectId as String,
+                          friend.objectId as String]
+        chatVC.chatRoomId = startChat(user1: backendless!.userService.currentUser, user2: friend)
+        
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
     
     // MARK: - NAVIGATION
     

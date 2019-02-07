@@ -13,20 +13,22 @@ import FBSDKCoreKit
 
 class SettingsTableVC: UITableViewController {
 
+    
+    // MARK: - INIT
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    
     // MARK: - ACTIONS
      
-    func showLogoutView() {
-        // warning before we logout
+    func showLogoutView() {     // warning before we logout
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let logOut = UIAlertAction(title: "Log Out", style: .destructive) { (alert) in
-            // log out user
             self.logOut()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in  })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         optionMenu.addAction(logOut)
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
@@ -74,8 +76,7 @@ class SettingsTableVC: UITableViewController {
     }
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            // hence we're in section 1 row 1 = avatar cell
+        if indexPath.section == 0 && indexPath.row == 0 {       // hence we're in section 1 row 1 = avatar cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarCell", for: indexPath) as! FriendCell
             cell.accessoryType = .disclosureIndicator
             //cell.accessoryView = getBlueRightArrow()
@@ -84,8 +85,7 @@ class SettingsTableVC: UITableViewController {
             }
             return cell
         }
-        if indexPath.section == 1 && indexPath.row == 0 {
-            // second section, first row = privacy cell
+        if indexPath.section == 1 && indexPath.row == 0 {       // second section, first row = privacy cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "privacyCell", for: indexPath)
             cell.textLabel?.text = "Privacy Policy"
             cell.accessoryType = .disclosureIndicator
@@ -93,31 +93,27 @@ class SettingsTableVC: UITableViewController {
             cell.tintColor = UIColor.red
             return cell
         }
-        if indexPath.section == 1 && indexPath.row == 1 {
-            // second section, second row = terms cell
+        if indexPath.section == 1 && indexPath.row == 1 {       // second section, second row = terms cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "termsCell", for: indexPath)
             cell.accessoryType = .disclosureIndicator
             //cell.accessoryView = getBlueRightArrow()
             cell.textLabel?.text = "Terms of Service"
             return cell
         }
-        if indexPath.section == 1 && indexPath.row == 2 {
-            // second section, third row = bg cell
+        if indexPath.section == 1 && indexPath.row == 2 {       // second section, third row = bg cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "backgroundCell", for: indexPath)
             cell.accessoryType = .disclosureIndicator
             //cell.accessoryView = getBlueRightArrow()
             cell.textLabel?.text = "Backgrounds"
             return cell
         }
-        if indexPath.section == 1 && indexPath.row == 3 {
-            // second section, fourth row = show avatar cell
+        if indexPath.section == 1 && indexPath.row == 3 {       // second section, fourth row = show avatar cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "showAvatarCell", for: indexPath) as! ShowAvatarCell
             cell.accessoryType = .disclosureIndicator
             //cell.accessoryView = getBlueRightArrow()
             return cell
         }
-        if indexPath.section == 2 && indexPath.row == 0 {
-            // third section, first row = privacy cell
+        if indexPath.section == 2 && indexPath.row == 0 {       // third section, first row = privacy cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "logoutCell", for: indexPath)
             cell.accessoryType = .disclosureIndicator
             //cell.accessoryView = getBlueRightArrow()
@@ -133,8 +129,7 @@ class SettingsTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            // only our avatar cell is here
+        if section == 0 {       // only our avatar cell is here
             return 50
         } else {
             return 20
@@ -142,35 +137,29 @@ class SettingsTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            // in avatar section
+        if indexPath.section == 0 {         // in avatar section
             return 70
         } else {
-            return 44 // standard table view cell height
+            return 44       // standard table view cell height
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 && indexPath.row == 0 {
-            // in avatar cell
-            // show profile VC
+            // in avatar cell       // show profile VC
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC-ID") as! ProfileVC
             vc.user = backendless!.userService.currentUser
             self.present(vc, animated: true, completion: nil)
         }
-        if indexPath.section == 1 && indexPath.row == 0 {
-            // show privacy cell
+        if indexPath.section == 1 && indexPath.row == 0 {                           // show privacy cell
         }
-        if indexPath.section == 1 && indexPath.row == 1 {
-            // show terms of service cell
+        if indexPath.section == 1 && indexPath.row == 1 {                           // show terms of service cell
         }
-        if indexPath.section == 1 && indexPath.row == 2 {
-            // show bg cell
+        if indexPath.section == 1 && indexPath.row == 2 {                           // show bg cell
             performSegue(withIdentifier: "settingsToBackground-Segue", sender: self)
         }
-        if indexPath.section == 2 && indexPath.row == 0 {
-            // show logout
+        if indexPath.section == 2 && indexPath.row == 0 {                           // show logout
             showLogoutView()
         }
     }

@@ -10,13 +10,13 @@ import UIKit
 
 class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var groups: [NSDictionary] = []
+    var groups = [NSDictionary]()
     let emptyLabel = UILabel()
     
     @IBOutlet weak var tv: UITableView!
     
     
-    // MARK: - SETUP
+    // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,52 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.navigationItem.rightBarButtonItem?.tintColor = darkBlue
         loadGroups()
     }
-
+    
+    
+    // MARK: ACTIONS
+    
+    func loadGroups() {
+        // get all groups from firebase
+        // query all groups that belong to current user
+        firebase.child(kGROUP).queryOrdered(byChild: kOWNERID).queryEqual(toValue: backendless?.userService?.currentUser?.objectId!).observe(.value) { (snapshot) in
+            self.groups.removeAll()
+            if snapshot.exists() {
+                // create an array and sort by the date they were created
+                let sorted = ((snapshot.value! as! NSDictionary).allValues as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: false)])
+                // go through groups
+                for group in sorted {
+                    self.groups.append(group as! NSDictionary)
+                    setupLabelForEmptyView(label: self.emptyLabel, message: nil, vc: nil, hide: true)
+                }
+            } else {
+                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any groups to your profile.", vc: self, hide: false)
+            }
+            self.tv.reloadData() // reloaded when add a new group to our array
+        }
+    }
+    
+    func groupDeleteWarning(indexPath: IndexPath) {
+        let ac = UIAlertController(title: "Warning!", message: "This will delete all group messages.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in   }
+        let deleteAction = UIAlertAction(title: "Delete?", style: .destructive) { (action) in
+            // get the group we want to delete
+            let group = self.groups[indexPath.row]
+            // remove current group from array
+            self.groups.remove(at: indexPath.row)
+            Group.deleteGroup(groupId: (group[kGROUPID] as? String)!)
+            self.tv.reloadData()
+        }
+        ac.addAction(cancelAction); ac.addAction(deleteAction)
+        self.present(ac, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: IB_ACTIONS
+    
+    @IBAction func addBarButtonItemPressed(_ sender: AnyObject) {
+        performSegue(withIdentifier: "groupToAddGroup-Segue", sender: self)
+    }
+    
     
     // MARK: - TABLE VIEW
     
@@ -70,43 +115,6 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    // MARK: ACTIONS
-    
-    func loadGroups() {
-        // get all groups from firebase
-        // query all groups that belong to current user
-        firebase.child(kGROUP).queryOrdered(byChild: kOWNERID).queryEqual(toValue: backendless?.userService?.currentUser?.objectId!).observe(.value) { (snapshot) in
-            self.groups.removeAll()
-            if snapshot.exists() {
-                // create an array and sort by the date they were created
-                let sorted = ((snapshot.value! as! NSDictionary).allValues as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: false)])
-                // go through groups
-                for group in sorted {
-                    self.groups.append(group as! NSDictionary)
-                    setupLabelForEmptyView(label: self.emptyLabel, message: nil, vc: nil, hide: true)
-                }
-            } else {
-                setupLabelForEmptyView(label: self.emptyLabel, message: "You have not yet added any groups to your profile.", vc: self, hide: false)
-            }
-            self.tv.reloadData() // reloaded when add a new group to our array
-        }
-    }
-    
-    func groupDeleteWarning(indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Warning!", message: "This will delete all group messages.", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in   }
-        let deleteAction = UIAlertAction(title: "Delete?", style: .destructive) { (action) in
-            // get the group we want to delete
-            let group = self.groups[indexPath.row]
-            // remove current group from array
-            self.groups.remove(at: indexPath.row)
-            Group.deleteGroup(groupId: (group[kGROUPID] as? String)!)
-            self.tv.reloadData()
-        }
-        ac.addAction(cancelAction); ac.addAction(deleteAction)
-        self.present(ac, animated: true, completion: nil)
-    }
-    
     // MARK: - NAVIGATION
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,14 +128,6 @@ class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             vc.group = self.groups[indexPath.row]
         }
     }
-    
-    
-    // MARK: IB_ACTIONS
-    
-    @IBAction func addBarButtonItemPressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "groupToAddGroup-Segue", sender: self)
-    }
-    
     
 
 }

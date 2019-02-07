@@ -17,9 +17,10 @@ class RecentCell: UITableViewCell {
     @IBOutlet weak var counterLabel: UILabel!
     
     
+    // MARK: - INIT
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
 //        self.layer.cornerRadius = 4.0
 //        self.clipsToBounds = true
 //        self.contentView.layer.borderWidth = 0.5
@@ -27,12 +28,10 @@ class RecentCell: UITableViewCell {
        // self.backgroundColor = .white
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews() 
-    }
+    
+    // MARK: - ACTIONS
     
     func bindData(recent: NSDictionary) {
-        
         //circle
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
        // avatarImageView.layer.masksToBounds = true
@@ -56,47 +55,35 @@ class RecentCell: UITableViewCell {
         
         // check if group or private chat
         if (recent[kTYPE] as? String)! == kPRIVATE {
-            
             let withUserId = (recent[kWITHUSERUSERID] as! String)
             let whereClause = "objectId = '\(withUserId)'"
             let dataQuery = DataQueryBuilder()
             dataQuery!.setWhereClause(whereClause)
-            
             let dataStore = backendless!.persistenceService.of(BackendlessUser.ofClass())
             dataStore!.find(dataQuery, response: { (users) in
-                
                 let withUser = users?.first as! BackendlessUser
-                
                 if let avatarUrl = withUser.getProperty("Avatar") {
-                    
                     getAvatarFromURL(url: avatarUrl as! String, result: { (image) in
-                        
                         self.avatarImageView.image = image
                     })
                 }
             }, error: { (fault) in
                 ProgressHUD.showError("Couldn't Download avatar: \(fault!.detail!)")
-                
             })
-        }
-        // specify name label, counter and last message
+        } // specify name label, counter and last message
         nameLabel.text = recent[kWITHUSERUSERNAME] as? String
         lastMessageLabel.text = decryptText(chatRoomID: (recent[kCHATROOMID] as? String)!, text: (recent[kLASTMESSAGE] as? String)!)
         counterLabel.text = ""
-        
         if (recent[kCOUNTER] as? Int)! != 0 {
             counterLabel.text = "\(recent[kCOUNTER]!) New"
         }
-        
         let date = dateFormatter().date(from: recent[kDATE] as! String)
         dateLabel.text = timeElapsed(date: date!)
     }
     
     func timeElapsed(date: Date) -> String {
-        
         let seconds = NSDate().timeIntervalSince(date)
         let elapsed: String?
-        
         // depends on how many seconds have passed
         if seconds < 120 {
             elapsed = "Just Now"
@@ -104,10 +91,8 @@ class RecentCell: UITableViewCell {
             // return date of the message
             let currentDateFormatter = dateFormatter()
             currentDateFormatter.dateFormat = "MM/dd"
-            
             elapsed = "\(currentDateFormatter.string(from: date))"
         }
-        
         return elapsed!
     }
     

@@ -120,6 +120,38 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
     
     
+    // MARK: - IB_ACTIONS
+    
+    @IBAction func cameraButtonPressed(_ sender: Any) {
+        presentCameraOptions()
+    }
+    
+    @IBAction func registerButtonPressed(_ sender: Any) {
+        if emailTextField.text != "" && usernameTextField.text != "" && passwordTextField.text != "" {
+            ProgressHUD.show("Registering...", interaction: false)
+            register(email: emailTextField.text!, username: usernameTextField.text!, password: passwordTextField.text!, avatarImage: avatarImage)
+        } else { 
+            ProgressHUD.showError("Email and Password Required")
+        }
+    }
+    
+    
+    // MARK: - IMAGE_PICKER_CONTROLLER_DELEGATE
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.profileImage_HeightConstraint.constant = 120
+        self.profileImageView.image = nil
+        print(info)
+//        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+//            self.profileImageView.contentMode = .scaleAspectFit
+//            self.avatarImage = img
+//            self.profileImageView.image = img
+//            self.view.setNeedsLayout()
+//        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+
     // MARK: - ACTIONS
     
     func presentCameraOptions() {
@@ -199,40 +231,6 @@ class RegisterVC: UIViewController, UINavigationControllerDelegate, UIImagePicke
             ProgressHUD.showError("Could not login: \(fault!.detail!)")
         }
     }
-    
-    
-    // MARK: - IB_ACTIONS
-    
-    @IBAction func cameraButtonPressed(_ sender: Any) {
-        presentCameraOptions()
-    }
-    
-    @IBAction func registerButtonPressed(_ sender: Any) {
-        if emailTextField.text != "" && usernameTextField.text != "" && passwordTextField.text != "" {
-            ProgressHUD.show("Registering...", interaction: false)
-            register(email: emailTextField.text!, username: usernameTextField.text!, password: passwordTextField.text!, avatarImage: avatarImage)
-        } else { 
-            ProgressHUD.showError("Email and Password Required")
-        }
-    }
-    
-    
-    // MARK: - IMAGE_PICKER_CONTROLLER_DELEGATE
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.profileImage_HeightConstraint.constant = 120
-        self.profileImageView.image = nil
-        print(info)
-//        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
-//            self.profileImageView.contentMode = .scaleAspectFit
-//            self.avatarImage = img
-//            self.profileImageView.image = img
-//            self.view.setNeedsLayout()
-//        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-
     
     
     

@@ -20,7 +20,7 @@ class WelcomeVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var loginWithFBButton: UIButton!
     
     
-    // MARK: - SETUP
+    // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +126,45 @@ class WelcomeVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    
+    // MARK: - ACTIONS
+    
+    func updateFacebookUser() {
+        // make graph request for avatar
+        // get email onlly
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"]).start { (connection, result, error) in
+            if error != nil {
+                print("ERROR FACEBOOK GRAPH REQUEST: \(error!.localizedDescription)")
+                return
+            }
+            if let facebookId = (result as! NSDictionary)["id"] as? String {
+                // use the user's id to get the user's avatar
+                let avatarUrl = "http://graph.facebook.com/\(facebookId)/picture?type=normal"
+                updateBackendlessUser(avatarUrl: avatarUrl)
+            } else {
+                print("FACEBOOK REQUEST ERROR, no facebook ID")
+            }
+        }
+    }
+    
+    func loginUser(email: String, password: String) {
+        ProgressHUD.dismiss()
+        backendless!.userService.login(email, password: password, response: { (user) in
+            registerUserDeviceID(user: user!)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
+            self.emailTextField.text = nil
+            self.passwordTextField.text = nil
+            self.view.endEditing(false)
+            // go to app
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
+            vc.selectedIndex = 0
+            self.present(vc, animated: true, completion: nil)
+        }) { (fault) in
+            ProgressHUD.showError("Could not login: \(fault!.detail!)")
+        }
+    }
+    
+    
     // MARK: - IB_ACTION
     
     @IBAction func fbLoginButtonPressed(_ sender: Any) {
@@ -174,43 +213,7 @@ class WelcomeVC: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    // MARK: - ACTION
-    
-    func updateFacebookUser() {
-        // make graph request for avatar
-        // get email onlly
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email"]).start { (connection, result, error) in
-            if error != nil {
-                print("ERROR FACEBOOK GRAPH REQUEST: \(error!.localizedDescription)")
-                return
-            }
-            if let facebookId = (result as! NSDictionary)["id"] as? String {
-                // use the user's id to get the user's avatar
-                let avatarUrl = "http://graph.facebook.com/\(facebookId)/picture?type=normal"
-                updateBackendlessUser(avatarUrl: avatarUrl)
-            } else {
-                print("FACEBOOK REQUEST ERROR, no facebook ID")
-            }
-        }
-    }
-    
-    func loginUser(email: String, password: String) {
-        ProgressHUD.dismiss()
-        backendless!.userService.login(email, password: password, response: { (user) in
-            registerUserDeviceID(user: user!)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: ["userId" : user!.objectId])
-            self.emailTextField.text = nil
-            self.passwordTextField.text = nil
-            self.view.endEditing(false)
-            // go to app
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC-ID") as! UITabBarController
-            vc.selectedIndex = 0
-            self.present(vc, animated: true, completion: nil)
-        }) { (fault) in
-            ProgressHUD.showError("Could not login: \(fault!.detail!)")
-        }
-    }
-    
+
     
     
     

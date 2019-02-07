@@ -22,20 +22,14 @@ class GradientView: UIView {
         }
     }
     
-
-    
     override func layoutSubviews() {
-        
         let gradientLayer = CAGradientLayer()
         // needs colors, starting and end point, and how large it will be
-        
         gradientLayer.colors = [cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor, cOne.cgColor, cTwo.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.frame = self.bounds
-        
-        // place it at the first layer aka at: 0
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.layer.insertSublayer(gradientLayer, at: 0)     // place it at the first layer aka at: 0
     }
     
 }

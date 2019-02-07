@@ -10,7 +10,7 @@ import UIKit
 
 class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var recents: [NSDictionary] = []
+    var recents = [NSDictionary]()
     var firstLoad: Bool?
     let headerView = UIView()
     var emptyLabel = UILabel()
@@ -18,7 +18,7 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tv: UITableView!
 
     
-    // MARK: - START
+    // MARK: - INIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,75 +38,9 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             print("logged out bro")
         }
     }
-   
+
     
-    // MARK: - TABLE VIEW
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-       return recents.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
-        let recent = recents[indexPath.section]
-        cell.bindData(recent: recent)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 18.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            self.tv.dataSource!.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
-            return
-        }
-        deleteButton.backgroundColor = darkBlue
-        return [deleteButton]
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let recent = recents[indexPath.section]
-        if (recent[kTYPE] as? String)! == kGROUP {
-            recentDeleteWarning(indexPath: indexPath)
-        } else {
-            recents.remove(at: indexPath.section)
-            deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
-            tableView.reloadData()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        // present chatVC
-        let recent = recents[indexPath.section]
-        // restart recents
-        restartRecentChat(recent: recent)
-        let chatVC = ChatVC()
-        chatVC.hidesBottomBarWhenPushed = true
-        chatVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
-        chatVC.members = (recent[kMEMBERS] as? [String])!
-        chatVC.chatRoomId = (recent[kCHATROOMID] as? String)!
-        if (recent[kTYPE] as? String)! == kGROUP {
-            chatVC.isGroup = true 
-        }
-        navigationController?.pushViewController(chatVC, animated: true)
-    }
-    
-    // MARK: - IBActions
+    // MARK: - IB_ACTIONS
     
     @IBAction func addRecentBarButtonPressed(_ sender: Any) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -126,11 +60,10 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.present(optionMenu, animated: true, completion: nil)
     }
     
-    // MARK: - Load Recents
+    // MARK: - ACTIONS
     
     func loadRecents() {
         firebase.child(kRECENT).queryOrdered(byChild: kUSERID).queryEqual(toValue: backendless?.userService?.currentUser?.objectId!).observe(.value) { (snapshot) in
-            
             self.recents.removeAll() // in case we have anything in our array already
             if snapshot.exists() { // if we have a value in snapshot
                 // sort by date - most recent value on top
@@ -200,9 +133,6 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
-    // MARK: Helper functions
-    
     func recentDeleteWarning(indexPath: IndexPath) {
         let ac = UIAlertController(title: "Attention", message: "Would you like to receive notifications from this group?", preferredStyle: .alert)
         // get our recent
@@ -222,6 +152,72 @@ class RecentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.present(ac, animated: true, completion: nil)
     }
     
+    
+    // MARK: - TABLE VIEW
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return recents.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 18.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tv.dequeueReusableCell(withIdentifier: "Cell") as! RecentCell
+        let recent = recents[indexPath.section]
+        cell.bindData(recent: recent)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tv.dataSource!.tableView!(self.tv, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        deleteButton.backgroundColor = darkBlue
+        return [deleteButton]
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let recent = recents[indexPath.section]
+        if (recent[kTYPE] as? String)! == kGROUP {
+            recentDeleteWarning(indexPath: indexPath)
+        } else {
+            recents.remove(at: indexPath.section)
+            deleteRecentItem(recentID: (recent[kRECENTID] as? String)!)
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // present chatVC
+        let recent = recents[indexPath.section]
+        // restart recents
+        restartRecentChat(recent: recent)
+        let chatVC = ChatVC()
+        chatVC.hidesBottomBarWhenPushed = true
+        chatVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
+        chatVC.members = (recent[kMEMBERS] as? [String])!
+        chatVC.chatRoomId = (recent[kCHATROOMID] as? String)!
+        if (recent[kTYPE] as? String)! == kGROUP {
+            chatVC.isGroup = true
+        }
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
     
     
 }
