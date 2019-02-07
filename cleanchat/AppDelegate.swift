@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     
-    // setup for our location
     var locationManager: CLLocationManager?
     var coordinates: CLLocationCoordinate2D?
     
@@ -57,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true // signals to FB that there should be local persistence as well for when we're offline
         backendless!.initApp(APP_ID, apiKey: API_KEY)
- 
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.delegate = self
@@ -104,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     
-    // MARK: - ACTIONS
+    // MARK: - LOCATION SERVICES
 
     func locationManagerStart() {
         if locationManager == nil {
@@ -142,7 +140,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             // restricted by ie. parental controls so can't enable location services
             break
         case .denied:
-            locationManager = nil
+            locationManagerStop()
+//            locationManager = nil
             print("DENIED LOCATION")
             // can grant access from Settings.app
             break

@@ -11,7 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-class WelcomeVC: UIViewController {
+class WelcomeVC: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -35,10 +35,19 @@ class WelcomeVC: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
+    func checkLocationPermissions() {
+        if CLLocationManager.locationServicesEnabled() {
+            print("True")
+        } else {
+            print("False")
+        }
+        
+    }
     
     // MARK: - SETUP
     
     func setup1() {
+        checkLocationPermissions()
         //self.view.tintColor = darkBlue
         // self.navigationItem.setHidesBackButton(true, animated: true)
         //      self.navigationController?.navigationBar.topItem?.title = ""

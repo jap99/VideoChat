@@ -582,12 +582,12 @@ class ChatVC: JSQMessagesViewController, UINavigationControllerDelegate, UIImage
         
         // return media url of temp. media file
 //        let video = info[UIImagePickerControllerMediaURL] as? NSURL
-//        
+//
 //        let picture = info[UIImagePickerControllerEditedImage] as? UIImage
-//        
+//
 //        // the video & pic are nil so we'll pass both in incase either exists
 //        sendMessage(text: nil, date: Date(), picture: picture, location: nil, video: video, audio: nil)
-//        
+//
         picker.dismiss(animated: true, completion: nil)
     }
     

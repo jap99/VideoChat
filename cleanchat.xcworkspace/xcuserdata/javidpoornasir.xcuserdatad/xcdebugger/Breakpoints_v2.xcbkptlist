@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.846223"
+            timestampString = "571204972.50089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "733"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.84628"
+            timestampString = "571204972.501254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "698"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.846329"
+            timestampString = "571204972.501514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "672"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.846379"
+            timestampString = "571204972.50176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "561"
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.846426"
+            timestampString = "571204972.5020159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "499"
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.8464741"
+            timestampString = "571204972.502255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "496"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.846522"
+            timestampString = "571204972.502624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "430"
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.84657"
+            timestampString = "571204972.502895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "548080624.84662"
+            timestampString = "571204972.503148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
@@ -487,6 +487,38 @@
             endingLineNumber = "112"
             landmarkName = "addRecentBarButtonPressed(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.RecentVC.addRecentBarButtonPressed(Any) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/RecentVC.swift"
+                  timestampString = "571207097.819908"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in cleanchat.RecentVC.addRecentBarButtonPressed(Any) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/RecentVC.swift"
+                  timestampString = "571207097.825821"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -684,31 +716,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403062.98992"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207097.910992"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "27">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[1] = Exploded&gt; of cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403062.99198"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207097.914812"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "76">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -767,13 +799,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.004829"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207097.995818"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "27"
                   endingLineNumber = "27"
-                  offsetFromSymbolStart = "984">
+                  offsetFromSymbolStart = "336">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -782,13 +814,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.006773"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.000001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "27"
                   endingLineNumber = "27"
-                  offsetFromSymbolStart = "1849">
+                  offsetFromSymbolStart = "824">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -823,6 +855,38 @@
             endingLineNumber = "37"
             landmarkName = "sendPushNotification2(members:message:)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.016775"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "636">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.020972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -844,16 +908,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.sendPushNotification1(chatRoomID: Swift.String, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.019365"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.030094"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
                   endingLineNumber = "40"
-                  offsetFromSymbolStart = "103">
+                  offsetFromSymbolStart = "688">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.0330679"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "72">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -862,13 +941,13 @@
                   symbolName = "closure #1 (Swift.Array&lt;__C.BackendlessUser&gt;) -&gt; () in cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.021506"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.035597"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "57">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -924,16 +1003,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.sendPushNotifcation(toUser: __C.BackendlessUser, message: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Array&lt;__C.BackendlessUser&gt;) -&gt; () in cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.034539"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.05518"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
                   endingLineNumber = "54"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.sendPushNotifcation(toUser: __C.BackendlessUser, message: Swift.String) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.060201"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -942,13 +1036,13 @@
                   symbolName = "closure #1 (Swift.Int) -&gt; () in cleanchat.sendPushNotifcation(toUser: __C.BackendlessUser, message: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.0363671"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.0633349"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
                   endingLineNumber = "57"
-                  offsetFromSymbolStart = "45">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -967,38 +1061,6 @@
             endingLineNumber = "68"
             landmarkName = "sendPushNotifcation(toUser:message:)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int) -&gt; () in cleanchat.sendPushNotifcation(toUser: __C.BackendlessUser, message: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.04096"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "4015">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.MessageStatus&gt;) -&gt; () in closure #1 (Swift.Int) -&gt; () in cleanchat.sendPushNotifcation(toUser: __C.BackendlessUser, message: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.043023"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1103,13 +1165,13 @@
                   symbolName = "cleanchat.getMembersToPush(members: Swift.Array&lt;Swift.String&gt;, result: (Swift.Array&lt;__C.BackendlessUser&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.06896"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.115136"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "136"
                   endingLineNumber = "136"
-                  offsetFromSymbolStart = "2280">
+                  offsetFromSymbolStart = "864">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1118,13 +1180,13 @@
                   symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt;) -&gt; () in cleanchat.getMembersToPush(members: Swift.Array&lt;Swift.String&gt;, result: (Swift.Array&lt;__C.BackendlessUser&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/PushNotifications.swift"
-                  timestampString = "565403063.070893"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.119985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125"
-                  offsetFromSymbolStart = "50">
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1191,6 +1253,38 @@
             endingLineNumber = "150"
             landmarkName = "callDidEnd(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.CallVC.callDidEnd(Swift.Optional&lt;__C.SINCall&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/CallVC.swift"
+                  timestampString = "571207098.14856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.CallVC.callDidEnd(Swift.Optional&lt;__C.SINCall&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/CallVC.swift"
+                  timestampString = "571207098.151463"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1276,31 +1370,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.OutgoingMessage.sendMessage(chatRoomID: Swift.String, item: __C.NSMutableDictionary) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[0] = Exploded&gt; of cleanchat.OutgoingMessage.sendMessage(chatRoomID: Swift.String, item: __C.NSMutableDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/OutgoingMessage.swift"
-                  timestampString = "565403063.108914"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/OutgoingMessage.swift"
+                  timestampString = "571207098.191478"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "1893">
+                  offsetFromSymbolStart = "712">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.OutgoingMessage.sendMessage(chatRoomID: Swift.String, item: __C.NSMutableDictionary) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[0] = Exploded&gt; of cleanchat.OutgoingMessage.sendMessage(chatRoomID: Swift.String, item: __C.NSMutableDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/OutgoingMessage.swift"
-                  timestampString = "565403063.110684"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/OutgoingMessage.swift"
+                  timestampString = "571207098.195199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "2757">
+                  offsetFromSymbolStart = "1056">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1360,11 +1454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/AppDelegate.swift"
-            timestampString = "565403062.260054"
+            timestampString = "571207096.144977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1516,31 +1610,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.updateRecents(chatRoomId: Swift.String, lastMessage: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.updateRecents(chatRoomId: Swift.String, lastMessage: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.162734"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.2919199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "240"
-                  endingLineNumber = "240"
-                  offsetFromSymbolStart = "27">
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.updateRecents(chatRoomId: Swift.String, lastMessage: Swift.String) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[1] = Exploded&gt; of cleanchat.updateRecents(chatRoomId: Swift.String, lastMessage: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.164775"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.296145"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "41">
+                  startingLineNumber = "240"
+                  endingLineNumber = "240"
+                  offsetFromSymbolStart = "80">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1567,13 +1661,13 @@
                   symbolName = "cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.170113"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.3029619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "288"
                   endingLineNumber = "288"
-                  offsetFromSymbolStart = "25">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1582,13 +1676,13 @@
                   symbolName = "cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.172184"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.306312"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "288"
                   endingLineNumber = "288"
-                  offsetFromSymbolStart = "6000">
+                  offsetFromSymbolStart = "2000">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1607,38 +1701,6 @@
             endingLineNumber = "268"
             landmarkName = "deleteMultipleRecentItems(chatRoomID:)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.deleteMultipleRecentItems(chatRoomID: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.176878"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "268"
-                  endingLineNumber = "268"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.deleteMultipleRecentItems(chatRoomID: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.178799"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1655,38 +1717,6 @@
             endingLineNumber = "255"
             landmarkName = "deleteRecentItem(recentID:)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.deleteRecentItem(recentID: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.184029"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "255"
-                  endingLineNumber = "255"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in cleanchat.deleteRecentItem(recentID: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.186186"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "257"
-                  endingLineNumber = "257"
-                  offsetFromSymbolStart = "37">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1756,31 +1786,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.createGroupRecent(chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, groupName: Swift.String, ownerID: Swift.String, type: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.createGroupRecent(chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, groupName: Swift.String, ownerID: Swift.String, type: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.204635"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.351138"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "68">
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.createGroupRecent(chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, groupName: Swift.String, ownerID: Swift.String, type: Swift.String) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[3] = Dead&gt; of cleanchat.createGroupRecent(chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, groupName: Swift.String, ownerID: Swift.String, type: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.2065181"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.354178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "99">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "96">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1807,13 +1837,13 @@
                   symbolName = "cleanchat.createRecent(userId: Swift.String, chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, withUserUserId: Swift.String, withUserUsername: Swift.String, type: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.2116309"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.361977"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
                   endingLineNumber = "43"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "112">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1822,13 +1852,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.createRecent(userId: Swift.String, chatRoomId: Swift.String, members: Swift.Array&lt;Swift.String&gt;, withUserUserId: Swift.String, withUserUsername: Swift.String, type: Swift.String) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.213607"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.364645"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "122">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "64">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1903,13 +1933,13 @@
                   symbolName = "cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.230747"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.391836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "296"
                   endingLineNumber = "296"
-                  offsetFromSymbolStart = "3500">
+                  offsetFromSymbolStart = "1072">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1918,13 +1948,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.2325521"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.396503"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "290"
-                  endingLineNumber = "290"
-                  offsetFromSymbolStart = "53">
+                  startingLineNumber = "298"
+                  endingLineNumber = "298"
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1951,13 +1981,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.237733"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.406373"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "303"
                   endingLineNumber = "303"
-                  offsetFromSymbolStart = "857">
+                  offsetFromSymbolStart = "348">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1966,13 +1996,13 @@
                   symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in cleanchat.deleteRecentWithNotification(recent: __C.NSDictionary) -&gt; ()"
                   moduleName = "cleanchat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/Recent.swift"
-                  timestampString = "565403063.239718"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/Recent.swift"
+                  timestampString = "571207098.411018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "303"
                   endingLineNumber = "303"
-                  offsetFromSymbolStart = "1970">
+                  offsetFromSymbolStart = "804">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1991,6 +2021,38 @@
             endingLineNumber = "80"
             landmarkName = "numberOfUnreadMessagesOfUser(userID:result:)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;__C.BackendlessUser&gt;) -&gt; () in cleanchat.sendPushNotification2(members: Swift.Array&lt;Swift.String&gt;, message: Swift.String) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.41782"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.numberOfUnreadMessagesOfUser(userID: Swift.String, result: (Swift.Int) -&gt; ()) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/PushNotifications.swift"
+                  timestampString = "571207098.420495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2192,11 +2254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/AppDelegate.swift"
-            timestampString = "565403062.261655"
+            timestampString = "571207096.14695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2208,11 +2270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/AppDelegate.swift"
-            timestampString = "565403062.26171"
+            timestampString = "571207096.14739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2224,11 +2286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/AppDelegate.swift"
-            timestampString = "565403062.261755"
+            timestampString = "571207096.147795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "handleRemoteNotifications(userInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2279,38 +2341,6 @@
             endingLineNumber = "57"
             landmarkName = "updateBackendlessUser(avatarUrl:)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cleanchat.updateBackendlessUser(avatarUrl: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/RegisterForPush.swift"
-                  timestampString = "565403063.323961"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "2325">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.BackendlessUser&gt;) -&gt; () in cleanchat.updateBackendlessUser(avatarUrl: Swift.String) -&gt; ()"
-                  moduleName = "cleanchat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/javidpoornasir/Desktop/cleanchat/cleanchat/RegisterForPush.swift"
-                  timestampString = "565403063.325815"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2416,7 +2446,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "565404197.80352"
+            timestampString = "571204972.505664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
@@ -2432,12 +2462,521 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cleanchat/ChatVC.swift"
-            timestampString = "565404708.493193"
+            timestampString = "571204972.505941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "591"
             endingLineNumber = "591"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.148684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.149109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.14952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "applicationDidEnterBackground(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.applicationDidEnterBackground(__C.UIApplication) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.649"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.AppDelegate.applicationDidEnterBackground(__C.UIApplication) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.652386"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.149931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "locationManagerStart()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.150336"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.150736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.151143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.695135"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.699277"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.702763"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.7074111"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.151563"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.151983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.152385"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.1527849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.1531841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "locationManager(_:didFailWithError:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didFailWithError: Swift.Error) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.759095"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didFailWithError: Swift.Error) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.763603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.153583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "locationManagerStop()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.applicationDidEnterBackground(__C.UIApplication) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.775172"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.locationManagerStop() -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.779622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.locationManager(_: __C.CLLocationManager, didChangeAuthorization: __C.CLAuthorizationStatus) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.7841491"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.1539741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "locationManagerStart()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.154394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "applicationDidBecomeActive(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cleanchat.AppDelegate.applicationDidBecomeActive(__C.UIApplication) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.8080159"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc cleanchat.AppDelegate.applicationDidBecomeActive(__C.UIApplication) -&gt; ()"
+                  moduleName = "cleanchat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/javidpoornasir/Desktop/2019/cleanchat/cleanchat/AppDelegate.swift"
+                  timestampString = "571207098.813139"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.154798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/AppDelegate.swift"
+            timestampString = "571207096.155185"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/WelcomeVC.swift"
+            timestampString = "571207096.1555769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "checkLocationPermissions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cleanchat/WelcomeVC.swift"
+            timestampString = "571207096.156002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "checkLocationPermissions()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
