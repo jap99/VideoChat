@@ -9,6 +9,11 @@
 import Foundation
 
 
+
+// TODO - put in a class
+
+
+
 // ENCRYPT TEXT MESSAGE
 
 func encryptText(chatRoomID: String, text: String) -> String {

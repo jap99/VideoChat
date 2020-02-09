@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO - put in a class
+
 
 func registerUserDeviceID(user: BackendlessUser?) {
     // check if we have a deviceID

@@ -121,9 +121,9 @@
 		9F8EABB420A8A74F0027EDFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9F8EABB620AADA010027EDFB /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		9F9EDC7B207C3EE50050DCE7 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		9FB2C9A0238D3042004A5DE8 /* cleanchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cleanchat-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FB572AC2071D39100A26985 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		9FB572AE2071D3A100A26985 /* ChooseUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserVC.swift; sourceTree = "<group>"; };
-		9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cleanchat-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FB572B12071D3E500A26985 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FB572B52071D41400A26985 /* RecentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentVC.swift; sourceTree = "<group>"; };
 		9FB572B72071D42000A26985 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -250,11 +250,8 @@
 		9FB572C02071D51200A26985 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9FC3A0E7238D374B003BC94C /* Cells */,
 				9FE044B7209C7A780012F45F /* GradientView.swift */,
-				9FB572C12071D51200A26985 /* ChooseUserCell.swift */,
-				9FB572C22071D51200A26985 /* RecentCell.swift */,
-				9FB572D520783FF500A26985 /* FriendCell.swift */,
-				9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */,
 				9F8EABB620AADA010027EDFB /* EmptyView.swift */,
 			);
 			path = View;
@@ -279,10 +276,41 @@
 			path = ProgressHUD;
 			sourceTree = SOURCE_ROOT;
 		};
+		9FC3A0E7238D374B003BC94C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572C12071D51200A26985 /* ChooseUserCell.swift */,
+				9FB572C22071D51200A26985 /* RecentCell.swift */,
+				9FB572D520783FF500A26985 /* FriendCell.swift */,
+				9F3B9F9F208F2BE100F12CE3 /* ShowAvatarCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9FC3A0E8238D3778003BC94C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9FC3A0E9238D3782003BC94C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9FB572AC2071D39100A26985 /* Camera.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		9FCE485A220C0D57009CD991 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */,
 				9F3B9FA5208FFD0900F12CE3 /* Friend.swift */,
+				9F8ACCF92081731D00F34663 /* VideoMessage.swift */,
+				9FBF00802086B73100C85FE6 /* AudioMessage.swift */,
+				9FBF00822086BACB00C85FE6 /* Audio.swift */,
+				9FF51A0C209423450041661F /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,15 +345,11 @@
 			children = (
 				9F624C2C209ABE4800D7E869 /* bubbleboddy.light-light.ttf */,
 				9F624C2D209ABE5500D7E869 /* bubbleboddy.fat.ttf */,
-				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
-				9FB572B02071D3CB00A26985 /* cleanchat-Bridging-Header.h */,
-				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
 				9FE14FEE1F22178900F3FE09 /* Main.storyboard */,
 				9FE14FF11F22178900F3FE09 /* Assets.xcassets */,
 				9F624C2A209A940700D7E869 /* incoming.wav */,
 				9F624C28209A93F800D7E869 /* ringback.wav */,
 				9FE14FF31F22178900F3FE09 /* LaunchScreen.storyboard */,
-				9FE14FF61F22178900F3FE09 /* Info.plist */,
 			);
 			path = "Additional Resources";
 			sourceTree = "<group>";
@@ -351,27 +375,27 @@
 		9FE14FE91F22178900F3FE09 /* cleanchat */ = {
 			isa = PBXGroup;
 			children = (
-				9FCE485A220C0D57009CD991 /* Model */,
 				9FF51A1820955F320041661F /* cleanchat.entitlements */,
+				9FE14FEA1F22178900F3FE09 /* AppDelegate.swift */,
+				9FC3A0E9238D3782003BC94C /* Managers */,
+				9FC3A0E8238D3778003BC94C /* Services */,
+				9FCE485A220C0D57009CD991 /* Model */,
+				9FB572C02071D51200A26985 /* View */,
+				9FCE485B220C0D72009CD991 /* ViewControllers */,
 				9FB572C92071E55800A26985 /* ProgressHUD */,
 				9FB572C52071E51D00A26985 /* Encryption */,
 				9FB572BB2071D4AD00A26985 /* Utilities */,
-				9FB572C02071D51200A26985 /* View */,
-				9FCE485B220C0D72009CD991 /* ViewControllers */,
 				9FCE485C220C1175009CD991 /* Additional Resources */,
 				9FF51A1F20980EDC0041661F /* AppIcon.appiconset */,
 				9F8ACCF32080A3D500F34663 /* OutgoingMessage.swift */,
-				9FB572AC2071D39100A26985 /* Camera.swift */,
 				9F9EDC7B207C3EE50050DCE7 /* Recent.swift */,
-				9F8ACCF52080BB5400F34663 /* IncomingMessage.swift */,
 				9F8ACCF72081701F00F34663 /* VideoThumbnail.swift */,
-				9F8ACCF92081731D00F34663 /* VideoMessage.swift */,
-				9FBF00802086B73100C85FE6 /* AudioMessage.swift */,
-				9FBF00822086BACB00C85FE6 /* Audio.swift */,
-				9FF51A0C209423450041661F /* Group.swift */,
 				9FF51A1920956D680041661F /* RegisterForPush.swift */,
 				9FF51A1B2097D8040041661F /* PushNotifications.swift */,
 				9F624C222099AC9E00D7E869 /* Encryption.swift */,
+				9FB572B12071D3E500A26985 /* GoogleService-Info.plist */,
+				9FB2C9A0238D3042004A5DE8 /* cleanchat-Bridging-Header.h */,
+				9FE14FF61F22178900F3FE09 /* Info.plist */,
 			);
 			path = cleanchat;
 			sourceTree = "<group>";
@@ -522,7 +546,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh",
 				"${PODS_ROOT}/IDMPhotoBrowser/Classes/IDMPhotoBrowser.bundle",
 				"${PODS_ROOT}/IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle",
 				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/IQAudioRecorderController.bundle",
@@ -549,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cleanchat/Pods-cleanchat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9EAE8FE0194234943D497385 /* [CP] Check Pods Manifest.lock */ = {
@@ -758,7 +782,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Javid Poornasir (VWFZU9229C)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VWFZU9229C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -766,15 +790,16 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "CleanChat-Dev-ProvProf";
+				PROVISIONING_PROFILE_SPECIFIER = "cleanchat-ppp";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -786,7 +811,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cleanchat/cleanchat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Javid Poornasir (VWFZU9229C)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VWFZU9229C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -794,15 +819,15 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = cleanchat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleandev.cleanchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "cleanchat-prod-pp";
+				PROVISIONING_PROFILE_SPECIFIER = "cleanchat-ppp";
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = none;
 				SWIFT_OBJC_BRIDGING_HEADER = "cleanchat/cleanchat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

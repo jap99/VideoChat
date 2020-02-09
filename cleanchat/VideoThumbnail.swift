@@ -8,6 +8,10 @@
 
 import Foundation
 
+
+// TODO - put in a class
+
+
 func squareImage(image: UIImage, size: CGFloat) -> UIImage {
     var cropped: UIImage!
     if image.size.height > image.size.width {

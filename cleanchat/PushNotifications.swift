@@ -8,6 +8,13 @@
 
 import Foundation
 
+
+
+// TODO - put in a class
+
+
+
+
 // each recent has an array of users so we'll need the recent to know who to send the push notifications to
 let ref = firebase.child(kRECENT)
 var shouldSendPush = false

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// TODO - put this class in an actual class
 
 func startChat(user1: BackendlessUser, user2: BackendlessUser) -> String {
     // get the users' Id

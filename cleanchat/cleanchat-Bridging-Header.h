@@ -1,0 +1,26 @@
+//
+//  cleanchat-Bridging-Header.h
+//  cleanchat
+//
+//  Created by Javid Poornasir on 11/26/19.
+//  Copyright © 2019 Javid Poornasir. All rights reserved.
+//
+//
+//  Use this file to import your target's public headers that you would like to expose to Swift.
+//
+
+// recorder used for recording audio messages
+#import "IQAudioRecorderViewController.h" // use to record audio and get the file location
+
+#import "Backendless.h"
+
+#import <JSQMessagesViewController/JSQMessages.h>
+
+//#import "ProgressHUD.h"
+#import "ProgressHUD.h"
+
+#import "IDMPhotoBrowser.h" // To display our images
+
+ #import <Sinch/Sinch.h> // for calling
+
+#import "RNCryptor.h" // for encryption

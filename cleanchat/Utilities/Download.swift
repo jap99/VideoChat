@@ -12,6 +12,7 @@ import Foundation
 
 
 // Download
+
 func getAvatarFromURL(url: String, result: @escaping (_ image: UIImage?) -> Void) {
     let url = NSURL(string: url)
     // create queue so avatar isn't downloaded on main thread
@@ -91,7 +92,6 @@ func downloadVideo(videoUrl: String, result: @escaping (_ isReadyToPlay: Bool, _
             }
         }
     }
-    
 }
 
 func videoThumbnail(video: NSURL) -> UIImage {
